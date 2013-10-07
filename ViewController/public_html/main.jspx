@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:form id="f1">
+        <af:panelStretchLayout startWidth="100px" id="psl1">
+          <f:facet name="start">
+            <af:panelAccordion id="pa1">
+              <af:showDetailItem text="Browse" id="sdi1"/>
+            </af:panelAccordion>
+          </f:facet>
+          <f:facet name="center">
+            <!-- id="af_twocol_left_partial_header_stretched"   -->
+            <af:decorativeBox theme="dark" id="db3">
+              <f:facet name="center">
+                <af:decorativeBox theme="medium" id="db1">
+                  <f:facet name="center">
+                    <af:panelStretchLayout topHeight="50px" id="psl2">
+                      <f:facet name="top">
+                        <af:image source="/oracle-logo.gif" id="i1"
+                                  inlineStyle="width:8cm; height:1.5cm;"/>
+                      </f:facet>
+                      <f:facet name="center">
+                        <af:decorativeBox theme="default" id="db2">
+                          <f:facet name="center">
+                            <af:region value="#{bindings.trainflow1.regionModel}"
+                                       id="r1"/>
+                          </f:facet>
+                        </af:decorativeBox>
+                      </f:facet>
+                    </af:panelStretchLayout>
+                  </f:facet>
+                </af:decorativeBox>
+              </f:facet>
+            </af:decorativeBox>
+          </f:facet>
+        </af:panelStretchLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

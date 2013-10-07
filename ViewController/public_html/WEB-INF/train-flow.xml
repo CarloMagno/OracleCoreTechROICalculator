@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="train-flow">
+    <default-activity id="__1">start</default-activity>
+    <view id="start">
+      <page>/start.jsff</page>
+      <train-stop id="__2">
+        <display-name id="__12">Start</display-name>
+      </train-stop>
+    </view>
+    <view id="enterData">
+      <page>/enterData.jsff</page>
+      <train-stop id="__3">
+        <display-name id="__14">Enter Data</display-name>
+      </train-stop>
+    </view>
+    <view id="registerData">
+      <page>/registerData.jsff</page>
+      <train-stop id="__4">
+        <display-name id="__15">Confirm</display-name>
+      </train-stop>
+    </view>
+    <view id="report">
+      <page>/report.jsff</page>
+      <train-stop id="__5">
+        <display-name id="__16">Report</display-name>
+      </train-stop>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome id="__6">
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <train/>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">report</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">commit</from-outcome>
+        <to-activity-id id="__9">taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
