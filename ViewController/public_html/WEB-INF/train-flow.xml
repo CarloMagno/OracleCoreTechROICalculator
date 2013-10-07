@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="train-flow">
+    <description id="__8"></description>
     <default-activity id="__1">start</default-activity>
+    <managed-bean id="__20">
+      <managed-bean-name id="__19">TestBean</managed-bean-name>
+      <managed-bean-class id="__22">TestBean</managed-bean-class>
+      <managed-bean-scope id="__21">request</managed-bean-scope>
+    </managed-bean>
     <view id="start">
       <page>/start.jsff</page>
       <train-stop id="__2">
@@ -14,29 +20,29 @@
         <display-name id="__14">Enter Data</display-name>
       </train-stop>
     </view>
-    <view id="registerData">
-      <page>/registerData.jsff</page>
-      <train-stop id="__4">
-        <display-name id="__15">Confirm</display-name>
-      </train-stop>
-    </view>
     <view id="report">
       <page>/report.jsff</page>
       <train-stop id="__5">
         <display-name id="__16">Report</display-name>
       </train-stop>
     </view>
+    <view id="registerData">
+      <page>/registerData.jsff</page>
+      <train-stop id="__4">
+        <display-name id="__15">Confirm</display-name>
+      </train-stop>
+    </view>
     <task-flow-return id="taskFlowReturn1">
-      <outcome id="__6">
+      <outcome id="__9">
         <name>taskFlowReturn1</name>
       </outcome>
     </task-flow-return>
     <train/>
-    <control-flow-rule id="__7">
-      <from-activity-id id="__8">report</from-activity-id>
-      <control-flow-case id="__10">
-        <from-outcome id="__11">commit</from-outcome>
-        <to-activity-id id="__9">taskFlowReturn1</to-activity-id>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">registerData</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__18">commit</from-outcome>
+        <to-activity-id id="__17">taskFlowReturn1</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

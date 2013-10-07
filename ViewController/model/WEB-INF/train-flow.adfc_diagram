@@ -38,9 +38,9 @@
       <property
          name="y">176.84473</property>
       <property
-         name="x">370.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">370.0</property>
    </View>
    <TrainFlow
       islink="true"
@@ -59,24 +59,18 @@
       <property
          name="description">&lt;html>&lt;p>&lt;b>registerData&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
+         name="thumbnailExpanded">false</property>
+      <property
          name="trainStop">true</property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">173.04004</property>
-      <property
-         name="x">548.0</property>
+         name="y">175.13184</property>
       <property
          name="pageFragment">true</property>
-   </View>
-   <TrainFlow
-      islink="true"
-      id="TrainFlow6"
-      from="View3"
-      to="View5">
       <property
-         name="sdm:polyPoints">R50,411.0,176.49414,507.0,172.68945,L50</property>
-   </TrainFlow>
+         name="x">677.0</property>
+   </View>
    <View
       id="View7">
       <property
@@ -90,22 +84,30 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">170.49414</property>
-      <property
-         name="x">704.0</property>
+         name="y">175.68945</property>
       <property
          name="pageFragment">true</property>
+      <property
+         name="x">521.0</property>
    </View>
    <TrainFlow
       islink="true"
-      id="TrainFlow8"
-      from="View5"
+      id="TrainFlow11"
+      from="View3"
       to="View7">
       <property
-         name="sdm:polyPoints">R50,589.0,172.68945,663.0,170.14355,L50</property>
+         name="sdm:polyPoints">R50,411.0,176.49414,480.0,175.33887,L50</property>
+   </TrainFlow>
+   <TrainFlow
+      islink="true"
+      id="TrainFlow12"
+      from="View7"
+      to="View5">
+      <property
+         name="sdm:polyPoints">R50,562.0,175.33887,636.0,174.78125,L50</property>
    </TrainFlow>
    <TaskFlowReturn
-      id="TaskFlowReturn9">
+      id="TaskFlowReturn14">
       <property
          name="activityId">taskFlowReturn1</property>
       <property
@@ -115,18 +117,18 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">171.24707</property>
+         name="y">141.34375</property>
       <property
-         name="x">917.0</property>
+         name="x">858.0</property>
    </TaskFlowReturn>
    <ControlFlowCase
       islink="true"
-      id="ControlFlowCase10"
-      from="View7"
-      to="TaskFlowReturn9">
+      id="ControlFlowCase15"
+      from="View5"
+      to="TaskFlowReturn14">
       <property
          name="fromOutcome">commit</property>
       <property
-         name="sdm:polyPoints">R50,745.0,170.14355,876.0,170.89648,L50</property>
+         name="sdm:polyPoints">R50,718.0,174.78125,817.0,140.99316,L50</property>
    </ControlFlowCase>
 </SDM>

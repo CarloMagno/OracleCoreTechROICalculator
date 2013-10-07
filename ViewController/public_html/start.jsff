@@ -7,8 +7,19 @@
       <af:panelHeader text="Start" id="ph1">
         <f:facet name="context"/>
         <f:facet name="menuBar">
-          <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+          <!--  <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
                              id="tbb1"/>
+        -->
+          <af:panelGroupLayout id="pgl0">
+            <af:commandButton id="back" text="Back"
+                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
+                              >
+            </af:commandButton>
+            <af:commandButton id="next" text="Next"
+                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
+                              actionListener="#{TestBean.getNextAction}">
+            </af:commandButton>
+          </af:panelGroupLayout>
         </f:facet>
         <f:facet name="toolbar"/>
         <f:facet name="legend"/>
