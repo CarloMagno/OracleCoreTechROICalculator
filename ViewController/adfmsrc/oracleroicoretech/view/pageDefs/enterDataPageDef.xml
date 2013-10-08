@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="enterDataPageDef"
+                Package="oracleroicoretech.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="UserinfoView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="UserinfoView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="GbHp">
+      <AttrNames>
+        <Item Value="GbHp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="PercentageHp">
+      <AttrNames>
+        <Item Value="PercentageHp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="PricePerGbGp">
+      <AttrNames>
+        <Item Value="PricePerGbGp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="GbMp">
+      <AttrNames>
+        <Item Value="GbMp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="PercentageMp">
+      <AttrNames>
+        <Item Value="PercentageMp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="PricePerGbMp">
+      <AttrNames>
+        <Item Value="PricePerGbMp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="GbRop">
+      <AttrNames>
+        <Item Value="GbRop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="PercentageRop">
+      <AttrNames>
+        <Item Value="PercentageRop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="PricePerGbRop">
+      <AttrNames>
+        <Item Value="PricePerGbRop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView1Iterator" id="Factor">
+      <AttrNames>
+        <Item Value="Factor"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -7,12 +7,143 @@
       <af:panelHeader text="Enter Data" id="ph1">
         <f:facet name="context"/>
         <f:facet name="menuBar">
-          <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
-                             id="tbb1"/>
+          <af:panelGroupLayout id="pgl0">
+            <af:commandButton id="back" text="Back"
+                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
+                              >
+            </af:commandButton>
+            <af:commandButton id="next" text="Next"
+                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
+                              actionListener="#{TestBean.getNextAction}">
+            </af:commandButton>
+          </af:panelGroupLayout>
         </f:facet>
-        <f:facet name="toolbar"/>
+        <f:facet name="toolbar">
+          <af:outputText value="#{TestBean.code.value}" id="ot1"/>
+        </f:facet>
         <f:facet name="legend"/>
         <f:facet name="info"/>
+        <af:panelGroupLayout id="pgl1">
+          <af:panelBox text="Input" id="pb1"
+                       inlineStyle="height:287px; width:482px;">
+            <f:facet name="toolbar"/>
+            <af:panelFormLayout id="pfl1" rows="11">
+              <af:inputText value="#{bindings.GbHp.inputValue}"
+                            label="High Performance GB"
+                            required="#{bindings.GbHp.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.GbHp.hints.precision}"
+                            shortDesc="#{bindings.GbHp.hints.tooltip}" id="it1">
+                <f:validator binding="#{bindings.GbHp.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.GbHp.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.PercentageHp.inputValue}"
+                            label="%"
+                            required="#{bindings.PercentageHp.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.PercentageHp.hints.precision}"
+                            shortDesc="#{bindings.PercentageHp.hints.tooltip}"
+                            id="it7">
+                <f:validator binding="#{bindings.PercentageHp.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PercentageHp.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.PricePerGbGp.inputValue}"
+                            label="Price per GB"
+                            required="#{bindings.PricePerGbGp.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.PricePerGbGp.hints.precision}"
+                            shortDesc="#{bindings.PricePerGbGp.hints.tooltip}"
+                            id="it4">
+                <f:validator binding="#{bindings.PricePerGbGp.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PricePerGbGp.format}"/>
+              </af:inputText>
+              <af:separator id="s1"/>
+              <af:inputText value="#{bindings.GbMp.inputValue}"
+                            label="Mid Range GB"
+                            required="#{bindings.GbMp.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.GbMp.hints.precision}"
+                            shortDesc="#{bindings.GbMp.hints.tooltip}" id="it5">
+                <f:validator binding="#{bindings.GbMp.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.GbMp.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.PercentageMp.inputValue}"
+                            label="%"
+                            required="#{bindings.PercentageMp.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.PercentageMp.hints.precision}"
+                            shortDesc="#{bindings.PercentageMp.hints.tooltip}"
+                            id="it8">
+                <f:validator binding="#{bindings.PercentageMp.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PercentageMp.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.PricePerGbMp.inputValue}"
+                            label="Price per GB"
+                            required="#{bindings.PricePerGbMp.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.PricePerGbMp.hints.precision}"
+                            shortDesc="#{bindings.PricePerGbMp.hints.tooltip}"
+                            id="it6">
+                <f:validator binding="#{bindings.PricePerGbMp.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PricePerGbMp.format}"/>
+              </af:inputText>
+              <af:separator id="s2"/>
+              <af:inputText value="#{bindings.GbRop.inputValue}"
+                            label="Low Cost GB"
+                            required="#{bindings.GbRop.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.GbRop.hints.precision}"
+                            shortDesc="#{bindings.GbRop.hints.tooltip}"
+                            id="it3">
+                <f:validator binding="#{bindings.GbRop.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.GbRop.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.PercentageRop.inputValue}"
+                            label="%"
+                            required="#{bindings.PercentageRop.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.PercentageRop.hints.precision}"
+                            shortDesc="#{bindings.PercentageRop.hints.tooltip}"
+                            id="it10">
+                <f:validator binding="#{bindings.PercentageRop.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PercentageRop.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.PricePerGbRop.inputValue}"
+                            label="Price per GB"
+                            required="#{bindings.PricePerGbRop.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.PricePerGbRop.hints.precision}"
+                            shortDesc="#{bindings.PricePerGbRop.hints.tooltip}"
+                            id="it9">
+                <f:validator binding="#{bindings.PricePerGbRop.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PricePerGbRop.format}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.Factor.inputValue}"
+                            label="Advance Compression Factor"
+                            required="#{bindings.Factor.hints.mandatory}"
+                            columns="8"
+                            maximumLength="#{bindings.Factor.hints.precision}"
+                            shortDesc="#{bindings.Factor.hints.tooltip}"
+                            id="it2">
+                <f:validator binding="#{bindings.Factor.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.Factor.format}"/>
+              </af:inputText>
+              <f:facet name="footer">
+                <af:commandButton text="Submit" id="cb1"/>
+              </f:facet>
+            </af:panelFormLayout>
+          </af:panelBox>
+        </af:panelGroupLayout>
       </af:panelHeader>
     </f:facet>
   </af:pageTemplate>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Userinfo"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="USERINFO"
+  AliasName="Userinfo"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERINFO"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GbHp"
+    ColumnName="GB_HP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PercentageHp"
+    ColumnName="PERCENTAGE_HP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PricePerGbGp"
+    ColumnName="PRICE_PER_GB_GP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GbMp"
+    ColumnName="GB_MP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PercentageMp"
+    ColumnName="PERCENTAGE_MP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PricePerGbMp"
+    ColumnName="PRICE_PER_GB_MP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GbRop"
+    ColumnName="GB_ROP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PercentageRop"
+    ColumnName="PERCENTAGE_ROP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PricePerGbRop"
+    ColumnName="PRICE_PER_GB_ROP"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Factor"
+    ColumnName="FACTOR"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMPLTZ"
+    Type="oracle.jbo.domain.TimestampLTZ"
+    ColumnType="TIMESTAMP WITH LOCAL TIME ZONE"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContactInfoId"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="CONTACT_INFO_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USERINFO"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Contactinfo"
+    Association="oracleroicoretech.model.UserinfoContactinfoFk1Assoc"
+    AssociationEnd="oracleroicoretech.model.UserinfoContactinfoFk1Assoc.Contactinfo"
+    AssociationOtherEnd="oracleroicoretech.model.UserinfoContactinfoFk1Assoc.Userinfo"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0015421">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0015421"/>
+      <Attr Name="_checkCondition" Value='"ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracleroicoretech.model.Userinfo.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015422">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0015422"/>
+      <Attr Name="_checkCondition" Value='"CONTACT_INFO_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracleroicoretech.model.Userinfo.ContactInfoId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserinfoPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="USERINFO_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracleroicoretech.model.Userinfo.Id"/>
+      <Item Value="oracleroicoretech.model.Userinfo.ContactInfoId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserinfoContactinfoFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="CONTACTOINFO_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USERINFO_CONTACTINFO_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracleroicoretech.model.Userinfo.ContactInfoId"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -7,12 +7,33 @@
       <af:panelHeader text="Report" id="ph1">
         <f:facet name="context"/>
         <f:facet name="menuBar">
-          <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
-                             id="tbb1"/>
+          <af:panelGroupLayout id="pgl0">
+            <af:commandButton id="back" text="Back"
+                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
+                              >
+            </af:commandButton>
+            <af:commandButton id="next" text="Next"
+                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
+                              actionListener="#{TestBean.getNextAction}">
+            </af:commandButton>
+          </af:panelGroupLayout>
         </f:facet>
         <f:facet name="toolbar"/>
         <f:facet name="legend"/>
         <f:facet name="info"/>
+        <af:panelGroupLayout id="pgl1" layout="vertical">
+          <af:panelGroupLayout id="pgl2" layout="horizontal">
+            <af:panelBox text="Partitioning" id="pb1">
+              <f:facet name="toolbar"/>
+            </af:panelBox>
+            <af:panelBox text="Partitioning + Advance Compression" id="pb2">
+              <f:facet name="toolbar"/>
+            </af:panelBox>
+          </af:panelGroupLayout>
+          <af:panelBox text="Graphs" id="pb3">
+            <f:facet name="toolbar"/>
+          </af:panelBox>
+        </af:panelGroupLayout>
       </af:panelHeader>
     </f:facet>
   </af:pageTemplate>

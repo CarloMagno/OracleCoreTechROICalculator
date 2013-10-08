@@ -24,6 +24,27 @@
         <f:facet name="toolbar"/>
         <f:facet name="legend"/>
         <f:facet name="info"/>
+        <af:panelGroupLayout id="pgl1" halign="center" layout="vertical">
+          <p>
+            <af:outputText value="Welcome to Oracle's Core Tech ROI Calculator."
+                           id="ot1" inlineStyle="font-size:medium;"/>
+          </p>
+          <p>
+             
+          </p>
+          <p>
+             
+          </p>
+          <af:panelBox text="Login" id="pb1" inlineStyle="width:436px;">
+            <f:facet name="toolbar">
+              <f:verbatim>
+                Please enter your code to access de application.
+              </f:verbatim>
+            </f:facet>
+            <af:inputText label="Enter code" id="it1"
+                          binding="#{TestBean.code}" autoSubmit="true"/>
+          </af:panelBox>
+        </af:panelGroupLayout>
       </af:panelHeader>
     </f:facet>
   </af:pageTemplate>
