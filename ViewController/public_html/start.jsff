@@ -21,7 +21,9 @@
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
-        <f:facet name="toolbar"/>
+        <f:facet name="toolbar">
+          <af:outputText value="#{TestBean.code.value}" id="outputText1"/>
+        </f:facet>
         <f:facet name="legend"/>
         <f:facet name="info"/>
         <af:panelGroupLayout id="pgl1" halign="center" layout="vertical">

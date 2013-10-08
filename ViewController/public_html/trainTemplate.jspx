@@ -11,8 +11,10 @@
       </f:facet>
       <f:facet name="top">
         <af:panelGroupLayout id="pt_pgl1" halign="end">
-          <af:train id="pt_t1"
-                    value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+          <div align="right">
+            <af:train id="pt_t1"
+                      value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"/>
+          </div>
         </af:panelGroupLayout>
       </f:facet>
     </af:decorativeBox>

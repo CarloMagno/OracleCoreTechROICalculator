@@ -18,27 +18,30 @@
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
-        <f:facet name="toolbar"/>
+        <f:facet name="toolbar">
+          <af:outputText value="#{TestBean.code.value}" id="ot1"/>
+        </f:facet>
         <f:facet name="legend"/>
         <f:facet name="info"/>
-        <af:panelGroupLayout id="pgl1">
-          <af:panelBox text="PanelBox1" id="pb1">
-            <f:facet name="toolbar"/>
-            <af:panelFormLayout id="pfl1">
-              <af:inputText value="#{bindings.Email.inputValue}"
-                            label="#{bindings.Email.hints.label}"
-                            required="#{bindings.Email.hints.mandatory}"
-                            columns="#{bindings.Email.hints.displayWidth}"
-                            maximumLength="#{bindings.Email.hints.precision}"
-                            shortDesc="#{bindings.Email.hints.tooltip}"
-                            id="it1">
-                <f:validator binding="#{bindings.Email.validator}"/>
-              </af:inputText>
-              <f:facet name="footer">
-                <af:commandButton text="Submit" id="cb1"/>
-              </f:facet>
-            </af:panelFormLayout>
-          </af:panelBox>
+        <af:panelGroupLayout id="pgl1" halign="center">
+          <div align="center">
+            <af:panelBox text="Email confirm" id="pb1"
+                         inlineStyle="width:413px;" background="default">
+              <f:facet name="toolbar"/>
+              <af:panelFormLayout id="pfl1">
+                <af:inputText value="#{bindings.Email.inputValue}"
+                              label="#{bindings.Email.hints.label}"
+                              required="#{bindings.Email.hints.mandatory}"
+                              columns="30"
+                              maximumLength="#{bindings.Email.hints.precision}"
+                              shortDesc="#{bindings.Email.hints.tooltip}"
+                              id="it1"
+                              inlineStyle="width:inherit; height:inherit;">
+                  <f:validator binding="#{bindings.Email.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:panelBox>
+          </div>
         </af:panelGroupLayout>
       </af:panelHeader>
     </f:facet>

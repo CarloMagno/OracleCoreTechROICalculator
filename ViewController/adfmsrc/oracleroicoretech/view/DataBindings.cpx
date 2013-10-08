@@ -13,6 +13,7 @@
           usageId="oracleroicoretech_view_enterDataPageDef"/>
     <page path="/registerData.jsff"
           usageId="oracleroicoretech_view_registerDataPageDef"/>
+    <page path="/report.jsff" usageId="oracleroicoretech_view_reportPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="oracleroicoretech_view_mainPageDef"
@@ -21,6 +22,8 @@
           path="oracleroicoretech.view.pageDefs.enterDataPageDef"/>
     <page id="oracleroicoretech_view_registerDataPageDef"
           path="oracleroicoretech.view.pageDefs.registerDataPageDef"/>
+    <page id="oracleroicoretech_view_reportPageDef"
+          path="oracleroicoretech.view.pageDefs.reportPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="oracleroicoretech.model"

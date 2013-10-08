@@ -80,6 +80,7 @@
          <string v="JSF"/>
          <string v="Java"/>
          <string v="XML"/>
+         <string v="JavaBeans"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
