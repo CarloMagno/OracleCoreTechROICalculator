@@ -17,12 +17,14 @@
             </af:commandButton>
             <af:commandButton id="next" text="Next"
                               action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                              actionListener="#{TestBean.getNextAction}">
+                              actionListener="#{bindings.ExecuteWithParams.execute}">
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
         <f:facet name="toolbar">
-          <af:outputText value="#{TestBean.code.value}" id="outputText1"/>
+          <af:panelFormLayout id="pfl2">
+            <af:panelLabelAndMessage id="plam1"/>
+          </af:panelFormLayout>
         </f:facet>
         <f:facet name="legend"/>
         <f:facet name="info"/>
@@ -43,8 +45,16 @@
                 Please enter your code to access de application.
               </f:verbatim>
             </f:facet>
-            <af:inputText label="Enter code" id="it1"
-                          binding="#{TestBean.code}" autoSubmit="true"/>
+            <af:panelFormLayout id="pfl1">
+              <af:inputText value="#{bindings.P_CODE.inputValue}" label="Code"
+                            required="#{bindings.P_CODE.hints.mandatory}"
+                            columns="#{bindings.P_CODE.hints.displayWidth}"
+                            maximumLength="#{bindings.P_CODE.hints.precision}"
+                            shortDesc="#{bindings.P_CODE.hints.tooltip}"
+                            id="it1">
+                <f:validator binding="#{bindings.P_CODE.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
           </af:panelBox>
         </af:panelGroupLayout>
       </af:panelHeader>

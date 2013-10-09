@@ -5,56 +5,64 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="UserinfoView1" RangeSize="25"
-              DataControl="AppModuleDataControl" id="UserinfoView1Iterator"/>
+    <iterator Binds="ContactNameByCode1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ContactNameByCode1Iterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="GbHp">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="GbHp">
       <AttrNames>
         <Item Value="GbHp"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="PercentageHp">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="PercentageHp">
       <AttrNames>
         <Item Value="PercentageHp"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="PricePerGbGp">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="PricePerGbGp">
       <AttrNames>
         <Item Value="PricePerGbGp"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="GbMp">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="GbMp">
       <AttrNames>
         <Item Value="GbMp"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="PercentageMp">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="PercentageMp">
       <AttrNames>
         <Item Value="PercentageMp"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="PricePerGbMp">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="PricePerGbMp">
       <AttrNames>
         <Item Value="PricePerGbMp"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="GbRop">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="GbRop">
       <AttrNames>
         <Item Value="GbRop"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="PercentageRop">
+    <attributeValues IterBinding="ContactNameByCode1Iterator"
+                     id="PercentageRop">
       <AttrNames>
         <Item Value="PercentageRop"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="PricePerGbRop">
+    <attributeValues IterBinding="ContactNameByCode1Iterator"
+                     id="PricePerGbRop">
       <AttrNames>
         <Item Value="PricePerGbRop"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="UserinfoView1Iterator" id="Factor">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="Factor">
       <AttrNames>
         <Item Value="Factor"/>
       </AttrNames>

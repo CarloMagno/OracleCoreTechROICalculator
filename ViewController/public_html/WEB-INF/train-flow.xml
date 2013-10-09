@@ -12,12 +12,16 @@
       <page>/start.jsff</page>
       <train-stop id="__2">
         <display-name id="__12">Start</display-name>
+        <sequential>#{false}</sequential>
+        <skip>#{false}</skip>
       </train-stop>
     </view>
     <view id="enterData">
       <page>/enterData.jsff</page>
       <train-stop id="__3">
         <display-name id="__14">Enter Data</display-name>
+        <sequential>#{true}</sequential>
+        <skip>#{false}</skip>
       </train-stop>
     </view>
     <view id="report">

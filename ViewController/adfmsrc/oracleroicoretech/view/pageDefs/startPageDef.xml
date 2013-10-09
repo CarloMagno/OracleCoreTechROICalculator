@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.62.29" id="startPageDef"
+                Package="oracleroicoretech.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="ContactNameByCode1.variablesMap.P_CODE"
+                     Name="ExecuteWithParams_P_CODE" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="ContactNameByCode1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ContactNameByCode1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ContactNameByCode1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="P_CODE" NDType="java.lang.String"
+                 NDValue="${bindings.ExecuteWithParams_P_CODE}"/>
+    </action>
+    <attributeValues IterBinding="variables" id="P_CODE">
+      <AttrNames>
+        <Item Value="ExecuteWithParams_P_CODE"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

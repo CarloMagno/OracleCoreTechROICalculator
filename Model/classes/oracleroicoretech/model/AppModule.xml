@@ -25,6 +25,9 @@
   <ViewUsage
     Name="UserinfoView2"
     ViewObjectName="oracleroicoretech.model.UserinfoView"/>
+  <ViewUsage
+    Name="ContactNameByCode1"
+    ViewObjectName="oracleroicoretech.model.ContactNameByCode"/>
   <ViewLinkUsage
     Name="ContactinfoCompanyinfoFk1Link1"
     ViewLinkObjectName="oracleroicoretech.model.ContactinfoCompanyinfoFk1Link"

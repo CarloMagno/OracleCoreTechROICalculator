@@ -5,11 +5,17 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="ContactinfoView1" RangeSize="25"
-              DataControl="AppModuleDataControl" id="ContactinfoView1Iterator"/>
+    <iterator Binds="ContactNameByCode1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ContactNameByCode1Iterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="ContactinfoView1Iterator" id="Email">
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactNameByCode1Iterator" id="Email">
       <AttrNames>
         <Item Value="Email"/>
       </AttrNames>

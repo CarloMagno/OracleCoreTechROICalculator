@@ -19,7 +19,11 @@
           </af:panelGroupLayout>
         </f:facet>
         <f:facet name="toolbar">
-          <af:outputText value="#{TestBean.code.value}" id="ot1"/>
+          <af:panelFormLayout id="pfl2">
+            <af:panelLabelAndMessage label="" id="plam1">
+              <af:outputText value="Welcome #{bindings.Name.inputValue}" id="ot1"/>
+            </af:panelLabelAndMessage>
+          </af:panelFormLayout>
         </f:facet>
         <f:facet name="legend"/>
         <f:facet name="info"/>
@@ -32,11 +36,10 @@
                 <af:inputText value="#{bindings.Email.inputValue}"
                               label="#{bindings.Email.hints.label}"
                               required="#{bindings.Email.hints.mandatory}"
-                              columns="30"
+                              columns="#{bindings.Email.hints.displayWidth}"
                               maximumLength="#{bindings.Email.hints.precision}"
                               shortDesc="#{bindings.Email.hints.tooltip}"
-                              id="it1"
-                              inlineStyle="width:inherit; height:inherit;">
+                              id="it1">
                   <f:validator binding="#{bindings.Email.validator}"/>
                 </af:inputText>
               </af:panelFormLayout>
