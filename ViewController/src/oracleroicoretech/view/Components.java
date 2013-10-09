@@ -25,14 +25,14 @@ import oracle.adf.view.rich.component.rich.output.RichOutputText;
 import oracle.binding.BindingContainer;
 
 public class Components {
-    private RichOutputText ot1; // HighPerformance total amount in partitioning.
-    private RichOutputText ot2; // Modular total amount in partitioning.
-    private RichOutputText ot3; // ReadOnly total amount in partitioning.
-    private RichInputText it10; // Factor value.
-    private RichInputText it6; // Price per GB in HighPerformance.
-    private RichInputText it3; // HighPerformance GBs.
-    private RichInputText it8; // Modular GBs.
-    private RichInputText it5; // ReadOnly GBs.
+    private RichOutputText ot21; // HighPerformance total amount in partitioning.
+    private RichOutputText ot22; // Modular total amount in partitioning.
+    private RichOutputText ot23; // ReadOnly total amount in partitioning.
+    private RichOutputText ot14; // Factor value.
+    private RichOutputText it6; // Price per GB in HighPerformance.
+    private RichOutputText it3; // HighPerformance GBs.
+    private RichOutputText it8; // Modular GBs.
+    private RichOutputText it5; // ReadOnly GBs.
 
     public Components() {
     }
@@ -151,51 +151,51 @@ public class Components {
         csv.append("High Performance Storage," +
                    new BigDecimal(it3.getValue().toString()).doubleValue() +
                    "," +
-                   new BigDecimal(ot1.getValue().toString()).doubleValue());
+                   new BigDecimal(ot21.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Modular Storage," +
                    new BigDecimal(it8.getValue().toString()).doubleValue() +
                    "," +
-                   new BigDecimal(ot2.getValue().toString()).doubleValue());
+                   new BigDecimal(ot22.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Read-Only Storage," +
                    new BigDecimal(it5.getValue().toString()).doubleValue() +
                    "," +
-                   new BigDecimal(ot3.getValue().toString()).doubleValue());
+                   new BigDecimal(ot23.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
 
         csv.append("PARTITIONING + ADVANCE COMPRESSION FACTOR " +
-                   new BigDecimal(it10.getValue().toString()).doubleValue());
+                   new BigDecimal(ot14.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("High Performance Storage," +
-                   new BigDecimal(it3.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                   new BigDecimal(it3.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
                    "," +
-                   new BigDecimal(ot1.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                   new BigDecimal(ot21.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Modular Storage," +
-                   new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                   new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
                    "," +
-                   new BigDecimal(ot2.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                   new BigDecimal(ot22.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Read-Only Storage," +
-                   new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                   new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
                    "," +
-                   new BigDecimal(ot3.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                   new BigDecimal(ot23.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
@@ -226,51 +226,51 @@ public class Components {
             writer.append("High Performance Storage," +
                           new BigDecimal(it3.getValue().toString()).doubleValue() +
                           "," +
-                          new BigDecimal(ot1.getValue().toString()).doubleValue());
+                          new BigDecimal(ot21.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Modular Storage," +
                           new BigDecimal(it8.getValue().toString()).doubleValue() +
                           "," +
-                          new BigDecimal(ot2.getValue().toString()).doubleValue());
+                          new BigDecimal(ot22.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Read-Only Storage," +
                           new BigDecimal(it5.getValue().toString()).doubleValue() +
                           "," +
-                          new BigDecimal(ot3.getValue().toString()).doubleValue());
+                          new BigDecimal(ot23.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
 
             writer.append("PARTITIONING + ADVANCE COMPRESSION FACTOR " +
-                          new BigDecimal(it10.getValue().toString()).doubleValue());
+                          new BigDecimal(ot14.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("High Performance Storage," +
-                          new BigDecimal(it3.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                          new BigDecimal(it3.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
                           "," +
-                          new BigDecimal(ot1.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                          new BigDecimal(ot21.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Modular Storage," +
-                          new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                          new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
                           "," +
-                          new BigDecimal(ot2.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                          new BigDecimal(ot22.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Read-Only Storage," +
-                          new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                          new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
                           "," +
-                          new BigDecimal(ot3.getValue().toString()).divide(new BigDecimal(it10.getValue().toString()),
+                          new BigDecimal(ot23.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
@@ -305,19 +305,19 @@ public class Components {
         hpGbs = hpGbs.multiply(hpEurPerGB);
 
         BigDecimal hpPartitioningAmount =
-            new BigDecimal(ot1.getValue().toString());
+            new BigDecimal(ot21.getValue().toString());
         BigDecimal mPartitioningAmount =
-            new BigDecimal(ot2.getValue().toString());
+            new BigDecimal(ot22.getValue().toString());
         BigDecimal ropPartitioningAmount =
-            new BigDecimal(ot3.getValue().toString());
+            new BigDecimal(ot23.getValue().toString());
 
-        BigDecimal factorValue = new BigDecimal(it10.getValue().toString());
+        BigDecimal factorValue = new BigDecimal(ot14.getValue().toString());
 
         BigDecimal hpAdvCompression =
-            new BigDecimal(ot1.getValue().toString());
-        BigDecimal mAdvCompression = new BigDecimal(ot2.getValue().toString());
+            new BigDecimal(ot21.getValue().toString());
+        BigDecimal mAdvCompression = new BigDecimal(ot22.getValue().toString());
         BigDecimal ropAdvCompression =
-            new BigDecimal(ot3.getValue().toString());
+            new BigDecimal(ot23.getValue().toString());
 
         if (!factorValue.equals(new BigDecimal(0.0))) {
             hpAdvCompression =
@@ -358,67 +358,67 @@ public class Components {
         return list;
     }
 
-    public void setOt1(RichOutputText ot1) {
-        this.ot1 = ot1;
+    public void setOt21(RichOutputText ot21) {
+        this.ot21 = ot21;
     }
 
-    public RichOutputText getOt1() {
-        return ot1;
+    public RichOutputText getOt21() {
+        return ot21;
     }
 
-    public void setOt2(RichOutputText ot2) {
-        this.ot2 = ot2;
+    public void setOt22(RichOutputText ot22) {
+        this.ot22 = ot22;
     }
 
-    public RichOutputText getOt2() {
-        return ot2;
+    public RichOutputText getOt22() {
+        return ot22;
     }
 
-    public void setOt3(RichOutputText ot3) {
-        this.ot3 = ot3;
+    public void setOt23(RichOutputText ot23) {
+        this.ot23 = ot23;
     }
 
-    public RichOutputText getOt3() {
-        return ot3;
+    public RichOutputText getOt23() {
+        return ot23;
     }
 
-    public void setIt10(RichInputText it10) {
-        this.it10 = it10;
+    public void setOt14(RichOutputText ot14) {
+        this.ot14 = ot14;
     }
 
-    public RichInputText getIt10() {
-        return it10;
+    public RichOutputText getOt14() {
+        return ot14;
     }
 
-    public void setIt6(RichInputText it6) {
+    public void setIt6(RichOutputText it6) {
         this.it6 = it6;
     }
 
-    public RichInputText getIt6() {
+    public RichOutputText getIt6() {
         return it6;
     }
 
-    public void setIt3(RichInputText it3) {
+    public void setIt3(RichOutputText it3) {
         this.it3 = it3;
     }
 
-    public RichInputText getIt3() {
+    public RichOutputText getIt3() {
         return it3;
     }
 
-    public void setIt8(RichInputText it8) {
+    public void setIt8(RichOutputText it8) {
         this.it8 = it8;
     }
 
-    public RichInputText getIt8() {
+    public RichOutputText getIt8() {
         return it8;
     }
 
-    public void setIt5(RichInputText it5) {
+    public void setIt5(RichOutputText it5) {
         this.it5 = it5;
     }
 
-    public RichInputText getIt5() {
+    public RichOutputText getIt5() {
         return it5;
     }
 
