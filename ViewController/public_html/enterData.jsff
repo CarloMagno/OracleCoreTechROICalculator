@@ -30,14 +30,16 @@
         <af:panelGroupLayout id="pgl1">
           <af:panelBox text="Input" id="pb1"
                        inlineStyle="height:287px; width:482px;">
-            <f:facet name="toolbar"/>
+            <f:facet name="toolbar">
+              <af:outputText value="Please, set mouse on input field to see a tip." id="ot2"/>
+            </f:facet>
             <af:panelFormLayout id="pfl1" rows="11">
               <af:inputText value="#{bindings.GbHp.inputValue}"
                             label="High Performance GB"
                             required="#{bindings.GbHp.hints.mandatory}"
                             columns="10"
                             maximumLength="#{bindings.GbHp.hints.precision}"
-                            shortDesc="#{bindings.GbHp.hints.tooltip}" id="it6">
+                            shortDesc="Amount of high performance storage in Gigabytes. For storage devices like EMC (Symmetrix / DMX), SUN 9900, HP XP, Hitachi USP, etc." id="it6">
                 <f:validator binding="#{bindings.GbHp.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.GbHp.format}"/>
@@ -70,7 +72,7 @@
                             required="#{bindings.GbMp.hints.mandatory}"
                             columns="10"
                             maximumLength="#{bindings.GbMp.hints.precision}"
-                            shortDesc="#{bindings.GbMp.hints.tooltip}" id="it8">
+                            shortDesc="Amount of mid range storage in Gigabytes. For storage devices like SUN 6000, HP Eva, Hitachi AMS / AMS 2000, EMC CX, NTAP, etc." id="it8">
                 <f:validator binding="#{bindings.GbMp.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.GbMp.format}"/>
@@ -103,7 +105,7 @@
                             required="#{bindings.GbRop.hints.mandatory}"
                             columns="10"
                             maximumLength="#{bindings.GbRop.hints.precision}"
-                            shortDesc="#{bindings.GbRop.hints.tooltip}"
+                            shortDesc="Amount of low cost storage in Gigabytes. For storage devices like EMC AX Clarion, HP MSA, Hitachi AMS / AMS 2000, etc."
                             id="it2">
                 <f:validator binding="#{bindings.GbRop.validator}"/>
                 <af:convertNumber groupingUsed="false"
@@ -132,11 +134,11 @@
                                   pattern="#{bindings.PricePerGbRop.format}"/>
               </af:inputText>
               <af:inputText value="#{bindings.Factor.inputValue}"
-                            label="Advance Compression Factor"
+                            label="Advanced Compression Factor"
                             required="#{bindings.Factor.hints.mandatory}"
                             columns="10"
                             maximumLength="#{bindings.Factor.hints.precision}"
-                            shortDesc="#{bindings.Factor.hints.tooltip}"
+                            shortDesc="This number is the approximate number of times we reduced the size of our storage. Common values are between 2 and 4. Note that every datatype has different compression properties, but at the end the storage should be approximate reduced about that factor."
                             id="it10">
                 <f:validator binding="#{bindings.Factor.validator}"/>
                 <af:convertNumber groupingUsed="false"

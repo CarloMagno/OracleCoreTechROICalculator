@@ -154,19 +154,19 @@ public class Components {
                    new BigDecimal(ot21.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
-        csv.append("Modular Storage," +
+        csv.append("Mid Range Storage," +
                    new BigDecimal(it8.getValue().toString()).doubleValue() +
                    "," +
                    new BigDecimal(ot22.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
-        csv.append("Read-Only Storage," +
+        csv.append("Low Cost Storage," +
                    new BigDecimal(it5.getValue().toString()).doubleValue() +
                    "," +
                    new BigDecimal(ot23.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
 
-        csv.append("PARTITIONING + ADVANCE COMPRESSION FACTOR " +
+        csv.append("PARTITIONING + ADVANCED COMPRESSION FACTOR " +
                    new BigDecimal(ot14.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
@@ -180,7 +180,7 @@ public class Components {
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
-        csv.append("Modular Storage," +
+        csv.append("Mid Range Storage," +
                    new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
@@ -190,7 +190,7 @@ public class Components {
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
-        csv.append("Read-Only Storage," +
+        csv.append("Low Cost Storage," +
                    new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
@@ -229,19 +229,19 @@ public class Components {
                           new BigDecimal(ot21.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
-            writer.append("Modular Storage," +
+            writer.append("Mid Range Storage," +
                           new BigDecimal(it8.getValue().toString()).doubleValue() +
                           "," +
                           new BigDecimal(ot22.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
-            writer.append("Read-Only Storage," +
+            writer.append("Low Cost Storage," +
                           new BigDecimal(it5.getValue().toString()).doubleValue() +
                           "," +
                           new BigDecimal(ot23.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
 
-            writer.append("PARTITIONING + ADVANCE COMPRESSION FACTOR " +
+            writer.append("PARTITIONING + ADVANCED COMPRESSION FACTOR " +
                           new BigDecimal(ot14.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
@@ -255,7 +255,7 @@ public class Components {
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
-            writer.append("Modular Storage," +
+            writer.append("Mid Range Storage," +
                           new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
@@ -265,7 +265,7 @@ public class Components {
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
-            writer.append("Read-Only Storage," +
+            writer.append("Low Cost Storage," +
                           new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
@@ -332,8 +332,8 @@ public class Components {
         System.out.println("Creating data graph...");
         ArrayList list = new ArrayList();
         String[] rowLabels =
-            new String[] { "High Performance Storage", "Modular Storage",
-                           "ReadOnly Storage" };
+            new String[] { "High Performance Storage", "Mid Range Storage",
+                           "Low Cost Storage" };
         String[] colLabels =
             new String[] { "Only High Performance", "Partitioning",
                            "Partitioning + AdvCompression" };

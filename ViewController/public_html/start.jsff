@@ -51,7 +51,7 @@
                             columns="#{bindings.P_CODE.hints.displayWidth}"
                             maximumLength="#{bindings.P_CODE.hints.precision}"
                             shortDesc="#{bindings.P_CODE.hints.tooltip}"
-                            id="it1">
+                            id="it1" binding="#{TestBean.code}">
                 <f:validator binding="#{bindings.P_CODE.validator}"/>
               </af:inputText>
             </af:panelFormLayout>

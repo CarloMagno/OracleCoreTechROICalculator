@@ -1,8 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
    <AppModuleConfigBag ApplicationName="oracleroicoretech.model.AppModule">
-      <AppModuleConfig name="AppModuleLocal" ApplicationName="oracleroicoretech.model.AppModule" DeployPlatform="LOCAL" JDBCName="CoreTechROICalculatorConn" jbo.project="oracleroicoretech.model.Model">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="oracleroicoretech.model.Model" name="AppModuleLocal" ApplicationName="oracleroicoretech.model.AppModule">
+         <Database jbo.locking.mode="optimistic"/>
          <Security AppModuleJndiName="oracleroicoretech.model.AppModule"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/CoreTechROICalculatorConnDS"/>
       </AppModuleConfig>
       <AppModuleConfig name="AppModuleShared" ApplicationName="oracleroicoretech.model.AppModule" DeployPlatform="LOCAL" JDBCName="CoreTechROICalculatorConn" jbo.project="oracleroicoretech.model.Model">
          <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>

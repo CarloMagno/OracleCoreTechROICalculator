@@ -152,7 +152,7 @@
               </div>
               <div align="center"/>
             </af:panelBox>
-            <af:panelBox text="Advance Compression" id="pb2"
+            <af:panelBox text="Advanced Compression" id="pb2"
                          inlineStyle="width:596px;">
               <f:facet name="toolbar">
                 <af:panelLabelAndMessage label="#{bindings.Factor1.hints.label}"
