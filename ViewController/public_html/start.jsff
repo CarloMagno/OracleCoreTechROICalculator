@@ -16,7 +16,7 @@
                               >
             </af:commandButton>
             <af:commandButton id="next" text="Next"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
+                              action="#{TestBean.next_action}"
                               actionListener="#{bindings.ExecuteWithParams.execute}">
             </af:commandButton>
           </af:panelGroupLayout>
@@ -47,10 +47,10 @@
             </f:facet>
             <af:panelFormLayout id="pfl1">
               <af:inputText value="#{bindings.P_CODE.inputValue}" label="Code"
-                            required="#{bindings.P_CODE.hints.mandatory}"
+                            required="true"
+                            requiredMessageDetail="Enter your promo code."
                             columns="#{bindings.P_CODE.hints.displayWidth}"
                             maximumLength="#{bindings.P_CODE.hints.precision}"
-                            shortDesc="#{bindings.P_CODE.hints.tooltip}"
                             id="it1" binding="#{TestBean.code}">
                 <f:validator binding="#{bindings.P_CODE.validator}"/>
               </af:inputText>
@@ -60,4 +60,5 @@
       </af:panelHeader>
     </f:facet>
   </af:pageTemplate>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:TestBean-->
 </jsp:root>

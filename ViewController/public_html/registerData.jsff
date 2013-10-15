@@ -12,9 +12,9 @@
                               action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
                               >
             </af:commandButton>
-            <af:commandButton id="next" text="Next"
+            <af:commandButton id="next" text="Send email"
                               action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                              actionListener="#{TestBean.getNextAction}">
+                              actionListener="#{backingBeanScope.backingBean_Components.sendEmail}">
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
@@ -39,9 +39,96 @@
                               columns="#{bindings.Email.hints.displayWidth}"
                               maximumLength="#{bindings.Email.hints.precision}"
                               shortDesc="#{bindings.Email.hints.tooltip}"
-                              id="it1">
+                              id="it1"
+                              binding="#{backingBeanScope.backingBean_Components.email}">
                   <f:validator binding="#{bindings.Email.validator}"/>
                 </af:inputText>
+              </af:panelFormLayout>
+              <af:panelFormLayout id="pfl3" rendered="false">
+                <af:panelLabelAndMessage label="#{bindings.Name.hints.label}"
+                                         id="plam3">
+                  <af:outputText value="#{bindings.Name.inputValue}" id="ot5"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.Email.hints.label}"
+                                         id="plam4">
+                  <af:outputText value="#{bindings.Email.inputValue}" id="ot4"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.GbHp.hints.label}"
+                                         id="plam2">
+                  <af:outputText value="#{bindings.GbHp.inputValue}" id="ot2">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.GbHp.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.PercentageHp.hints.label}"
+                                         id="plam9">
+                  <af:outputText value="#{bindings.PercentageHp.inputValue}"
+                                 id="ot11">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PercentageHp.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.PricePerGbGp.hints.label}"
+                                         id="plam5">
+                  <af:outputText value="#{bindings.PricePerGbGp.inputValue}"
+                                 id="ot8">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PricePerGbGp.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.GbMp.hints.label}"
+                                         id="plam6">
+                  <af:outputText value="#{bindings.GbMp.inputValue}" id="ot3">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.GbMp.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.PercentageMp.hints.label}"
+                                         id="plam13">
+                  <af:outputText value="#{bindings.PercentageMp.inputValue}"
+                                 id="ot10">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PercentageMp.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.PricePerGbMp.hints.label}"
+                                         id="plam12">
+                  <af:outputText value="#{bindings.PricePerGbMp.inputValue}"
+                                 id="ot6">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PricePerGbMp.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.GbRop.hints.label}"
+                                         id="plam8">
+                  <af:outputText value="#{bindings.GbRop.inputValue}" id="ot13">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.GbRop.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.PercentageRop.hints.label}"
+                                         id="plam11">
+                  <af:outputText value="#{bindings.PercentageRop.inputValue}"
+                                 id="ot9">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PercentageRop.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.PricePerGbRop.hints.label}"
+                                         id="plam10">
+                  <af:outputText value="#{bindings.PricePerGbRop.inputValue}"
+                                 id="ot12">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.PricePerGbRop.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.Factor.hints.label}"
+                                         id="plam7">
+                  <af:outputText value="#{bindings.Factor.inputValue}" id="ot7">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.Factor.format}"/>
+                  </af:outputText>
+                </af:panelLabelAndMessage>
               </af:panelFormLayout>
             </af:panelBox>
           </div>

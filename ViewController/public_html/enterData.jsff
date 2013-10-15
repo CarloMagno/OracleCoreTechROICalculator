@@ -27,7 +27,7 @@
         </f:facet>
         <f:facet name="legend"/>
         <f:facet name="info"/>
-        <af:panelGroupLayout id="pgl1">
+        <af:panelGroupLayout id="pgl1" halign="center">
           <af:panelBox text="Input" id="pb1"
                        inlineStyle="height:287px; width:482px;">
             <f:facet name="toolbar">

@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.ServletOutputStream;
@@ -24,6 +26,11 @@ import oracle.adf.view.rich.component.rich.output.RichOutputText;
 
 import oracle.binding.BindingContainer;
 
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
+import javax.activation.*;
+
 public class Components {
     private RichOutputText ot21; // HighPerformance total amount in partitioning.
     private RichOutputText ot22; // Modular total amount in partitioning.
@@ -33,11 +40,55 @@ public class Components {
     private RichOutputText it3; // HighPerformance GBs.
     private RichOutputText it8; // Modular GBs.
     private RichOutputText it5; // ReadOnly GBs.
+    private RichInputText email; 
 
     public Components() {
     }
 
-    /**
+    public void sendEmail(ActionEvent actionEvent) {
+ 
+        final String username = "bocabyte17@gmail.com";
+        final String password = "()Bicarbonato12";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        //props.put("mail.smtp.host", "stbeehive.oracle.com");
+        //props.put("mail.smtp.port", "993");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "465");
+        
+        Session session =
+            Session.getInstance(props, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(username, password);
+                }
+            });
+        System.out.println("** Password done!");
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("bocabyte17@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                                  InternetAddress.parse("juan.carlos.ruiz.rico@hotmail..com"));
+            message.setSubject("Testing Subject");
+            message.setText("Testing Text!");
+            System.out.println("** Sending message...");
+            Transport.send(message);
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+
+
+/**
      * Action associated to the "Report" button.
      * @param actionEvent
      */
@@ -422,4 +473,11 @@ public class Components {
         return it5;
     }
 
+    public void setEmail(RichInputText email) {
+        this.email = email;
+    }
+
+    public RichInputText getEmail() {
+        return email;
+    }
 }

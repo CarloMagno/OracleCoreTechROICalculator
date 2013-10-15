@@ -19,10 +19,9 @@
               <f:facet name="center">
                 <af:decorativeBox theme="medium" id="db1">
                   <f:facet name="center">
-                    <af:panelStretchLayout topHeight="50px" id="psl2">
+                    <af:panelStretchLayout topHeight="66px" id="psl2">
                       <f:facet name="top">
-                        <af:image source="/oracle-logo.gif" id="i1"
-                                  inlineStyle="width:8cm; height:1.5cm;"/>
+                        <af:image source="/odscTransparent1.gif" id="i1"/>
                       </f:facet>
                       <f:facet name="center">
                         <af:decorativeBox theme="default" id="db2">
