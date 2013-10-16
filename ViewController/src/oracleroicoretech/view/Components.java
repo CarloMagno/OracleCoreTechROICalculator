@@ -85,9 +85,6 @@ public class Components {
 
     }
 
-
-
-
 /**
      * Action associated to the "Report" button.
      * @param actionEvent

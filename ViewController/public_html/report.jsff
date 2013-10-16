@@ -14,8 +14,7 @@
                               >
             </af:commandButton>
             <af:commandButton id="next" text="Next"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                              actionListener="#{TestBean.getNextAction}">
+                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}">
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
@@ -274,7 +273,9 @@ bindings.Factor1.inputValue.value}"
 (((bindings.GbHp.inputValue.value * bindings.PricePerGbGp.inputValue.value) + 
 (bindings.GbMp.inputValue.value * bindings.PricePerGbMp.inputValue.value) + 
 (bindings.GbRop.inputValue.value * bindings.PricePerGbRop.inputValue.value)) div 
-bindings.Factor1.inputValue.value)}" id="ot28"/>
+bindings.Factor1.inputValue.value)}" id="ot28">
+                    <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                  </af:outputText>
                 </af:panelGroupLayout>
               </div>
               <div align="center"/>

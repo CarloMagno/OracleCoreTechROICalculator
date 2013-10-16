@@ -16,7 +16,7 @@
                               >
             </af:commandButton>
             <af:commandButton id="next" text="Next"
-                              action="#{TestBean.next_action}"
+                              action="#{TestBean.checkCode}"
                               actionListener="#{bindings.ExecuteWithParams.execute}">
             </af:commandButton>
           </af:panelGroupLayout>

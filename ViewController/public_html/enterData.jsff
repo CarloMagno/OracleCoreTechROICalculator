@@ -14,7 +14,7 @@
             </af:commandButton>
             <af:commandButton id="next" text="Next"
                               action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                              actionListener="#{TestBean.getNextAction}">
+                              actionListener="#{TestBean.createInsertAndCommit}">
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
