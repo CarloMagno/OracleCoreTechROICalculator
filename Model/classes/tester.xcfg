@@ -1,10 +1,11 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
    <AppModuleConfigBag ApplicationName="oracleroicoretech.model.AppModule">
-      <AppModuleConfig name="1419CA7FE2C" user="partcomp" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" password="partcomp" DBconnection="jdbc:oracle:thin:@odsc-db:1521:odsc" IsLazyLoadingTrue="true" JDBCName="CoreTechROICalculatorConn" jbo.project="oracleroicoretech.model.Model" BC4JConfigName="AppModuleLocal" DeployPlatform="LOCAL" ApplicationName="oracleroicoretech.model.AppModule">
-         <Database jbo.SQLBuilder="Oracle" jbo.TypeMapEntries="Oracle"/>
+      <AppModuleConfig name="141C17FC198" DBconnection="java:comp/env/jdbc/CoreTechROICalculatorConnDS" ApplicationName="oracleroicoretech.model.AppModule" DeployPlatform="LOCAL" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" JDBCName="CoreTechROICalculatorConn" BC4JConfigName="AppModuleLocal" jbo.project="oracleroicoretech.model.Model">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="Oracle" jbo.SQLBuilder="Oracle"/>
          <Security AppModuleJndiName="oracleroicoretech.model.AppModule"/>
          <Tester FullProxyInterfaceName="oracleroicoretech.model.common.AppModule"/>
+         <Custom LastUsedConfiguration="AppModuleLocal" JDBCDataSource="java:comp/env/jdbc/CoreTechROICalculatorConnDS"/>
       </AppModuleConfig>
    </AppModuleConfigBag>
 </BC4JConfig>

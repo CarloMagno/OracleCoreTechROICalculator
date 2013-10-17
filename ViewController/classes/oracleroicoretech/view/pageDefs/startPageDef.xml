@@ -4,25 +4,35 @@
                 Package="oracleroicoretech.view.pageDefs">
   <parameters/>
   <executables>
-    <variableIterator id="variables">
-      <variableUsage DataControl="AppModuleDataControl"
-                     Binds="ContactNameByCode1.variablesMap.P_CODE"
-                     Name="ExecuteWithParams_P_CODE" IsQueriable="false"/>
-    </variableIterator>
     <iterator Binds="ContactNameByCode1" RangeSize="25"
               DataControl="AppModuleDataControl"
               id="ContactNameByCode1Iterator"/>
+    <iterator Binds="ContactinfoView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="ContactinfoView1Iterator"/>
+    <variableIterator id="variables">
+      <variableUsage DataControl="AppModuleDataControl"
+                     Binds="ContactinfoView1.variablesMap.P_CODE"
+                     Name="ExecuteWithParams1_P_CODE" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="UserinfoView2" RangeSize="25"
+              DataControl="AppModuleDataControl" id="UserinfoView2Iterator"/>
   </executables>
   <bindings>
-    <action IterBinding="ContactNameByCode1Iterator" id="ExecuteWithParams"
+    <action IterBinding="ContactNameByCode1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ContactinfoView1Iterator" id="ExecuteWithParams1"
             RequiresUpdateModel="true" Action="executeWithParams">
       <NamedData NDName="P_CODE" NDType="java.lang.String"
-                 NDValue="${bindings.ExecuteWithParams_P_CODE}"/>
+                 NDValue="${bindings.ExecuteWithParams1_P_CODE}"/>
     </action>
+    <action IterBinding="ContactinfoView1Iterator" id="CreateInsert1"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
     <attributeValues IterBinding="variables" id="P_CODE">
       <AttrNames>
-        <Item Value="ExecuteWithParams_P_CODE"/>
+        <Item Value="ExecuteWithParams1_P_CODE"/>
       </AttrNames>
     </attributeValues>
+    <action IterBinding="UserinfoView2Iterator" id="CreateInsert2"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
   </bindings>
 </pageDefinition>

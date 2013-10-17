@@ -10,16 +10,15 @@
     <iterator Binds="ContactNameByCode1" RangeSize="25"
               DataControl="AppModuleDataControl"
               id="ContactNameByCode1Iterator"/>
+    <iterator Binds="ContactinfoView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="ContactinfoView1Iterator"/>
+    <iterator Binds="UserinfoView2" RangeSize="25"
+              DataControl="AppModuleDataControl" id="UserinfoView2Iterator"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="UserinfoView1Iterator" id="Factor">
       <AttrNames>
         <Item Value="Factor"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="ContactNameByCode1Iterator" id="Name">
-      <AttrNames>
-        <Item Value="Name"/>
       </AttrNames>
     </attributeValues>
     <attributeValues IterBinding="ContactNameByCode1Iterator" id="GbHp">
@@ -74,5 +73,62 @@
         <Item Value="Factor"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="ContactinfoView1Iterator" id="Name1">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="GbHp1">
+      <AttrNames>
+        <Item Value="GbHp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="PercentageHp1">
+      <AttrNames>
+        <Item Value="PercentageHp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="PricePerGbGp1">
+      <AttrNames>
+        <Item Value="PricePerGbGp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="GbMp1">
+      <AttrNames>
+        <Item Value="GbMp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="PercentageMp1">
+      <AttrNames>
+        <Item Value="PercentageMp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="PricePerGbMp1">
+      <AttrNames>
+        <Item Value="PricePerGbMp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="GbRop1">
+      <AttrNames>
+        <Item Value="GbRop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="PercentageRop1">
+      <AttrNames>
+        <Item Value="PercentageRop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="PricePerGbRop1">
+      <AttrNames>
+        <Item Value="PricePerGbRop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="UserinfoView2Iterator" id="Factor2">
+      <AttrNames>
+        <Item Value="Factor"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="UserinfoView2Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
   </bindings>
 </pageDefinition>

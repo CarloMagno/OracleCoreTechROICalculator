@@ -47,13 +47,13 @@ public class TestBean {
     
     public void createInsertAndCommit(ActionEvent actionEvent) {
         FacesContext context = FacesContext.getCurrentInstance();
-        System.out.println("CLICKED!");
+        System.out.println("createInsertAndCommit():");
 
-        String expr = "#{bindings.CreateInsert.execute}";  
-        invokeMethodExpression(expr, null, new Class[]{}, null);  
-        System.out.println("> Created");
+        //String expr = "#{bindings.CreateInsert.execute}";  
+        //invokeMethodExpression(expr, null, new Class[]{}, null);  
+        //System.out.println("> Created");
         
-        expr = "#{bindings.Commit.execute}";
+        String expr = "#{bindings.Commit.execute}";
         invokeMethodExpression(expr, null, new Class[]{}, null);
         
         //context.getApplication().evaluateExpressionGet(context, "#{bindings.Commit.execute}", Object.class);
@@ -62,8 +62,11 @@ public class TestBean {
     
     public String checkCode() {
         String res = "";
-        System.out.println("next_action");
+        System.out.println("checkCode:");
         if (isValidCode((String)code.getValue())){
+            String expr = "#{bindings.CreateInsert2.execute}";  
+            System.out.println("* Created *");
+            invokeMethodExpression(expr, null, new Class[]{}, null);
             res = (String)ADFUtils.invokeEL("#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}");
         }else{
             code.setValue("");
@@ -73,6 +76,7 @@ public class TestBean {
         
         return res;
     }
+
 
     private String showErrorMessage(String messageText) {
         FacesMessage fm = new FacesMessage(messageText);
@@ -91,5 +95,12 @@ public class TestBean {
         vo.setNamedWhereClauseParam("P_CODE", code);
         vo.executeQuery();        
         return vo.getRowSet().first() != null;
+    }
+
+    public String backAndCreate() {
+        String expr = "#{bindings.CreateInsert.execute}";  
+        System.out.println("* Created *");
+        invokeMethodExpression(expr, null, new Class[]{}, null);
+        return (String)ADFUtils.invokeEL("#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}");
     }
 }

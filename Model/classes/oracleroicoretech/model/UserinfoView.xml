@@ -6,8 +6,7 @@
   Name="UserinfoView"
   Version="11.1.1.62.29"
   InheritPersonalization="true"
-  SelectList="Userinfo.ID, 
-       Userinfo.GB_HP, 
+  SelectList="Userinfo.GB_HP, 
        Userinfo.PERCENTAGE_HP, 
        Userinfo.PRICE_PER_GB_GP, 
        Userinfo.GB_MP, 
@@ -30,13 +29,6 @@
   <EntityUsage
     Name="Userinfo"
     Entity="oracleroicoretech.model.Userinfo"/>
-  <ViewAttribute
-    Name="Id"
-    IsNotNull="true"
-    PrecisionRule="true"
-    EntityAttrName="Id"
-    EntityUsage="Userinfo"
-    AliasName="ID"/>
   <ViewAttribute
     Name="GbHp"
     PrecisionRule="true"
@@ -102,7 +94,9 @@
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="Userinfo"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE">
+    <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="ContactInfoId"
     IsNotNull="true"
@@ -110,4 +104,12 @@
     EntityAttrName="ContactInfoId"
     EntityUsage="Userinfo"
     AliasName="CONTACT_INFO_ID"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="CreationDate"/>
+    <Item Value="ContactInfoId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="oracleroicoretech.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

@@ -5,303 +5,302 @@
           xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
   <af:pageTemplate viewId="/trainTemplate.jspx" id="pt1">
     <f:facet name="body">
-      <af:panelHeader text="Report" id="ph1">
-        <f:facet name="context"/>
-        <f:facet name="menuBar">
-          <af:panelGroupLayout id="pgl0">
-            <af:commandButton id="back" text="Back"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
-                              >
-            </af:commandButton>
-            <af:commandButton id="next" text="Next"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}">
-            </af:commandButton>
-          </af:panelGroupLayout>
-        </f:facet>
-        <f:facet name="toolbar">
-          <af:panelFormLayout id="pfl3">
-            <af:panelLabelAndMessage label=""
-                                     id="plam10">
-              <af:outputText value="Welcome #{bindings.Name.inputValue}" id="ot1"/>
-            </af:panelLabelAndMessage>
-          </af:panelFormLayout>
-        </f:facet>
-        <f:facet name="legend"/>
-        <f:facet name="info"/>
-        <af:panelGroupLayout id="pgl2" layout="horizontal">
-          <af:panelGroupLayout id="pgl1" layout="vertical"
-                               inlineStyle="width:587px;">
-            <af:panelBox text="Partitioning" id="pb1"
-                         inlineStyle="width:595px;">
-              <f:facet name="toolbar">
-                <af:group id="g1">
-                  <af:spacer width="10" height="10" id="s3"/>
-                  <af:commandButton actionListener="#{bindings.Commit.execute}"
-                                    text="Commit" id="cb2" rendered="false"/>
-                </af:group>
-              </f:facet>
-              <af:panelFormLayout id="pfl1" rows="3">
-                <af:panelLabelAndMessage label="High Performance Storage"
-                                         id="plam3">
-                  <af:outputText value="#{bindings.GbHp.inputValue}" id="ot9"
-                                 binding="#{backingBeanScope.backingBean_Components.it3}">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.GbHp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="%"
-                                         id="plam7">
-                  <af:outputText value="#{bindings.PercentageHp.inputValue}"
-                                 id="ot10">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PercentageHp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Price per GB"
-                                         id="plam8">
-                  <af:outputText value="#{bindings.PricePerGbGp.inputValue}"
-                                 id="ot3"
-                                 binding="#{backingBeanScope.backingBean_Components.it6}">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PricePerGbGp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:separator id="s4"/>
-                <af:panelGroupLayout id="pgl3" layout="horizontal">
-                  <af:outputLabel value="Total" id="ol1"/>
-                  <af:outputText value="#{bindings.GbHp.inputValue.value * bindings.PricePerGbGp.inputValue.value}" 
-                                 binding="#{backingBeanScope.backingBean_Components.ot21}" id="ot21">
-                                 <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelGroupLayout>
-                <af:panelLabelAndMessage label="Mid Range Storage"
-                                         id="plam9">
-                  <af:outputText value="#{bindings.GbMp.inputValue}" id="ot5"
-                                 binding="#{backingBeanScope.backingBean_Components.it8}">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.GbMp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="%"
-                                         id="plam5">
-                  <af:outputText value="#{bindings.PercentageMp.inputValue}"
-                                 id="ot4">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PercentageMp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Price per GB"
-                                         id="plam1">
-                  <af:outputText value="#{bindings.PricePerGbMp.inputValue}"
-                                 id="ot2">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PricePerGbMp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:separator id="s5"/>
-                <af:panelGroupLayout id="pgl4" layout="horizontal">
-                  <af:outputLabel value="Total" id="ol2"/>
-                  <af:outputText value="#{bindings.GbMp.inputValue.value * bindings.PricePerGbMp.inputValue.value}" 
-                                 binding="#{backingBeanScope.backingBean_Components.ot22}" id="ot22">
-                                 <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>                              
-                </af:panelGroupLayout>
-                <af:panelLabelAndMessage label="Low Cost Storage"
-                                         id="plam6">
-                  <af:outputText value="#{bindings.GbRop.inputValue}" id="ot6"
-                                 binding="#{backingBeanScope.backingBean_Components.it5}">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.GbRop.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="%"
-                                         id="plam2">
-                  <af:outputText value="#{bindings.PercentageRop.inputValue}"
-                                 id="ot8">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PercentageRop.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Price per GB"
-                                         id="plam4">
-                  <af:outputText value="#{bindings.PricePerGbRop.inputValue}"
-                                 id="ot7">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PricePerGbRop.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:separator id="s6"/>
-                <af:panelGroupLayout id="pgl5" layout="horizontal">
-                  <af:outputLabel value="Total" id="ol3"/>
-                  <af:outputText value="#{bindings.GbRop.inputValue.value * bindings.PricePerGbRop.inputValue.value}" 
-                                 binding="#{backingBeanScope.backingBean_Components.ot23}" id="ot23">
-                                 <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelGroupLayout>
-              </af:panelFormLayout>
-              <af:separator id="s1"/>
-              <div align="center">
-                <af:panelGroupLayout id="pgl6" layout="horizontal">
-                  <af:outputLabel value="TOTAL" id="ol4"/>
-                  <af:outputText value="#{(bindings.GbHp.inputValue.value * bindings.PricePerGbGp.inputValue.value) + (bindings.GbMp.inputValue.value * bindings.PricePerGbMp.inputValue.value) + (bindings.GbRop.inputValue.value * bindings.PricePerGbRop.inputValue.value)}"
-                                 id="ot24">
-                                 <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelGroupLayout>
-              </div>
-              <div align="center"/>
-            </af:panelBox>
-            <af:panelBox text="Advanced Compression" id="pb2"
-                         inlineStyle="width:596px;">
-              <f:facet name="toolbar">
-                <af:panelLabelAndMessage label="#{bindings.Factor1.hints.label}"
-                                         id="plam11">
-                  <af:outputText value="#{bindings.Factor1.inputValue}"
-                                 id="ot14"
-                                 binding="#{backingBeanScope.backingBean_Components.ot14}">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.Factor1.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-              </f:facet>
-              <af:panelFormLayout id="pfl2" rows="3">
-                <af:panelLabelAndMessage label="High Performance Storage"
-                                         id="plam18">
-                  <af:outputText value="#{bindings.Factor1.inputValue.value eq 0 ? bindings.GbHp.inputValue.value : bindings.GbHp.inputValue.value div bindings.Factor1.inputValue.value}"
-                                 id="ot11">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.GbHp.format}"
-                                      maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="%" id="plam19">
-                  <af:outputText value="#{bindings.PercentageHp.inputValue}"
-                                 id="ot16">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PercentageHp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Price per GB" id="plam14">
-                  <af:outputText value="#{bindings.PricePerGbGp.inputValue}"
-                                 id="ot17">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PricePerGbGp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:separator id="s7"/>
-                <af:panelGroupLayout id="pgl7" layout="horizontal">
-                  <af:outputLabel value="Total" id="ol5"/>
-                  <af:outputText value="#{bindings.Factor1.inputValue.value eq 0 ? bindings.GbHp.inputValue.value * bindings.PricePerGbGp.inputValue.value :  bindings.GbHp.inputValue.value * bindings.PricePerGbGp.inputValue.value div bindings.Factor1.inputValue.value}" 
-                                 id="ot25">
-                                 <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelGroupLayout>
-                <af:panelLabelAndMessage label="Mid Range Storage" id="plam13">
-                  <af:outputText value="#{bindings.Factor1.inputValue.value eq 0 ? bindings.GbMp.inputValue.value : bindings.GbMp.inputValue.value div bindings.Factor1.inputValue.value}"
-                                 id="ot18">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.GbMp.format}"
-                                      maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="%" id="plam12">
-                  <af:outputText value="#{bindings.PercentageMp.inputValue}"
-                                 id="ot12">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PercentageMp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Price per GB" id="plam17">
-                  <af:outputText value="#{bindings.PricePerGbMp.inputValue}"
-                                 id="ot15">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PricePerGbMp.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:separator id="s8"/>
-                <af:panelGroupLayout id="pgl8" layout="horizontal">
-                  <af:outputLabel value="Total" id="ol6"/>
-                  <af:outputText value="#{bindings.Factor1.inputValue.value eq 0 ? 
-bindings.GbMp.inputValue.value * bindings.PricePerGbMp.inputValue.value :  bindings.GbMp.inputValue.value * 
-bindings.PricePerGbMp.inputValue.value div bindings.Factor1.inputValue.value}" 
-                                 id="ot26">
-                                 <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelGroupLayout>
-                <af:panelLabelAndMessage label="Low Cost Storage" id="plam20">
-                  <af:outputText value="#{bindings.Factor1.inputValue.value eq 0 ? bindings.GbRop.inputValue.value : bindings.GbRop.inputValue.value div bindings.Factor1.inputValue.value}"
-                                 id="ot19">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.GbRop.format}"
-                                      maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="%" id="plam16">
-                  <af:outputText value="#{bindings.PercentageRop.inputValue}"
-                                 id="ot13">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PercentageRop.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:panelLabelAndMessage label="Price per GB" id="plam15">
-                  <af:outputText value="#{bindings.PricePerGbRop.inputValue}"
-                                 id="ot20">
-                    <af:convertNumber groupingUsed="false"
-                                      pattern="#{bindings.PricePerGbRop.format}"/>
-                  </af:outputText>
-                </af:panelLabelAndMessage>
-                <af:separator id="s9"/>
-                <af:panelGroupLayout id="pgl9" layout="horizontal">
-                  <af:outputLabel value="Total" id="ol7"/>
-                  <af:outputText value="#{bindings.Factor1.inputValue.value eq 0 ? 
-bindings.GbRop.inputValue.value * bindings.PricePerGbRop.inputValue.value :  
-bindings.GbRop.inputValue.value * bindings.PricePerGbRop.inputValue.value div 
-bindings.Factor1.inputValue.value}" 
-                                 id="ot27">
-                                 <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelGroupLayout>
-              </af:panelFormLayout>
-              <af:separator id="s2"/>
-              <div align="center">
-                <af:panelGroupLayout id="pgl10" layout="horizontal" rendered="#{bindings.Factor1.inputValue.value gt 0}">
-                  <af:outputLabel value="TOTAL" id="ol8"/>
-                  <af:outputText value="#{bindings.Factor1.inputValue.value eq 0 ? 
-((bindings.GbHp.inputValue.value * bindings.PricePerGbGp.inputValue.value) + 
-(bindings.GbMp.inputValue.value * bindings.PricePerGbMp.inputValue.value) + 
-(bindings.GbRop.inputValue.value * bindings.PricePerGbRop.inputValue.value)) : 
-(((bindings.GbHp.inputValue.value * bindings.PricePerGbGp.inputValue.value) + 
-(bindings.GbMp.inputValue.value * bindings.PricePerGbMp.inputValue.value) + 
-(bindings.GbRop.inputValue.value * bindings.PricePerGbRop.inputValue.value)) div 
-bindings.Factor1.inputValue.value)}" id="ot28">
-                    <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
-                  </af:outputText>
-                </af:panelGroupLayout>
-              </div>
-              <div align="center"/>
-            </af:panelBox>
-          </af:panelGroupLayout>
-          <af:panelBox text="Graph" id="pb3"
-                       inlineStyle="width:inherit; height:inherit;">
-            <f:facet name="toolbar"/>
-            <af:panelGroupLayout id="pgl11">
-              <dvt:barGraph id="barGraph1" subType="BAR_VERT_STACK"
-                            tabularData="#{backingBeanScope.backingBean_Components.tabularData}">
-                <dvt:background>
-                  <dvt:specialEffects/>
-                </dvt:background>
-                <dvt:graphPlotArea/>
-                <dvt:seriesSet>
-                  <dvt:series/>
-                </dvt:seriesSet>
-                <dvt:o1Axis/>
-                <dvt:y1Axis/>
-                <dvt:legendArea automaticPlacement="AP_NEVER"/>
-              </dvt:barGraph>
+      <af:group id="g2">
+        <af:panelHeader text="Report" id="ph1">
+          <f:facet name="context"/>
+          <f:facet name="menuBar">
+            <af:panelGroupLayout id="pgl0">
+              <af:commandButton id="back" text="Back"
+                                action="#{TestBean.backAndCreate}"/>
+              <af:commandButton id="next" text="Next"
+                                action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"/>
             </af:panelGroupLayout>
-          </af:panelBox>
-        </af:panelGroupLayout>
-      </af:panelHeader>
+          </f:facet>
+          <f:facet name="toolbar">
+            <af:panelFormLayout id="pfl3">
+              <af:panelLabelAndMessage label="" id="plam10">
+                <af:outputText value="Welcome #{bindings.Name1.inputValue}"
+                               id="ot29"/>
+              </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+          </f:facet>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+          <af:panelGroupLayout id="pgl2" layout="horizontal">
+            <af:panelGroupLayout id="pgl1" layout="vertical"
+                                 inlineStyle="width:587px;">
+              <af:panelBox text="Partitioning" id="pb1"
+                           inlineStyle="width:595px;">
+                <f:facet name="toolbar">
+                  <af:group id="g1">
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                      text="Commit" id="cb2" rendered="false"/>
+                  </af:group>
+                </f:facet>
+                <af:panelFormLayout id="pfl1" rows="3">
+                  <af:panelLabelAndMessage label="High Performance Storage"
+                                           id="plam3">
+                    <af:outputText value="#{bindings.GbHp1.inputValue}" id="ot9"
+                                   binding="#{backingBeanScope.backingBean_Components.it3}">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.GbHp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="%" id="plam7">
+                    <af:outputText value="#{bindings.PercentageHp1.inputValue}"
+                                   id="ot10">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PercentageHp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="Price per GB" id="plam8">
+                    <af:outputText value="#{bindings.PricePerGbGp1.inputValue}"
+                                   id="ot3"
+                                   binding="#{backingBeanScope.backingBean_Components.it6}">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PricePerGbGp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:separator id="s4"/>
+                  <af:panelGroupLayout id="pgl3" layout="horizontal">
+                    <af:outputLabel value="Total" id="ol1"/>
+                    <af:outputText value="#{bindings.GbHp1.inputValue.value * bindings.PricePerGbGp1.inputValue.value}"
+                                   binding="#{backingBeanScope.backingBean_Components.ot21}"
+                                   id="ot21">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout>
+                  <af:panelLabelAndMessage label="Mid Range Storage" id="plam9">
+                    <af:outputText value="#{bindings.GbMp1.inputValue}" id="ot5"
+                                   binding="#{backingBeanScope.backingBean_Components.it8}">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.GbMp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="%" id="plam5">
+                    <af:outputText value="#{bindings.PercentageMp1.inputValue}"
+                                   id="ot4">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PercentageMp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="Price per GB" id="plam1">
+                    <af:outputText value="#{bindings.PricePerGbMp1.inputValue}"
+                                   id="ot2">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PricePerGbMp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:separator id="s5"/>
+                  <af:panelGroupLayout id="pgl4" layout="horizontal">
+                    <af:outputLabel value="Total" id="ol2"/>
+                    <af:outputText value="#{bindings.GbMp1.inputValue.value * bindings.PricePerGbMp1.inputValue.value}"
+                                   binding="#{backingBeanScope.backingBean_Components.ot22}"
+                                   id="ot22">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout>
+                  <af:panelLabelAndMessage label="Low Cost Storage" id="plam6">
+                    <af:outputText value="#{bindings.GbRop1.inputValue}" id="ot6"
+                                   binding="#{backingBeanScope.backingBean_Components.it5}">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.GbRop1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="%" id="plam2">
+                    <af:outputText value="#{bindings.PercentageRop1.inputValue}"
+                                   id="ot8">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PercentageRop1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="Price per GB" id="plam4">
+                    <af:outputText value="#{bindings.PricePerGbRop1.inputValue}"
+                                   id="ot7">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PricePerGbRop1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:separator id="s6"/>
+                  <af:panelGroupLayout id="pgl5" layout="horizontal">
+                    <af:outputLabel value="Total" id="ol3"/>
+                    <af:outputText value="#{bindings.GbRop1.inputValue.value * bindings.PricePerGbRop1.inputValue.value}"
+                                   binding="#{backingBeanScope.backingBean_Components.ot23}"
+                                   id="ot23">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout>
+                </af:panelFormLayout>
+                <af:separator id="s1"/>
+                <div align="center">
+                  <af:panelGroupLayout id="pgl6" layout="horizontal">
+                    <af:outputLabel value="TOTAL" id="ol4"/>
+                    <af:outputText value="#{(bindings.GbHp1.inputValue.value * bindings.PricePerGbGp1.inputValue.value) + (bindings.GbMp1.inputValue.value * bindings.PricePerGbMp1.inputValue.value) + (bindings.GbRop1.inputValue.value * bindings.PricePerGbRop1.inputValue.value)}"
+                                   id="ot24">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout><af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                                          text="CreateInsert"
+                                                          disabled="#{!bindings.CreateInsert.enabled}"
+                                                          id="cb1"
+                                                          rendered="false"/>
+                </div>
+                <div align="center"/>
+              </af:panelBox>
+              <af:panelBox text="Advanced Compression" id="pb2"
+                           inlineStyle="width:596px;">
+                <f:facet name="toolbar">
+                  <af:panelLabelAndMessage label="#{bindings.Factor2.hints.label}"
+                                           id="plam11">
+                    <af:outputText value="#{bindings.Factor2.inputValue}"
+                                   id="ot14"
+                                   binding="#{backingBeanScope.backingBean_Components.ot14}">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.Factor2.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                </f:facet>
+                <af:panelFormLayout id="pfl2" rows="3">
+                  <af:panelLabelAndMessage label="High Performance Storage"
+                                           id="plam18">
+                    <af:outputText value="#{bindings.Factor2.inputValue.value eq 0 ? bindings.GbHp1.inputValue.value : bindings.GbHp1.inputValue.value div bindings.Factor2.inputValue.value}"
+                                   id="ot11">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.GbHp1.format}"
+                                        maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="%" id="plam19">
+                    <af:outputText value="#{bindings.PercentageHp.inputValue}"
+                                   id="ot16">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PercentageHp.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="Price per GB" id="plam14">
+                    <af:outputText value="#{bindings.PricePerGbGp1.inputValue}"
+                                   id="ot17">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PricePerGbGp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:separator id="s7"/>
+                  <af:panelGroupLayout id="pgl7" layout="horizontal">
+                    <af:outputLabel value="Total" id="ol5"/>
+                    <af:outputText value="#{bindings.Factor2.inputValue.value eq 0 ? bindings.GbHp1.inputValue.value * bindings.PricePerGbGp1.inputValue.value :  bindings.GbHp1.inputValue.value * bindings.PricePerGbGp1.inputValue.value div bindings.Factor2.inputValue.value}"
+                                   id="ot25">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout>
+                  <af:panelLabelAndMessage label="Mid Range Storage"
+                                           id="plam13">
+                    <af:outputText value="#{bindings.Factor2.inputValue.value eq 0 ? bindings.GbMp1.inputValue.value : bindings.GbMp1.inputValue.value div bindings.Factor2.inputValue.value}"
+                                   id="ot18">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.GbMp1.format}"
+                                        maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="%" id="plam12">
+                    <af:outputText value="#{bindings.PercentageMp1.inputValue}"
+                                   id="ot12">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PercentageMp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="Price per GB" id="plam17">
+                    <af:outputText value="#{bindings.PricePerGbMp1.inputValue}"
+                                   id="ot15">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PricePerGbMp1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:separator id="s8"/>
+                  <af:panelGroupLayout id="pgl8" layout="horizontal">
+                    <af:outputLabel value="Total" id="ol6"/>
+                    <af:outputText value="#{bindings.Factor2.inputValue.value eq 0 ? 
+bindings.GbMp1.inputValue.value * bindings.PricePerGbMp1.inputValue.value :  bindings.GbMp1.inputValue.value * 
+bindings.PricePerGbMp1.inputValue.value div bindings.Factor2.inputValue.value}"
+                                   id="ot26">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout>
+                  <af:panelLabelAndMessage label="Low Cost Storage" id="plam20">
+                    <af:outputText value="#{bindings.Factor2.inputValue.value eq 0 ? bindings.GbRop1.inputValue.value : bindings.GbRop1.inputValue.value div bindings.Factor2.inputValue.value}"
+                                   id="ot19">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.GbRop.format}"
+                                        maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="%" id="plam16">
+                    <af:outputText value="#{bindings.PercentageRop1.inputValue}"
+                                   id="ot13">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PercentageRop1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:panelLabelAndMessage label="Price per GB" id="plam15">
+                    <af:outputText value="#{bindings.PricePerGbRop1.inputValue}"
+                                   id="ot20">
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.PricePerGbRop1.format}"/>
+                    </af:outputText>
+                  </af:panelLabelAndMessage>
+                  <af:separator id="s9"/>
+                  <af:panelGroupLayout id="pgl9" layout="horizontal">
+                    <af:outputLabel value="Total" id="ol7"/>
+                    <af:outputText value="#{bindings.Factor2.inputValue.value eq 0 ? 
+bindings.GbRop1.inputValue.value * bindings.PricePerGbRop1.inputValue.value :  
+bindings.GbRop1.inputValue.value * bindings.PricePerGbRop1.inputValue.value div 
+bindings.Factor2.inputValue.value}" id="ot27">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout>
+                </af:panelFormLayout>
+                <af:separator id="s2"/>
+                <div align="center">
+                  <af:panelGroupLayout id="pgl10" layout="horizontal"
+                                       rendered="#{bindings.Factor2.inputValue.value gt 0}">
+                    <af:outputLabel value="TOTAL" id="ol8"/>
+                    <af:outputText value="#{bindings.Factor2.inputValue.value eq 0 ? 
+((bindings.GbHp1.inputValue.value * bindings.PricePerGbGp1.inputValue.value) + 
+(bindings.GbMp1.inputValue.value * bindings.PricePerGbMp1.inputValue.value) + 
+(bindings.GbRop1.inputValue.value * bindings.PricePerGbRop1.inputValue.value)) : 
+(((bindings.GbHp1.inputValue.value * bindings.PricePerGbGp1.inputValue.value) + 
+(bindings.GbMp1.inputValue.value * bindings.PricePerGbMp1.inputValue.value) + 
+(bindings.GbRop1.inputValue.value * bindings.PricePerGbRop1.inputValue.value)) div 
+bindings.Factor2.inputValue.value)}" id="ot28">
+                      <af:convertNumber maxFractionDigits="2" locale="es-ES"/>
+                    </af:outputText>
+                  </af:panelGroupLayout>
+                </div>
+                <div align="center"/>
+              </af:panelBox>
+            </af:panelGroupLayout>
+            <af:panelBox text="Graph" id="pb3"
+                         inlineStyle="width:inherit; height:inherit;">
+              <f:facet name="toolbar"/>
+              <af:panelGroupLayout id="pgl11">
+                <dvt:barGraph id="barGraph1" subType="BAR_VERT_STACK"
+                              tabularData="#{backingBeanScope.backingBean_Components.tabularData}">
+                  <dvt:background>
+                    <dvt:specialEffects/>
+                  </dvt:background>
+                  <dvt:graphPlotArea/>
+                  <dvt:seriesSet>
+                    <dvt:series/>
+                  </dvt:seriesSet>
+                  <dvt:o1Axis/>
+                  <dvt:y1Axis/>
+                  <dvt:legendArea automaticPlacement="AP_NEVER"/>
+                </dvt:barGraph>
+              </af:panelGroupLayout>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </af:panelHeader>
+      </af:group>
     </f:facet>
   </af:pageTemplate>
 </jsp:root>

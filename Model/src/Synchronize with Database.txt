@@ -1,0 +1,14 @@
+The following Synchronization Actions were performed successfully:
+
+Entity :Contactinfo
+  Create Key for Constraint: CONTACTINFO_UK1
+Entity :Userinfo
+  Attribute :CreationDate
+    Change Mandatory to:true
+    Change Primary Key to:true
+  Set transient, as column missing for attribute Id
+  Key :UserinfoPk
+    Remove key attribute Id
+    Add attribute to key for column CREATION_DATE
+  Remove Key Constraint: SysC0015421
+  Create Key for Constraint: SYS_C0015783

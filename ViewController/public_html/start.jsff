@@ -17,7 +17,7 @@
             </af:commandButton>
             <af:commandButton id="next" text="Next"
                               action="#{TestBean.checkCode}"
-                              actionListener="#{bindings.ExecuteWithParams.execute}">
+                              actionListener="#{bindings.ExecuteWithParams1.execute}">
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
@@ -45,15 +45,28 @@
                 Please enter your code to access de application.
               </f:verbatim>
             </f:facet>
+            <af:commandButton actionListener="#{bindings.CreateInsert2.execute}"
+                              text="CreateInsert2"
+                              disabled="#{!bindings.CreateInsert2.enabled}"
+                              id="cb1" rendered="false"/>
+            <af:commandButton actionListener="#{bindings.ExecuteWithParams1.execute}"
+                              text="ExecuteWithParams1"
+                              disabled="#{!bindings.ExecuteWithParams1.enabled}"
+                              id="cb2" rendered="false"/>
             <af:panelFormLayout id="pfl1">
-              <af:inputText value="#{bindings.P_CODE.inputValue}" label="Code"
-                            required="true"
-                            requiredMessageDetail="Enter your promo code."
+              <af:inputText value="#{bindings.P_CODE.inputValue}"
+                            label="Code"
+                            required="#{bindings.P_CODE.hints.mandatory}"
                             columns="#{bindings.P_CODE.hints.displayWidth}"
                             maximumLength="#{bindings.P_CODE.hints.precision}"
+                            shortDesc="#{bindings.P_CODE.hints.tooltip}"
                             id="it1" binding="#{TestBean.code}">
                 <f:validator binding="#{bindings.P_CODE.validator}"/>
               </af:inputText>
+              <af:commandButton actionListener="#{bindings.ExecuteWithParams1.execute}"
+                                text="ExecuteWithParams1"
+                                disabled="#{!bindings.ExecuteWithParams1.enabled}"
+                                id="cb4" rendered="false"/>
             </af:panelFormLayout>
           </af:panelBox>
         </af:panelGroupLayout>

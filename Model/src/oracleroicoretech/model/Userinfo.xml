@@ -17,14 +17,12 @@
   </DesignTime>
   <Attribute
     Name="Id"
-    IsNotNull="true"
     Precision="20"
-    ColumnName="ID"
+    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="USERINFO"
-    PrimaryKey="true">
+    IsPersistent="false">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
@@ -145,7 +143,9 @@
     SQLType="TIMESTAMPLTZ"
     Type="oracle.jbo.domain.TimestampLTZ"
     ColumnType="TIMESTAMP WITH LOCAL TIME ZONE"
-    TableName="USERINFO">
+    TableName="USERINFO"
+    IsNotNull="true"
+    PrimaryKey="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="11"/>
     </DesignTime>
@@ -172,17 +172,6 @@
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <Key
-    Name="SysC0015421">
-    <DesignTime>
-      <Attr Name="_DBObjectName" Value="SYS_C0015421"/>
-      <Attr Name="_checkCondition" Value='"ID" IS NOT NULL'/>
-      <Attr Name="_isCheck" Value="true"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="oracleroicoretech.model.Userinfo.Id"/>
-    </AttrArray>
-  </Key>
-  <Key
     Name="SysC0015422">
     <DesignTime>
       <Attr Name="_DBObjectName" Value="SYS_C0015422"/>
@@ -194,14 +183,25 @@
     </AttrArray>
   </Key>
   <Key
+    Name="SysC0015783">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0015783"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="oracleroicoretech.model.Userinfo.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
     Name="UserinfoPk"
     PrimaryKey="true">
     <DesignTime>
       <Attr Name="_DBObjectName" Value="USERINFO_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="oracleroicoretech.model.Userinfo.Id"/>
       <Item Value="oracleroicoretech.model.Userinfo.ContactInfoId"/>
+      <Item Value="oracleroicoretech.model.Userinfo.CreationDate"/>
     </AttrArray>
   </Key>
   <Key

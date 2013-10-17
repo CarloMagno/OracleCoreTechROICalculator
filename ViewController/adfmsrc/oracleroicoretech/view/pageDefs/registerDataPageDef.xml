@@ -10,18 +10,10 @@
               id="ContactNameByCode1Iterator"/>
     <iterator Binds="UserinfoView1" RangeSize="25"
               DataControl="AppModuleDataControl" id="UserinfoView1Iterator"/>
+    <iterator Binds="ContactinfoView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="ContactinfoView1Iterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="ContactNameByCode1Iterator" id="Name">
-      <AttrNames>
-        <Item Value="Name"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="ContactNameByCode1Iterator" id="Email">
-      <AttrNames>
-        <Item Value="Email"/>
-      </AttrNames>
-    </attributeValues>
     <attributeValues IterBinding="ContactNameByCode1Iterator" id="Factor">
       <AttrNames>
         <Item Value="Factor"/>
@@ -75,6 +67,16 @@
     <attributeValues IterBinding="UserinfoView1Iterator" id="Factor1">
       <AttrNames>
         <Item Value="Factor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactinfoView1Iterator" id="Name1">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactinfoView1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
       </AttrNames>
     </attributeValues>
   </bindings>

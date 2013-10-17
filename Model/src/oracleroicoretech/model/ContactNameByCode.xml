@@ -42,7 +42,6 @@
     Association="oracleroicoretech.model.UserinfoContactinfoFk1Assoc"
     AssociationEnd="oracleroicoretech.model.UserinfoContactinfoFk1Assoc.Userinfo"
     SourceUsage="oracleroicoretech.model.ContactNameByCode.Contactinfo"
-    ReadOnly="true"
     Reference="true"
     DeleteParticipant="false"
     JoinType="INNER JOIN">

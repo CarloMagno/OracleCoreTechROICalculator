@@ -21,7 +21,7 @@
         <f:facet name="toolbar">
           <af:panelFormLayout id="pfl2">
             <af:panelLabelAndMessage label="" id="plam1">
-              <af:outputText value="Welcome #{bindings.Name.inputValue}" id="ot1"/>
+              <af:outputText value="Welcome #{bindings.Name1.inputValue}" id="ot29"/>
             </af:panelLabelAndMessage>
           </af:panelFormLayout>
         </f:facet>
@@ -39,8 +39,7 @@
                               columns="#{bindings.Email.hints.displayWidth}"
                               maximumLength="#{bindings.Email.hints.precision}"
                               shortDesc="#{bindings.Email.hints.tooltip}"
-                              id="it1"
-                              binding="#{backingBeanScope.backingBean_Components.email}">
+                              id="it1">
                   <f:validator binding="#{bindings.Email.validator}"/>
                 </af:inputText>
               </af:panelFormLayout>
