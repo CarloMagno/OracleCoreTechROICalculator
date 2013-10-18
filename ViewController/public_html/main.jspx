@@ -7,10 +7,13 @@
   <f:view>
     <af:document id="d1">
       <af:form id="f1">
-        <af:panelStretchLayout startWidth="100px" id="psl1">
+        <af:panelStretchLayout startWidth="282px" id="psl1">
           <f:facet name="start">
             <af:panelAccordion id="pa1">
-              <af:showDetailItem text="Browse" id="sdi1"/>
+              <af:showDetailItem id="sdi1">
+                <af:image source="/transparentCloud.gif" id="i2"
+                          inlineStyle="width:264px; height:152px;"/>
+              </af:showDetailItem>
             </af:panelAccordion>
           </f:facet>
           <f:facet name="center">
