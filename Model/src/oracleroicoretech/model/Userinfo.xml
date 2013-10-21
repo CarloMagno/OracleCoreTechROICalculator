@@ -141,8 +141,8 @@
     Name="CreationDate"
     ColumnName="CREATION_DATE"
     SQLType="TIMESTAMPLTZ"
-    Type="oracle.jbo.domain.TimestampLTZ"
-    ColumnType="TIMESTAMP WITH LOCAL TIME ZONE"
+    Type="oracle.jbo.domain.Timestamp"
+    ColumnType="TIMESTAMP"
     TableName="USERINFO"
     IsNotNull="true"
     PrimaryKey="true">

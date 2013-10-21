@@ -53,20 +53,19 @@
                               text="ExecuteWithParams1"
                               disabled="#{!bindings.ExecuteWithParams1.enabled}"
                               id="cb2" rendered="false"/>
-            <af:panelFormLayout id="pfl1">
+            <af:panelFormLayout id="pfl3">
               <af:inputText value="#{bindings.P_CODE.inputValue}"
                             label="Code"
                             required="#{bindings.P_CODE.hints.mandatory}"
                             columns="#{bindings.P_CODE.hints.displayWidth}"
                             maximumLength="#{bindings.P_CODE.hints.precision}"
                             shortDesc="#{bindings.P_CODE.hints.tooltip}"
-                            id="it1" binding="#{TestBean.code}">
+                            id="it2" binding="#{TestBean.code}">
                 <f:validator binding="#{bindings.P_CODE.validator}"/>
               </af:inputText>
               <af:commandButton actionListener="#{bindings.ExecuteWithParams1.execute}"
                                 text="ExecuteWithParams1"
-                                disabled="#{!bindings.ExecuteWithParams1.enabled}"
-                                id="cb4" rendered="false"/>
+                                id="cb3" rendered="false"/>
             </af:panelFormLayout>
           </af:panelBox>
         </af:panelGroupLayout>
