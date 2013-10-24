@@ -44,7 +44,7 @@
                             columns="8"
                             maximumLength="#{bindings.GbHp1.hints.precision}"
                             shortDesc="Amount of high performance storage in Gigabytes. For storage devices like EMC (Symmetrix / DMX), SUN 9900, HP XP, Hitachi USP, etc"
-                            id="it16">
+                            id="it16" autoSubmit="true" immediate="true">
                 <f:validator binding="#{bindings.GbHp1.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.GbHp1.format}"/>
@@ -78,7 +78,7 @@
                             columns="8"
                             maximumLength="#{bindings.GbMp1.hints.precision}"
                             shortDesc="Amount of mid range storage in Gigabytes. For storage devices like SUN 6000, HP Eva, Hitachi AMS / AMS 2000, EMC CX, NTAP, etc."
-                            id="it12">
+                            id="it12" autoSubmit="true" immediate="true">
                 <f:validator binding="#{bindings.GbMp1.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.GbMp1.format}"/>
@@ -112,7 +112,7 @@
                             columns="8"
                             maximumLength="#{bindings.GbRop1.hints.precision}"
                             shortDesc="Amount of low cost storage in Gigabytes. For storage devices like EMC AX Clarion, HP MSA, Hitachi AMS / AMS 2000, etc."
-                            id="it18">
+                            id="it18" autoSubmit="true" immediate="true">
                 <f:validator binding="#{bindings.GbRop1.validator}"/>
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.GbRop1.format}"/>
@@ -150,6 +150,9 @@
                 <af:convertNumber groupingUsed="false"
                                   pattern="#{bindings.Factor1.format}"/>
               </af:inputText>
+              <af:inputText label="Total Storage Amount" id="it1" columns="8"
+                            value="#{bindings.GbHp1.inputValue.value + bindings.GbMp1.inputValue.value + bindings.GbRop1.inputValue.value}"
+                            partialTriggers="it16 it12 it18" readOnly="true"/>
               <f:facet name="footer">
                 <af:commandButton text="Submit" id="cb1" rendered="false"/>
               </f:facet>
