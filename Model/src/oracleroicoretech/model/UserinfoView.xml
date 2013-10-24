@@ -94,7 +94,9 @@
     PrecisionRule="true"
     EntityAttrName="CreationDate"
     EntityUsage="Userinfo"
-    AliasName="CREATION_DATE"/>
+    AliasName="CREATION_DATE">
+    <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+  </ViewAttribute>
   <ViewAttribute
     Name="ContactInfoId"
     IsNotNull="true"
