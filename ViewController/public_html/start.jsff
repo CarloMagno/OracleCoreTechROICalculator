@@ -42,7 +42,7 @@
           <af:panelBox text="Login" id="pb1" inlineStyle="width:436px;">
             <f:facet name="toolbar">
               <f:verbatim>
-                Please enter your code to access de application.
+                Please enter your code to access the application.
               </f:verbatim>
             </f:facet>
             <af:commandButton actionListener="#{bindings.CreateInsert2.execute}"

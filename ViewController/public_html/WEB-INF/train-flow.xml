@@ -12,14 +12,14 @@
       <page>/start.jsff</page>
       <train-stop id="__2">
         <display-name id="__12">Start</display-name>
-        <sequential>#{false}</sequential>
+        <sequential>#{true}</sequential>
       </train-stop>
     </view>
     <view id="enterData">
       <page>/enterData.jsff</page>
       <train-stop id="__3">
         <display-name id="__14">Enter Data</display-name>
-        <sequential>#{false}</sequential>
+        <sequential>#{true}</sequential>
       </train-stop>
     </view>
     <view id="report">
@@ -32,7 +32,6 @@
     <view id="registerData">
       <page>/registerData.jsff</page>
       <train-stop id="__4">
-        <display-name id="__15">Confirm</display-name>
         <sequential>#{true}</sequential>
       </train-stop>
     </view>

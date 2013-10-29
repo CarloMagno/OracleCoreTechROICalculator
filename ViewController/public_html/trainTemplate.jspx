@@ -13,7 +13,9 @@
         <af:panelGroupLayout id="pt_pgl1" halign="end">
           <div align="right">
             <af:train id="pt_t1"
-                      value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}">
+                      value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                      var="node"
+                      binding="#{backingBeanScope.backingBean_Components.trainSequence}">
             </af:train>
           </div>
         </af:panelGroupLayout>

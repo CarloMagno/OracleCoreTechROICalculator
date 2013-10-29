@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.OperationBinding;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
+import oracle.adf.view.rich.component.rich.nav.RichTrain;
 import oracle.adf.view.rich.component.rich.output.RichOutputText;
 
 import oracle.binding.BindingContainer;
@@ -40,7 +41,8 @@ public class Components {
     private RichOutputText it3; // HighPerformance GBs.
     private RichOutputText it8; // Modular GBs.
     private RichOutputText it5; // ReadOnly GBs.
-    private RichInputText email; 
+    private RichInputText email;
+    private RichTrain trainSequence;
 
     public Components() {
     }
@@ -476,5 +478,18 @@ public class Components {
 
     public RichInputText getEmail() {
         return email;
+    }
+
+    public void setTrainSequence(RichTrain trainSequence) {
+        this.trainSequence = trainSequence;
+    }
+
+    public RichTrain getTrainSequence() {
+        return trainSequence;
+    }
+
+    public String doNothing() {
+        System.out.println("doNothing() clicked");
+        return "";
     }
 }

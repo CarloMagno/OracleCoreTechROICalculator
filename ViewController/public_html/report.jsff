@@ -172,7 +172,7 @@
                     </af:outputText>
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage label="%" id="plam19">
-                    <af:outputText value="#{bindings.PercentageHp.inputValue}"
+                    <af:outputText value="#{bindings.PercentageHp1.inputValue}"
                                    id="ot16">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.PercentageHp.format}"/>
