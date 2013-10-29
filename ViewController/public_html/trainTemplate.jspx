@@ -16,6 +16,12 @@
                       value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
                       var="node"
                       binding="#{backingBeanScope.backingBean_Components.trainSequence}">
+                      <f:facet name="nodeStamp">
+                      <af:commandNavigationItem
+                              id="cn1" 
+                              text="#{node.textAndAccessKey}"
+                              action="#{backingBeanScope.backingBean_Components.doNothing}"/>
+                      </f:facet>
             </af:train>
           </div>
         </af:panelGroupLayout>

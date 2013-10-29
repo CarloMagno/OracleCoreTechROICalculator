@@ -49,7 +49,7 @@
       <property
          name="page">/registerData.jsff</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>registerData&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>Confirm&lt;/b>&lt;/p>&lt;p>Activity ID:  registerData&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="thumbnailExpanded">false</property>
       <property

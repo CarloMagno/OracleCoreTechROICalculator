@@ -13,6 +13,7 @@
       <train-stop id="__2">
         <display-name id="__12">Start</display-name>
         <sequential>#{true}</sequential>
+        <skip>#{false}</skip>
       </train-stop>
     </view>
     <view id="enterData">
@@ -20,6 +21,7 @@
       <train-stop id="__3">
         <display-name id="__14">Enter Data</display-name>
         <sequential>#{true}</sequential>
+        <skip>#{false}</skip>
       </train-stop>
     </view>
     <view id="report">
@@ -27,12 +29,15 @@
       <train-stop id="__5">
         <display-name id="__16">Report</display-name>
         <sequential>#{true}</sequential>
+        <skip>#{false}</skip>
       </train-stop>
     </view>
     <view id="registerData">
+      <display-name id="__6">Confirm</display-name>
       <page>/registerData.jsff</page>
       <train-stop id="__4">
         <sequential>#{true}</sequential>
+        <skip>#{false}</skip>
       </train-stop>
     </view>
     <task-flow-return id="taskFlowReturn1">

@@ -492,4 +492,8 @@ public class Components {
         System.out.println("doNothing() clicked");
         return "";
     }
+
+    public void doNothing(ActionEvent actionEvent) {
+        System.out.println("doNothing() clicked");
+    }
 }
