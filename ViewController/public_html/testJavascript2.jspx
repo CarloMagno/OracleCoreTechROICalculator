@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:form id="f1">
+        <af:resource type="javascript">
+          function introPressed(event) {
+              if (event.getKeyCode() == AdfKeyStroke.ENTER_KEY) {
+                  var source = event.getSource();
+                  alert('intro');
+              }
+          }
+          function charChecker(evt) {              
+              counter = AdfPage.PAGE.findComponentByAbsoluteId("out1");
+              counter.setValue(20);
+          }
+        </af:resource>
+        <af:inputText id="searchCriteriaName" label="Input">
+            <af:clientListener type="focus" method="charChecker"/>
+        </af:inputText>
+        <af:outputText id="out1" clientComponent="true"/>
+      </af:form>
+    </af:document>
+  </f:view>
+  </jsp:root>
+<!--oracle-jdev-comment:preferred-managed-bean-name:myBean-->

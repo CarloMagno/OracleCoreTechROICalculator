@@ -9,21 +9,25 @@
         <af:panelHeader text="Report" id="ph1">
           <f:facet name="context"/>
           <f:facet name="menuBar">
-            <af:panelGroupLayout id="pgl0">
-              <af:commandButton id="back" text="Back"
-                                action="#{TestBean.backAndCreate}"/>
-              <af:commandButton id="next" text="Next"
-                                action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"/>
-            </af:panelGroupLayout>
+            <af:group id="g3">
+              <af:panelGroupLayout id="pgl12" layout="horizontal">
+                <af:panelFormLayout id="pfl3">
+                  <af:panelLabelAndMessage label="" id="plam10">
+                    <af:outputText value="Welcome #{bindings.Name1.inputValue}"
+                                   id="ot29"/>
+                  </af:panelLabelAndMessage>
+                </af:panelFormLayout>
+                <af:spacer width="10" height="10" id="s10"/>
+                <af:panelGroupLayout id="pgl0">
+                  <af:commandButton id="back" text="Back"
+                                    action="#{backingBeanScope.backingBean_Components.backAndCreate}"/>
+                  <af:commandButton id="next" text="Next"
+                                    action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"/>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:group>
           </f:facet>
-          <f:facet name="toolbar">
-            <af:panelFormLayout id="pfl3">
-              <af:panelLabelAndMessage label="" id="plam10">
-                <af:outputText value="Welcome #{bindings.Name1.inputValue}"
-                               id="ot29"/>
-              </af:panelLabelAndMessage>
-            </af:panelFormLayout>
-          </f:facet>
+          <f:facet name="toolbar"/>
           <f:facet name="legend"/>
           <f:facet name="info"/>
           <af:panelGroupLayout id="pgl2" layout="horizontal">
@@ -42,7 +46,7 @@
                   <af:panelLabelAndMessage label="High Performance Storage"
                                            id="plam3">
                     <af:outputText value="#{bindings.GbHp1.inputValue}" id="ot9"
-                                   binding="#{backingBeanScope.backingBean_Components.it3}">
+                                   binding="#{backingBeanScope.backingBean_Components.highPerformanceGb}">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.GbHp1.format}"/>
                     </af:outputText>
@@ -57,7 +61,7 @@
                   <af:panelLabelAndMessage label="Price per GB" id="plam8">
                     <af:outputText value="#{bindings.PricePerGbGp1.inputValue}"
                                    id="ot3"
-                                   binding="#{backingBeanScope.backingBean_Components.it6}">
+                                   binding="#{backingBeanScope.backingBean_Components.priceHpGb}">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.PricePerGbGp1.format}"/>
                     </af:outputText>
@@ -73,7 +77,7 @@
                   </af:panelGroupLayout>
                   <af:panelLabelAndMessage label="Mid Range Storage" id="plam9">
                     <af:outputText value="#{bindings.GbMp1.inputValue}" id="ot5"
-                                   binding="#{backingBeanScope.backingBean_Components.it8}">
+                                   binding="#{backingBeanScope.backingBean_Components.midRangeGb}">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.GbMp1.format}"/>
                     </af:outputText>
@@ -87,7 +91,8 @@
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage label="Price per GB" id="plam1">
                     <af:outputText value="#{bindings.PricePerGbMp1.inputValue}"
-                                   id="ot2">
+                                   id="ot2"
+                                   binding="#{backingBeanScope.backingBean_Components.priceMpGb}">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.PricePerGbMp1.format}"/>
                     </af:outputText>
@@ -103,7 +108,7 @@
                   </af:panelGroupLayout>
                   <af:panelLabelAndMessage label="Low Cost Storage" id="plam6">
                     <af:outputText value="#{bindings.GbRop1.inputValue}" id="ot6"
-                                   binding="#{backingBeanScope.backingBean_Components.it5}">
+                                   binding="#{backingBeanScope.backingBean_Components.lowCostGb}">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.GbRop1.format}"/>
                     </af:outputText>
@@ -117,7 +122,8 @@
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage label="Price per GB" id="plam4">
                     <af:outputText value="#{bindings.PricePerGbRop1.inputValue}"
-                                   id="ot7">
+                                   id="ot7"
+                                   binding="#{backingBeanScope.backingBean_Components.priceRopGb}">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.PricePerGbRop1.format}"/>
                     </af:outputText>
@@ -155,7 +161,7 @@
                                            id="plam11">
                     <af:outputText value="#{bindings.Factor2.inputValue}"
                                    id="ot14"
-                                   binding="#{backingBeanScope.backingBean_Components.ot14}">
+                                   binding="#{backingBeanScope.backingBean_Components.factor}">
                       <af:convertNumber groupingUsed="false"
                                         pattern="#{bindings.Factor2.format}"/>
                     </af:outputText>
@@ -279,6 +285,7 @@ bindings.Factor2.inputValue.value)}" id="ot28">
                 <div align="center"/>
               </af:panelBox>
             </af:panelGroupLayout>
+            <af:spacer width="30" height="10" id="s11"/>
             <af:panelBox text="Graph" id="pb3"
                          inlineStyle="width:inherit; height:inherit;">
               <f:facet name="toolbar"/>

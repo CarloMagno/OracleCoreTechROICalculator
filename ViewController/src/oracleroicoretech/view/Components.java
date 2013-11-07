@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import java.sql.SQLException;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,27 +25,44 @@ import javax.servlet.http.HttpServletResponse;
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.OperationBinding;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
+import oracle.adf.view.rich.component.rich.input.RichSelectOneRadio;
 import oracle.adf.view.rich.component.rich.nav.RichTrain;
 import oracle.adf.view.rich.component.rich.output.RichOutputText;
 
 import oracle.binding.BindingContainer;
-
+import oracle.jbo.domain.Number;
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 
+import javax.el.ELContext;
+import javax.el.ExpressionFactory;
+
+import javax.el.MethodExpression;
+
+import javax.el.ValueExpression;
+
+import javax.faces.application.Application;
+
+import oracleroicoretech.utils.ADFUtils;
+
 public class Components {
     private RichOutputText ot21; // HighPerformance total amount in partitioning.
     private RichOutputText ot22; // Modular total amount in partitioning.
     private RichOutputText ot23; // ReadOnly total amount in partitioning.
-    private RichOutputText ot14; // Factor value.
-    private RichOutputText it6; // Price per GB in HighPerformance.
-    private RichOutputText it3; // HighPerformance GBs.
-    private RichOutputText it8; // Modular GBs.
-    private RichOutputText it5; // ReadOnly GBs.
+    private RichOutputText factor; // Factor value.
+    private RichOutputText priceHpGb; // Price per GB in HighPerformance.
+    private RichOutputText priceMpGb; // Price per GB in MidRange.
+    private RichOutputText priceRopGb; // Price per GB in LowCost.
+
+    private RichOutputText highPerformanceGb; // HighPerformance GBs.
+    private RichOutputText midRangeGb; // Modular GBs.
+    private RichOutputText lowCostGb; // ReadOnly GBs.
     private RichInputText email;
     private RichTrain trainSequence;
+    private RichSelectOneRadio radioBtn;
+    private String radioBtnValue;
 
     public Components() {
     }
@@ -74,7 +94,7 @@ public class Components {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("bocabyte17@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
-                                  InternetAddress.parse("juan.carlos.ruiz.rico@hotmail..com"));
+                                  InternetAddress.parse("juan.carlos.ruiz.rico@hotmail.com"));
             message.setSubject("Testing Subject");
             message.setText("Testing Text!");
             System.out.println("** Sending message...");
@@ -189,63 +209,63 @@ public class Components {
         csv.append("STORAGE PLAN,TYPE OF STORAGE,GB,PRICE");
         csv.append(System.getProperty("line.separator"));
         BigDecimal gbsOnlyHP =
-            new BigDecimal(it3.getValue().toString()).add(new BigDecimal(it5.getValue().toString()).add(new BigDecimal(it8.getValue().toString())));
+            new BigDecimal(highPerformanceGb.getValue().toString()).add(new BigDecimal(lowCostGb.getValue().toString()).add(new BigDecimal(midRangeGb.getValue().toString())));
         csv.append("ONLY HIGH PERFORMANCE STORAGE,," +
                    gbsOnlyHP.doubleValue() + "," +
-                   gbsOnlyHP.multiply(new BigDecimal(it6.getValue().toString())));
+                   gbsOnlyHP.multiply(new BigDecimal(priceHpGb.getValue().toString())));
         csv.append(System.getProperty("line.separator"));
 
         csv.append("PARTITIONING");
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("High Performance Storage," +
-                   new BigDecimal(it3.getValue().toString()).doubleValue() +
+                   new BigDecimal(highPerformanceGb.getValue().toString()).doubleValue() +
                    "," +
                    new BigDecimal(ot21.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Mid Range Storage," +
-                   new BigDecimal(it8.getValue().toString()).doubleValue() +
+                   new BigDecimal(midRangeGb.getValue().toString()).doubleValue() +
                    "," +
                    new BigDecimal(ot22.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Low Cost Storage," +
-                   new BigDecimal(it5.getValue().toString()).doubleValue() +
+                   new BigDecimal(lowCostGb.getValue().toString()).doubleValue() +
                    "," +
                    new BigDecimal(ot23.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
 
         csv.append("PARTITIONING + ADVANCED COMPRESSION FACTOR " +
-                   new BigDecimal(ot14.getValue().toString()).doubleValue());
+                   new BigDecimal(factor.getValue().toString()).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("High Performance Storage," +
-                   new BigDecimal(it3.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                   new BigDecimal(highPerformanceGb.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
                    "," +
-                   new BigDecimal(ot21.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                   new BigDecimal(ot21.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Mid Range Storage," +
-                   new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                   new BigDecimal(midRangeGb.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
                    "," +
-                   new BigDecimal(ot22.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                   new BigDecimal(ot22.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
         csv.append(",");
         csv.append("Low Cost Storage," +
-                   new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                   new BigDecimal(lowCostGb.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue() +
                    "," +
-                   new BigDecimal(ot23.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                   new BigDecimal(ot23.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                     2,
                                                                     RoundingMode.HALF_UP).doubleValue());
         csv.append(System.getProperty("line.separator"));
@@ -264,63 +284,63 @@ public class Components {
             writer.append("STORAGE PLAN,TYPE OF STORAGE,GB,PRICE");
             writer.append(System.getProperty("line.separator"));
             BigDecimal gbsOnlyHP =
-                new BigDecimal(it3.getValue().toString()).add(new BigDecimal(it5.getValue().toString()).add(new BigDecimal(it8.getValue().toString())));
+                new BigDecimal(highPerformanceGb.getValue().toString()).add(new BigDecimal(lowCostGb.getValue().toString()).add(new BigDecimal(midRangeGb.getValue().toString())));
             writer.append("ONLY HIGH PERFORMANCE STORAGE,," +
                           gbsOnlyHP.doubleValue() + "," +
-                          gbsOnlyHP.multiply(new BigDecimal(it6.getValue().toString())));
+                          gbsOnlyHP.multiply(new BigDecimal(priceHpGb.getValue().toString())));
             writer.append(System.getProperty("line.separator"));
 
             writer.append("PARTITIONING");
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("High Performance Storage," +
-                          new BigDecimal(it3.getValue().toString()).doubleValue() +
+                          new BigDecimal(highPerformanceGb.getValue().toString()).doubleValue() +
                           "," +
                           new BigDecimal(ot21.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Mid Range Storage," +
-                          new BigDecimal(it8.getValue().toString()).doubleValue() +
+                          new BigDecimal(midRangeGb.getValue().toString()).doubleValue() +
                           "," +
                           new BigDecimal(ot22.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Low Cost Storage," +
-                          new BigDecimal(it5.getValue().toString()).doubleValue() +
+                          new BigDecimal(lowCostGb.getValue().toString()).doubleValue() +
                           "," +
                           new BigDecimal(ot23.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
 
             writer.append("PARTITIONING + ADVANCED COMPRESSION FACTOR " +
-                          new BigDecimal(ot14.getValue().toString()).doubleValue());
+                          new BigDecimal(factor.getValue().toString()).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("High Performance Storage," +
-                          new BigDecimal(it3.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                          new BigDecimal(highPerformanceGb.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
                           "," +
-                          new BigDecimal(ot21.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                          new BigDecimal(ot21.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Mid Range Storage," +
-                          new BigDecimal(it8.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                          new BigDecimal(midRangeGb.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
                           "," +
-                          new BigDecimal(ot22.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                          new BigDecimal(ot22.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
             writer.append(",");
             writer.append("Low Cost Storage," +
-                          new BigDecimal(it5.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                          new BigDecimal(lowCostGb.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue() +
                           "," +
-                          new BigDecimal(ot23.getValue().toString()).divide(new BigDecimal(ot14.getValue().toString()),
+                          new BigDecimal(ot23.getValue().toString()).divide(new BigDecimal(factor.getValue().toString()),
                                                                            2,
                                                                            RoundingMode.HALF_UP).doubleValue());
             writer.append(System.getProperty("line.separator"));
@@ -345,10 +365,10 @@ public class Components {
      */
     public List getTabularData() {
         System.out.println("Retrieving data graph...");
-        BigDecimal hpGbs = new BigDecimal(it3.getValue().toString());
-        BigDecimal mGbs = new BigDecimal(it8.getValue().toString());
-        BigDecimal ropGbs = new BigDecimal(it5.getValue().toString());
-        BigDecimal hpEurPerGB = new BigDecimal(it6.getValue().toString());
+        BigDecimal hpGbs = new BigDecimal(highPerformanceGb.getValue().toString());
+        BigDecimal mGbs = new BigDecimal(midRangeGb.getValue().toString());
+        BigDecimal ropGbs = new BigDecimal(lowCostGb.getValue().toString());
+        BigDecimal hpEurPerGB = new BigDecimal(priceHpGb.getValue().toString());
 
         mGbs = mGbs.add(ropGbs);
         hpGbs = hpGbs.add(mGbs);
@@ -361,7 +381,7 @@ public class Components {
         BigDecimal ropPartitioningAmount =
             new BigDecimal(ot23.getValue().toString());
 
-        BigDecimal factorValue = new BigDecimal(ot14.getValue().toString());
+        BigDecimal factorValue = new BigDecimal(factor.getValue().toString());
 
         BigDecimal hpAdvCompression =
             new BigDecimal(ot21.getValue().toString());
@@ -408,6 +428,62 @@ public class Components {
         return list;
     }
 
+////////////////////////////////////////////////////////////////////////////////
+    public Object invokeMethodExpression(String expr, Class returnType,
+                                         Class[] argTypes, Object[] args) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        ELContext elctx = fc.getELContext();
+        ExpressionFactory elFactory =
+            fc.getApplication().getExpressionFactory();
+        MethodExpression methodExpr =
+            elFactory.createMethodExpression(elctx, expr, returnType, argTypes);
+        return methodExpr.invoke(elctx, args);
+    }
+    
+    public String backAndCreate() throws SQLException {
+        Object hpGbValue = highPerformanceGb.getValue();
+        Object mpGbValue = midRangeGb.getValue();
+        Object ropGbValue = lowCostGb.getValue();
+        Object priceHpGbValue = priceHpGb.getValue();
+        Object priceMpGbValue = priceMpGb.getValue();
+        Object priceRopGbValue = priceRopGb.getValue();
+        Object factorValue = factor.getValue();
+        System.out.println("Factor: "+factorValue);
+        
+        String expr = "#{bindings.CreateInsert.execute}";  
+        System.out.println("* Created *");
+        invokeMethodExpression(expr, null, new Class[]{}, null);
+        
+        FacesContext facesCtx = FacesContext.getCurrentInstance();
+        Application app = facesCtx.getApplication();
+        ExpressionFactory elFactory = app.getExpressionFactory();
+        ELContext elContext = facesCtx.getELContext();
+    
+        ValueExpression veGbHp = elFactory.createValueExpression(elContext, "#{bindings.GbHp1.inputValue}", Object.class); 
+        veGbHp.setValue(elContext, hpGbValue);
+    
+        ValueExpression veGbMp = elFactory.createValueExpression(elContext, "#{bindings.GbMp1.inputValue}", Object.class); 
+        veGbMp.setValue(elContext, mpGbValue);
+        
+        ValueExpression veGbRop = elFactory.createValueExpression(elContext, "#{bindings.GbRop1.inputValue}", Object.class); 
+        veGbRop.setValue(elContext, ropGbValue);
+        
+        ValueExpression vePriceGbHp = elFactory.createValueExpression(elContext, "#{bindings.PricePerGbGp1.inputValue}", Object.class); 
+        vePriceGbHp.setValue(elContext, priceHpGbValue);
+        
+        ValueExpression vePriceGbMp = elFactory.createValueExpression(elContext, "#{bindings.PricePerGbMp1.inputValue}", Object.class); 
+        vePriceGbMp.setValue(elContext, priceMpGbValue);
+        
+        ValueExpression vePriceGbRop = elFactory.createValueExpression(elContext, "#{bindings.PricePerGbRop1.inputValue}", Object.class); 
+        vePriceGbRop.setValue(elContext, priceRopGbValue);
+        
+        ValueExpression veFactor = elFactory.createValueExpression(elContext, "#{bindings.Factor1.inputValue}", Object.class); 
+        veFactor.setValue(elContext, factorValue);
+        System.out.println("Factor: "+veFactor.getValue(elContext));
+        
+        return (String)ADFUtils.invokeEL("#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}");
+    }
+////////////////////////////////////////////////////////////////////////////////
     public void setOt21(RichOutputText ot21) {
         this.ot21 = ot21;
     }
@@ -432,44 +508,44 @@ public class Components {
         return ot23;
     }
 
-    public void setOt14(RichOutputText ot14) {
-        this.ot14 = ot14;
+    public void setFactor(RichOutputText ot14) {
+        this.factor = ot14;
     }
 
-    public RichOutputText getOt14() {
-        return ot14;
+    public RichOutputText getFactor() {
+        return factor;
     }
 
-    public void setIt6(RichOutputText it6) {
-        this.it6 = it6;
+    public void setPriceHpGb(RichOutputText it6) {
+        this.priceHpGb = it6;
     }
 
-    public RichOutputText getIt6() {
-        return it6;
+    public RichOutputText getPriceHpGb() {
+        return priceHpGb;
     }
 
-    public void setIt3(RichOutputText it3) {
-        this.it3 = it3;
+    public void setHighPerformanceGb(RichOutputText it3) {
+        this.highPerformanceGb = it3;
     }
 
-    public RichOutputText getIt3() {
-        return it3;
+    public RichOutputText getHighPerformanceGb() {
+        return highPerformanceGb;
     }
 
-    public void setIt8(RichOutputText it8) {
-        this.it8 = it8;
+    public void setMidRangeGb(RichOutputText it8) {
+        this.midRangeGb = it8;
     }
 
-    public RichOutputText getIt8() {
-        return it8;
+    public RichOutputText getMidRangeGb() {
+        return midRangeGb;
     }
 
-    public void setIt5(RichOutputText it5) {
-        this.it5 = it5;
+    public void setLowCostGb(RichOutputText it5) {
+        this.lowCostGb = it5;
     }
 
-    public RichOutputText getIt5() {
-        return it5;
+    public RichOutputText getLowCostGb() {
+        return lowCostGb;
     }
 
     public void setEmail(RichInputText email) {
@@ -495,5 +571,37 @@ public class Components {
 
     public void doNothing(ActionEvent actionEvent) {
         System.out.println("doNothing() clicked");
+    }
+
+    public void setRadioBtn(RichSelectOneRadio radioBtn) {
+        this.radioBtn = radioBtn;
+    }
+
+    public RichSelectOneRadio getRadioBtn() {
+        return radioBtn;
+    }
+
+    public void setRadioBtnValue(String radioBtnValue) {
+        this.radioBtnValue = radioBtnValue;
+    }
+
+    public String getRadioBtnValue() {
+        return radioBtnValue;
+    }
+
+    public void setPriceMpGb(RichOutputText priceMpGb) {
+        this.priceMpGb = priceMpGb;
+    }
+
+    public RichOutputText getPriceMpGb() {
+        return priceMpGb;
+    }
+
+    public void setPriceRopGb(RichOutputText priceRopGb) {
+        this.priceRopGb = priceRopGb;
+    }
+
+    public RichOutputText getPriceRopGb() {
+        return priceRopGb;
     }
 }

@@ -2,47 +2,68 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
+<!-- -->
+<af:resource type="javascript">
+    function setInfoText(event) {
+        counter = AdfPage.PAGE.findComponentByAbsoluteId("infoText");
+        var text = event.getSource().getId();
+        counter.setValue(text);
+        //alert('click');
+    }
+</af:resource>
+<!-- -->
   <af:pageTemplate viewId="/trainTemplate.jspx" id="pt1">
     <f:facet name="body">
       <af:panelHeader text="Enter Data" id="ph1">
         <f:facet name="context"/>
         <f:facet name="menuBar">
-          <af:panelGroupLayout id="pgl0">
-            <af:commandButton id="back" text="Back"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
-                              >
-            </af:commandButton>
-            <af:commandButton id="next" text="Next"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                              actionListener="#{TestBean.createInsertAndCommit}">
-            </af:commandButton>
-            <af:commandButton actionListener="#{bindings.Commit.execute}"
-                              text="Commit"
-                              disabled="#{!bindings.Commit.enabled}" id="cb2"
-                              rendered="false"/>
-          </af:panelGroupLayout>
+          <af:group id="g1">
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+              <af:panelFormLayout id="pfl2">
+                <af:panelLabelAndMessage id="plam1">
+                  <af:outputText value="Welcome #{bindings.Name.inputValue}"
+                                 id="ot1"/>
+                </af:panelLabelAndMessage>
+              </af:panelFormLayout>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:panelGroupLayout id="pgl0">
+                <af:commandButton id="back" text="Log out"
+                                  action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"/>
+                <af:commandButton id="next" text="Next"
+                                  action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
+                                  actionListener="#{TestBean.createInsertAndCommit}"/>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Commit"
+                                  disabled="#{!bindings.Commit.enabled}"
+                                  id="cb2" rendered="false"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </af:group>
         </f:facet>
-        <f:facet name="toolbar">
-          <af:panelFormLayout id="pfl2">
-            <af:panelLabelAndMessage id="plam1">
-              <af:outputText value="Welcome #{bindings.Name.inputValue}" id="ot1"/>
-            </af:panelLabelAndMessage>
-          </af:panelFormLayout>
-        </f:facet>
+        <f:facet name="toolbar"/>
         <f:facet name="legend"/>
-        <f:facet name="info"/>
+        <f:facet name="info"/>        
         <af:panelGroupLayout id="pgl1" halign="center" layout="horizontal"
-                             inlineStyle="width:inherit; height:inherit;">
+                             inlineStyle="height:inherit; width:950px;">
           <af:panelBox text="Input" id="pb1"
-                       inlineStyle="width:569px; height:auto;">
+                       inlineStyle="width:569px; height:569.0px;">
             <f:facet name="toolbar">
-              <f:verbatim>
-                Please, set mouse on input field to see a tip.
-              </f:verbatim>
+              <f:verbatim>Please, set mouse on input field to see a tip.</f:verbatim>
             </f:facet>
-            <af:panelTabbed id="pt2" inlineStyle="width:520px;">
-              <af:showDetailItem text="Amounts" id="sdi1"
-                                 binding="#{TestBean.amountsTab}">
+            <af:panelGroupLayout id="pgl3">
+              <div align="left">
+                <af:selectOneRadio label="Choose a type of input" id="sor1"
+                                   layout="horizontal"
+                                   binding="#{backingBeanScope.backingBean_Components.radioBtn}"
+                                   autoSubmit="true" value="amounts">
+                  <af:selectItem label="Amounts" value="amounts" id="si2"/>
+                  <af:selectItem label="Percentage" value="percentage"
+                                 id="si1"/>
+                </af:selectOneRadio><af:spacer width="10" height="20" id="s2"/>
+              </div>
+              <af:panelGroupLayout id="pgl4"
+                                   visible="#{backingBeanScope.backingBean_Components.radioBtn.value == 'amounts'}"
+                                   partialTriggers="sor1">
                 <af:panelFormLayout id="panelFormLayout1" rows="11">
                   <af:inputText value="#{bindings.GbHp1.inputValue}"
                                 label="High Performance GB"
@@ -52,13 +73,15 @@
                                 shortDesc="Amount of high performance storage in Gigabytes. For storage devices like EMC (Symmetrix / DMX), SUN 9900, HP XP, Hitachi USP, etc"
                                 id="inputText1" autoSubmit="true"
                                 immediate="true"
-                                binding="#{TestBean.highPerformanceGB_amount}">
+                                binding="#{TestBean.highPerformanceGB_amount}"
+                                clientComponent="true">
                     <f:validator binding="#{bindings.GbHp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.GbHp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
+                    <!-- <af:clientListener type="focus" method="myAlert"/> -->
                   </af:inputText>
-                  <af:inputText
-                                label="%"
+                  <af:inputText label="%"
                                 required="#{bindings.PercentageHp1.hints.mandatory}"
                                 columns="8"
                                 maximumLength="#{bindings.PercentageHp1.hints.precision}"
@@ -81,6 +104,7 @@
                     <f:validator binding="#{bindings.PricePerGbGp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PricePerGbGp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:separator id="separator1"/>
                   <af:inputText value="#{bindings.GbMp1.inputValue}"
@@ -179,9 +203,11 @@
                                       rendered="false"/>
                   </f:facet>
                 </af:panelFormLayout>
-              </af:showDetailItem>
-              <af:showDetailItem text="Percentages" id="sdi2"
-                                 binding="#{TestBean.percentagesTab}">
+              </af:panelGroupLayout>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:panelGroupLayout id="pgl5"
+                                   visible="#{backingBeanScope.backingBean_Components.radioBtn.value == 'percentage'}"
+                                   partialTriggers="sor1">
                 <af:panelFormLayout id="panelFormLayout2" rows="11">
                   <af:inputText value="#{((bindings.PercentageHp1.inputValue.value eq 0.0) or (TestBean.totalStorage.value eq 0.0)) ? 0.0 : (TestBean.totalStorage.value * bindings.PercentageHp1.inputValue.value div 100.0)}"
                                 label="High Performance GB"
@@ -308,8 +334,7 @@
                                       pattern="#{bindings.Factor1.format}"/>
                   </af:inputText>
                   <af:inputText label="Total Storage Amount" id="inputText22"
-                                columns="8"
-                                readOnly="false"
+                                columns="8" readOnly="false"
                                 binding="#{TestBean.totalStorage}"
                                 autoSubmit="true"/>
                   <f:facet name="footer">
@@ -317,11 +342,16 @@
                                       rendered="false"/>
                   </f:facet>
                 </af:panelFormLayout>
-              </af:showDetailItem>
-            </af:panelTabbed>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </af:panelBox>
+          <af:panelBox text="Info" id="pb2" inlineStyle="width:282px;">
+            <f:facet name="toolbar"/>
+            
           </af:panelBox>
         </af:panelGroupLayout>
       </af:panelHeader>
     </f:facet>
+    
   </af:pageTemplate>
 </jsp:root>

@@ -33,7 +33,7 @@
       </train-stop>
     </view>
     <view id="registerData">
-      <display-name id="__6">Confirm</display-name>
+      <display-name id="__6">Confirmation</display-name>
       <page>/registerData.jsff</page>
       <train-stop id="__4">
         <sequential>#{true}</sequential>

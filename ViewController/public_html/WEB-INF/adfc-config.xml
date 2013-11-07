@@ -8,4 +8,9 @@
     <managed-bean-class id="__2">oracleroicoretech.view.Components</managed-bean-class>
     <managed-bean-scope id="__4">backingBean</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__5">
+    <managed-bean-name id="__6">myBean</managed-bean-name>
+    <managed-bean-class id="__8">MyBean</managed-bean-class>
+    <managed-bean-scope id="__7">backingBean</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

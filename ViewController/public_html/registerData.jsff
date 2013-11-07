@@ -7,24 +7,26 @@
       <af:panelHeader text="Confirm Data" id="ph1">
         <f:facet name="context"/>
         <f:facet name="menuBar">
-          <af:panelGroupLayout id="pgl0">
-            <af:commandButton id="back" text="Back"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
-                              >
-            </af:commandButton>
-            <af:commandButton id="next" text="Send email"
-                              action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                              actionListener="#{backingBeanScope.backingBean_Components.sendEmail}">
-            </af:commandButton>
-          </af:panelGroupLayout>
+          <af:group id="g2">
+            <af:panelGroupLayout id="pgl2" layout="horizontal">
+              <af:panelFormLayout id="pfl2">
+                <af:panelLabelAndMessage label="" id="plam1">
+                  <af:outputText value="Welcome #{bindings.Name1.inputValue}"
+                                 id="ot29"/>
+                </af:panelLabelAndMessage>
+              </af:panelFormLayout>
+              <af:spacer width="10" height="10" id="s10"/>
+              <af:panelGroupLayout id="pgl0">
+                <af:commandButton id="back" text="Back"
+                                  action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"/>
+                <af:commandButton id="next" text="Send email"
+                                  action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
+                                  actionListener="#{backingBeanScope.backingBean_Components.sendEmail}"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+          </af:group>
         </f:facet>
-        <f:facet name="toolbar">
-          <af:panelFormLayout id="pfl2">
-            <af:panelLabelAndMessage label="" id="plam1">
-              <af:outputText value="Welcome #{bindings.Name1.inputValue}" id="ot29"/>
-            </af:panelLabelAndMessage>
-          </af:panelFormLayout>
-        </f:facet>
+        <f:facet name="toolbar"/>
         <f:facet name="legend"/>
         <f:facet name="info"/>
         <af:panelGroupLayout id="pgl1" halign="center">
@@ -61,7 +63,7 @@
               <af:panelLabelAndMessage label="High Performance Storage"
                                        id="plam3">
                 <af:outputText value="#{bindings.GbHp.inputValue}" id="ot9"
-                               binding="#{backingBeanScope.backingBean_Components.it3}">
+                               binding="#{backingBeanScope.backingBean_Components.highPerformanceGb}">
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.GbHp.format}"/>
                 </af:outputText>
@@ -76,7 +78,7 @@
               <af:panelLabelAndMessage label="Price per GB" id="plam8">
                 <af:outputText value="#{bindings.PricePerGbGp.inputValue}"
                                id="ot3"
-                               binding="#{backingBeanScope.backingBean_Components.it6}">
+                               binding="#{backingBeanScope.backingBean_Components.priceHpGb}">
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.PricePerGbGp.format}"/>
                 </af:outputText>
@@ -92,7 +94,7 @@
               </af:panelGroupLayout>
               <af:panelLabelAndMessage label="Mid Range Storage" id="plam9">
                 <af:outputText value="#{bindings.GbMp.inputValue}" id="ot5"
-                               binding="#{backingBeanScope.backingBean_Components.it8}">
+                               binding="#{backingBeanScope.backingBean_Components.midRangeGb}">
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.GbMp.format}"/>
                 </af:outputText>
@@ -123,7 +125,7 @@
               </af:panelGroupLayout>
               <af:panelLabelAndMessage label="Low Cost Storage" id="plam6">
                 <af:outputText value="#{bindings.GbRop.inputValue}" id="ot6"
-                               binding="#{backingBeanScope.backingBean_Components.it5}">
+                               binding="#{backingBeanScope.backingBean_Components.lowCostGb}">
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.GbRop.format}"/>
                 </af:outputText>
@@ -170,7 +172,7 @@
               <af:panelLabelAndMessage label="#{bindings.Factor1.hints.label}"
                                        id="plam11">
                 <af:outputText value="#{bindings.Factor1.inputValue}" id="ot14"
-                               binding="#{backingBeanScope.backingBean_Components.ot14}">
+                               binding="#{backingBeanScope.backingBean_Components.factor}">
                   <af:convertNumber groupingUsed="false"
                                     pattern="#{bindings.Factor1.format}"/>
                 </af:outputText>

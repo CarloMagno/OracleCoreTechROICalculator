@@ -13,6 +13,22 @@
               <af:showDetailItem id="sdi1">
                 <af:image source="/transparentCloud.gif" id="i2"
                           inlineStyle="width:264px; height:152px;"/>
+            <!-- -->
+            <af:resource type="javascript">
+              function setInfoText(event) {
+                counter = AdfPage.PAGE.findComponentByAbsoluteId("infoText");
+                var text = event.getSource().getId();
+                counter.setValue(text);
+                //alert('click');
+              }
+            </af:resource>
+            <!-- -->
+            <af:outputText id="infoText" clientComponent="true"/>
+            <!-- -->
+            <af:inputText id="searchCriteriaName" label="Input">
+              <af:clientListener type="focus" method="setInfoText"/>
+            </af:inputText>
+            <!-- -->
               </af:showDetailItem>
             </af:panelAccordion>
           </f:facet>

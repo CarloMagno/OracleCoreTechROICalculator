@@ -11,8 +11,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import javax.faces.event.ValueChangeEvent;
+
 import oracle.adf.view.rich.component.rich.input.RichInputText;
 import oracle.adf.view.rich.component.rich.layout.RichShowDetailItem;
+
+import oracle.adf.view.rich.component.rich.output.RichOutputText;
 
 import oracleroicoretech.utils.ADFUtils;
 
@@ -20,6 +24,10 @@ import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 
 import oracle.adf.model.binding.DCIteratorBinding;
+
+import oracle.adf.view.rich.event.ClientListenerSet;
+
+import oracle.adf.view.rich.render.ClientEvent;
 
 import oracle.binding.BindingContainer; 
 import oracle.binding.OperationBinding;
@@ -50,8 +58,10 @@ public class TestBean {
     private RichInputText highPerformancePercentage_perc;
     private RichInputText midRangePercentage_perc;
     private RichInputText lowCostPercentage_perc;
+    private RichOutputText infoText;
 
     public TestBean() {
+        
     }
 
     public void setCode(RichInputText code) {
@@ -74,14 +84,7 @@ public class TestBean {
     }
     
     public void createInsertAndCommit(ActionEvent actionEvent) {
-        FacesContext context = FacesContext.getCurrentInstance();
         System.out.println("createInsertAndCommit():");
-
-        //String expr = "#{bindings.CreateInsert.execute}";  
-        //invokeMethodExpression(expr, null, new Class[]{}, null);  
-        //System.out.println("> Created");
-        
-        //System.out.println(this.highPerformanceGB_perc.getValue());
     
         FacesContext facesCtx = FacesContext.getCurrentInstance();
         Application app = facesCtx.getApplication();
@@ -90,35 +93,31 @@ public class TestBean {
 
         try{
             ValueExpression veGbhp =
-            elFactory.createValueExpression(elContext, "#{bindings.GbHp1.inputValue}",
-            Object.class);
+            elFactory.createValueExpression(elContext, "#{bindings.GbHp1.inputValue}", Object.class); 
             if(highPerformanceGB_amount.getValue() == null){                
                 veGbhp.setValue(elContext, new Number(highPerformanceGB_perc.getValue()));
             }else{
-                veGbhp.setValue(elContext, new Number(highPerformanceGB_amount.getValue()));  
+                veGbhp.setValue(elContext, highPerformanceGB_amount.getValue());  
             }
 
             ValueExpression veGbmp =
-            elFactory.createValueExpression(elContext, "#{bindings.GbMp1.inputValue}",
-            Object.class);
+            elFactory.createValueExpression(elContext, "#{bindings.GbMp1.inputValue}", Object.class);
             if(midRangeGB_amount.getValue() == null){                
                 veGbmp.setValue(elContext, new Number(midRangeGB_perc.getValue()));
             }else{
-                veGbmp.setValue(elContext, new Number(midRangeGB_amount.getValue()));  
+                veGbmp.setValue(elContext, midRangeGB_amount.getValue());  
             }
     
             ValueExpression veGbrop =
-            elFactory.createValueExpression(elContext, "#{bindings.GbRop1.inputValue}",
-            Object.class);
+            elFactory.createValueExpression(elContext, "#{bindings.GbRop1.inputValue}", Object.class);
             if(lowCostGB_amount.getValue() == null){                
                 veGbrop.setValue(elContext, new Number(lowCostGB_perc.getValue()));
             }else{
-                veGbrop.setValue(elContext, new Number(lowCostGB_amount.getValue()));  
+                veGbrop.setValue(elContext, lowCostGB_amount.getValue());  
             }
     
             ValueExpression vePercHp =
-            elFactory.createValueExpression(elContext, "#{bindings.PercentageHp1.inputValue}",
-            Object.class);
+            elFactory.createValueExpression(elContext, "#{bindings.PercentageHp1.inputValue}", Object.class);
             if(highPerformancePercentage_amount.getValue() == null){                
                 vePercHp.setValue(elContext, new Number(highPerformancePercentage_perc.getValue()));
             }else{
@@ -126,8 +125,7 @@ public class TestBean {
             }
     
             ValueExpression vePercMp =
-            elFactory.createValueExpression(elContext, "#{bindings.PercentageMp1.inputValue}",
-            Object.class);
+            elFactory.createValueExpression(elContext, "#{bindings.PercentageMp1.inputValue}", Object.class);
             if(midRangePercentage_amount.getValue() == null){                
                 vePercMp.setValue(elContext, new Number(midRangePercentage_perc.getValue()));
             }else{
@@ -135,8 +133,7 @@ public class TestBean {
             }
     
             ValueExpression vePercRop =
-            elFactory.createValueExpression(elContext, "#{bindings.PercentageRop1.inputValue}",
-            Object.class);
+            elFactory.createValueExpression(elContext, "#{bindings.PercentageRop1.inputValue}", Object.class);
             if(lowCostPercentage_amount.getValue() == null){                
                 vePercRop.setValue(elContext, new Number(lowCostPercentage_perc.getValue()));
             }else{
@@ -167,11 +164,8 @@ public class TestBean {
             showErrorMessage("Code not valid.");
             res = null;
         }
-        
         return res;
     }
-
-
 
     private String showErrorMessage(String messageText) {
         FacesMessage fm = new FacesMessage(messageText);
@@ -196,6 +190,17 @@ public class TestBean {
         String expr = "#{bindings.CreateInsert.execute}";  
         System.out.println("* Created *");
         invokeMethodExpression(expr, null, new Class[]{}, null);
+        
+        FacesContext facesCtx = FacesContext.getCurrentInstance();
+        Application app = facesCtx.getApplication();
+        ExpressionFactory elFactory = app.getExpressionFactory();
+        ELContext elContext = facesCtx.getELContext();
+/*
+        ValueExpression veGbhp =
+        elFactory.createValueExpression(elContext, "#{bindings.GbHp1.inputValue}", Object.class); 
+        Object value = veGbhp.getValue(elContext);
+        veGbhp.setValue(elContext, value);
+*/              
         return (String)ADFUtils.invokeEL("#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}");
     }
 
@@ -325,5 +330,23 @@ public class TestBean {
 
     public RichInputText getLowCostGB_amount() {
         return lowCostGB_amount;
+    }
+
+    public void setInfoText(RichOutputText infoText) {
+        this.infoText = infoText;
+    }
+
+    public RichOutputText getInfoText() {
+        return infoText;
+    }
+    
+    public void testActionListener(ClientEvent event){
+        System.out.println("testActionListener clicked!");
+        infoText.setValue("Action event text.");
+    }
+
+    public void introEvent(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+        System.out.println("Intro Event");
     }
 }

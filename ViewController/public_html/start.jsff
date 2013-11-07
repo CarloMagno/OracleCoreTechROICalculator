@@ -13,9 +13,9 @@
           <af:panelGroupLayout id="pgl0">
             <af:commandButton id="back" text="Back"
                               action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
-                              >
+                              rendered="false">
             </af:commandButton>
-            <af:commandButton id="next" text="Next"
+            <af:commandButton id="next" text="Log in"
                               action="#{TestBean.checkCode}"
                               actionListener="#{bindings.ExecuteWithParams1.execute}">
             </af:commandButton>
@@ -60,7 +60,8 @@
                             columns="#{bindings.P_CODE.hints.displayWidth}"
                             maximumLength="#{bindings.P_CODE.hints.precision}"
                             shortDesc="#{bindings.P_CODE.hints.tooltip}"
-                            id="it2" binding="#{TestBean.code}">
+                            id="it2" binding="#{TestBean.code}"
+                            >
                 <f:validator binding="#{bindings.P_CODE.validator}"/>
               </af:inputText>
               <af:commandButton actionListener="#{bindings.ExecuteWithParams1.execute}"

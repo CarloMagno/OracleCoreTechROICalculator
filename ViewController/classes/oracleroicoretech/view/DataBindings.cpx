@@ -15,6 +15,8 @@
           usageId="oracleroicoretech_view_registerDataPageDef"/>
     <page path="/report.jsff" usageId="oracleroicoretech_view_reportPageDef"/>
     <page path="/start.jsff" usageId="oracleroicoretech_view_startPageDef"/>
+    <page path="/testJavascript.jspx"
+          usageId="oracleroicoretech_view_testJavascriptPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="oracleroicoretech_view_mainPageDef"
@@ -27,6 +29,8 @@
           path="oracleroicoretech.view.pageDefs.reportPageDef"/>
     <page id="oracleroicoretech_view_startPageDef"
           path="oracleroicoretech.view.pageDefs.startPageDef"/>
+    <page id="oracleroicoretech_view_testJavascriptPageDef"
+          path="oracleroicoretech.view.pageDefs.testJavascriptPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="AppModuleDataControl" Package="oracleroicoretech.model"
