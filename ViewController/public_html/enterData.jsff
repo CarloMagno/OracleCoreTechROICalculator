@@ -2,16 +2,7 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-<!-- -->
-<af:resource type="javascript">
-    function setInfoText(event) {
-        counter = AdfPage.PAGE.findComponentByAbsoluteId("infoText");
-        var text = event.getSource().getId();
-        counter.setValue(text);
-        //alert('click');
-    }
-</af:resource>
-<!-- -->
+
   <af:pageTemplate viewId="/trainTemplate.jspx" id="pt1">
     <f:facet name="body">
       <af:panelHeader text="Enter Data" id="ph1">
@@ -79,7 +70,6 @@
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.GbHp1.format}"/>
                     <af:clientListener type="focus" method="setInfoText"/>
-                    <!-- <af:clientListener type="focus" method="myAlert"/> -->
                   </af:inputText>
                   <af:inputText label="%"
                                 required="#{bindings.PercentageHp1.hints.mandatory}"
@@ -93,6 +83,7 @@
                     <f:validator binding="#{bindings.PercentageHp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PercentageHp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PricePerGbGp1.inputValue}"
                                 label="Price per GB"
@@ -119,6 +110,7 @@
                     <f:validator binding="#{bindings.GbMp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.GbMp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{(bindings.GbHp1.inputValue.value + bindings.GbMp1.inputValue.value + bindings.GbRop1.inputValue.value) eq 0.0 ? 0.0 : (bindings.GbMp1.inputValue.value div (bindings.GbHp1.inputValue.value + bindings.GbMp1.inputValue.value + bindings.GbRop1.inputValue.value)) * 100.0 }"
                                 label="%"
@@ -132,6 +124,7 @@
                     <f:validator binding="#{bindings.PercentageMp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PercentageMp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PricePerGbMp1.inputValue}"
                                 label="Price per GB"
@@ -143,6 +136,7 @@
                     <f:validator binding="#{bindings.PricePerGbMp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PricePerGbMp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:separator id="separator2"/>
                   <af:inputText value="#{bindings.GbRop1.inputValue}"
@@ -157,6 +151,7 @@
                     <f:validator binding="#{bindings.GbRop1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.GbRop1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{(bindings.GbHp1.inputValue.value + bindings.GbMp1.inputValue.value + bindings.GbRop1.inputValue.value) eq 0.0 ? 0.0 : (bindings.GbRop1.inputValue.value div (bindings.GbHp1.inputValue.value + bindings.GbMp1.inputValue.value + bindings.GbRop1.inputValue.value)) * 100.0 }"
                                 label="%"
@@ -170,6 +165,7 @@
                     <f:validator binding="#{bindings.PercentageRop1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PercentageRop1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PricePerGbRop1.inputValue}"
                                 label="Price per GB"
@@ -181,6 +177,7 @@
                     <f:validator binding="#{bindings.PricePerGbRop1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PricePerGbRop1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.Factor1.inputValue}"
                                 label="Advanced Compression Factor"
@@ -192,12 +189,15 @@
                     <f:validator binding="#{bindings.Factor1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.Factor1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>s
                   </af:inputText>
                   <af:inputText label="Total Storage Amount" id="inputText11"
                                 columns="8"
                                 value="#{bindings.GbHp1.inputValue.value + bindings.GbMp1.inputValue.value + bindings.GbRop1.inputValue.value}"
                                 partialTriggers="inputText1 inputText4 inputText7"
-                                readOnly="true"/>
+                                readOnly="true">
+                        <af:clientListener type="focus" method="setInfoText"/>
+                  </af:inputText>
                   <f:facet name="footer">
                     <af:commandButton text="Submit" id="commandButton1"
                                       rendered="false"/>
@@ -222,6 +222,7 @@
                     <f:validator binding="#{bindings.GbHp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.GbHp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PercentageHp1.inputValue}"
                                 label="%"
@@ -234,6 +235,7 @@
                     <f:validator binding="#{bindings.PercentageHp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PercentageHp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PricePerGbGp1.inputValue}"
                                 label="Price per GB"
@@ -245,6 +247,7 @@
                     <f:validator binding="#{bindings.PricePerGbGp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PricePerGbGp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:separator id="separator3"/>
                   <af:inputText value="#{((bindings.PercentageMp1.inputValue.value eq 0.0) or (TestBean.totalStorage.value eq 0.0)) ? 0.0 : (TestBean.totalStorage.value * bindings.PercentageMp1.inputValue.value div 100.0)}"
@@ -260,6 +263,7 @@
                     <f:validator binding="#{bindings.GbMp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.GbMp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PercentageMp1.inputValue}"
                                 label="%"
@@ -272,6 +276,7 @@
                     <f:validator binding="#{bindings.PercentageMp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PercentageMp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PricePerGbMp1.inputValue}"
                                 label="Price per GB"
@@ -283,6 +288,7 @@
                     <f:validator binding="#{bindings.PricePerGbMp1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PricePerGbMp1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:separator id="separator4"/>
                   <af:inputText value="#{((bindings.PercentageRop1.inputValue.value eq 0.0) or (TestBean.totalStorage.value eq 0.0)) ? 0.0 : (TestBean.totalStorage.value * bindings.PercentageRop1.inputValue.value div 100.0)}"
@@ -298,6 +304,7 @@
                     <f:validator binding="#{bindings.GbRop1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.GbRop1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PercentageRop1.inputValue}"
                                 label="%"
@@ -310,6 +317,7 @@
                     <f:validator binding="#{bindings.PercentageRop1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PercentageRop1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.PricePerGbRop1.inputValue}"
                                 label="Price per GB"
@@ -321,6 +329,7 @@
                     <f:validator binding="#{bindings.PricePerGbRop1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.PricePerGbRop1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText value="#{bindings.Factor1.inputValue}"
                                 label="Advanced Compression Factor"
@@ -332,6 +341,7 @@
                     <f:validator binding="#{bindings.Factor1.validator}"/>
                     <af:convertNumber groupingUsed="false"
                                       pattern="#{bindings.Factor1.format}"/>
+                    <af:clientListener type="focus" method="setInfoText"/>
                   </af:inputText>
                   <af:inputText label="Total Storage Amount" id="inputText22"
                                 columns="8" readOnly="false"
@@ -344,10 +354,6 @@
                 </af:panelFormLayout>
               </af:panelGroupLayout>
             </af:panelGroupLayout>
-          </af:panelBox>
-          <af:panelBox text="Info" id="pb2" inlineStyle="width:282px;">
-            <f:facet name="toolbar"/>
-            
           </af:panelBox>
         </af:panelGroupLayout>
       </af:panelHeader>

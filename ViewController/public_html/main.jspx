@@ -6,6 +6,7 @@
   <jsp:directive.page contentType="text/html;charset=UTF-8"/>
   <f:view>
     <af:document id="d1">
+      <af:messages id="m1"/>
       <af:form id="f1">
         <af:panelStretchLayout startWidth="282px" id="psl1">
           <f:facet name="start">
@@ -17,18 +18,78 @@
             <af:resource type="javascript">
               function setInfoText(event) {
                 counter = AdfPage.PAGE.findComponentByAbsoluteId("infoText");
-                var text = event.getSource().getId();
-                counter.setValue(text);
-                //alert('click');
+                var compId = event.getSource().getId();
+                counter.setValue(getInfoText(compId));                                
               }
             </af:resource>
             <!-- -->
-            <af:outputText id="infoText" clientComponent="true"/>
+            <af:resource type="javascript">
+              function getInfoText(infoText) {
+                var res = "";
+                
+                if (infoText == "inputText1") {
+                    comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_High_Performance_GB");
+                    res = comp.getValue();
+                } else if (infoText == "inputText3") {
+                    res = "This is the price per high performance gigabyte."
+                } else if (infoText == "inputText4") {
+                    comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Mid_Range_GB");
+                    res = comp.getValue();
+                } else if (infoText == "inputText6") {
+                    res = "This is the price per mid range gigabyte."
+                } else if (infoText == "inputText7") {
+                    comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Low_Cost_GB");
+                    res = comp.getValue();
+                } else if (infoText == "inputText9") {
+                    res = "This is the price per low cost gigabyte.";
+                } else if (infoText == "inputText10") {
+                    comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Advanced_Compression_Factor");
+                    res = comp.getValue();
+                } else if (infoText == "inputText22") {
+                    comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Total_Storage_Amount");
+                    res = comp.getValue();
+                } 
+                return res;
+              }
+            </af:resource>
             <!-- -->
-            <af:inputText id="searchCriteriaName" label="Input">
-              <af:clientListener type="focus" method="setInfoText"/>
-            </af:inputText>
+                <af:panelBox text="Info Text" id="pb1">
+                  <f:facet name="toolbar"/>
+                  <af:outputText id="infoText" clientComponent="true"/>
+                </af:panelBox>
+                
             <!-- -->
+            <!-- -->
+                               <!--
+                <af:outputText id="ot654"
+                               value="#{bindings.Text.inputValue}"
+                               rendered="true" clientComponent="true"/>
+                               -->
+                 
+                 <af:forEach var="item"
+                             items="#{bindings.InfoTextView11.rangeSet}">
+                    <af:outputText id="ot_${item.Field}" value="#{item.Text}" clientComponent="true" visible="false"/>
+                 </af:forEach>
+                 
+                <!-- -->
+                <!--
+                <af:table value="#{bindings.InfoTextView11.collectionModel}"
+                          var="row" rows="#{bindings.InfoTextView11.rangeSize}"
+                          emptyText="#{bindings.InfoTextView11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.InfoTextView11.rangeSize}"
+                          rowBandingInterval="0" id="t1">
+                  <af:column sortProperty="Field" sortable="false"
+                             headerText="#{bindings.InfoTextView11.hints.Field.label}"
+                             id="c1">
+                    <af:outputText value="#{row.Field}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="Text" sortable="false"
+                             headerText="#{bindings.InfoTextView11.hints.Text.label}"
+                             id="c2">
+                    <af:outputText value="#{row.Text}" id="ot2"/>
+                  </af:column>
+                </af:table>
+                -->
               </af:showDetailItem>
             </af:panelAccordion>
           </f:facet>

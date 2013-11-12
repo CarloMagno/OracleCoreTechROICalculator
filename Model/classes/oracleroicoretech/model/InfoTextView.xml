@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InfoTextView"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  SelectList="InfoText.FIELD, 
+       InfoText.TEXT, 
+       InfoText.ROWID"
+  FromList="INFO_TEXT InfoText"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="InfoText"
+    Entity="oracleroicoretech.model.InfoText"/>
+  <ViewAttribute
+    Name="Field"
+    PrecisionRule="true"
+    EntityAttrName="Field"
+    EntityUsage="InfoText"
+    AliasName="FIELD"/>
+  <ViewAttribute
+    Name="Text"
+    PrecisionRule="true"
+    EntityAttrName="Text"
+    EntityUsage="InfoText"
+    AliasName="TEXT"/>
+  <ViewAttribute
+    Name="RowID"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="RowID"
+    EntityUsage="InfoText"
+    AliasName="ROWID"/>
+</ViewObject>

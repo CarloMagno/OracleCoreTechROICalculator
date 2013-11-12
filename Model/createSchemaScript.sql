@@ -153,3 +153,13 @@ Insert into USERINFO (ID,GB_HP,PERCENTAGE_HP,PRICE_PER_GB_GP,GB_MP,PERCENTAGE_MP
   ALTER TABLE "USERINFO" ADD CONSTRAINT "USERINFO_CONTACTINFO_FK1" FOREIGN KEY ("CONTACT_INFO_ID")
       REFERENCES "CONTACTINFO" ("ID") ENABLE;
 
+--------------------------------------------------------
+-- INFO_TEXT
+--------------------------------------------------------
+  CREATE TABLE "INFO_TEXT" (FIELD VARCHAR2(40), TEXT VARCHAR2(1000));
+
+Insert into INFO_TEXT values('High_Performance_GB','This is the amount of high performance storage.');
+Insert into INFO_TEXT values('Mid_Range_GB','This is the amount of mid range storage.');
+Insert into INFO_TEXT values('Low_Cost_GB','This is the amount of low cost storage.');
+Insert into INFO_TEXT values('Advanced_Compression_Factor','This is the compression factor you want to apply to the system.');
+Insert into INFO_TEXT values('Total_Storage_Amount','This is the total amount of storage system.');

@@ -9,6 +9,8 @@
               DataControl="AppModuleDataControl" id="UserinfoView2Iterator"/>
     <iterator Binds="ContactinfoView1" RangeSize="25"
               DataControl="AppModuleDataControl" id="ContactinfoView1Iterator"/>
+    <iterator Binds="InfoTextView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="InfoTextView1Iterator"/>
   </executables>
   <bindings>
     <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
@@ -68,5 +70,14 @@
         <Item Value="Name"/>
       </AttrNames>
     </attributeValues>
+    <tree IterBinding="InfoTextView1Iterator" id="InfoTextView1">
+      <nodeDefinition DefName="oracleroicoretech.model.InfoTextView"
+                      Name="InfoTextView10">
+        <AttrNames>
+          <Item Value="Field"/>
+          <Item Value="Text"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

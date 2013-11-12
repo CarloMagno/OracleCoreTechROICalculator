@@ -8,6 +8,32 @@
     <taskFlow id="trainflow1" taskFlowId="/WEB-INF/train-flow.xml#train-flow"
               activation="deferred"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="InfoTextView1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="InfoTextView1Iterator"/>
   </executables>
-  <bindings/>
+  <bindings>
+    <tree IterBinding="InfoTextView1Iterator" id="InfoTextView1">
+      <nodeDefinition DefName="oracleroicoretech.model.InfoTextView"
+                      Name="InfoTextView10">
+        <AttrNames>
+          <Item Value="Field"/>
+          <Item Value="Text"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="InfoTextView1Iterator" id="InfoTextView11">
+      <nodeDefinition DefName="oracleroicoretech.model.InfoTextView"
+                      Name="InfoTextView110">
+        <AttrNames>
+          <Item Value="Field"/>
+          <Item Value="Text"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="InfoTextView1Iterator" id="Text">
+      <AttrNames>
+        <Item Value="Text"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
 </pageDefinition>
