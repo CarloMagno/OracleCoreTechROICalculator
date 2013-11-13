@@ -3,6 +3,18 @@
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
   <af:pageTemplate viewId="/trainTemplate.jspx" id="pt1">
+    <!-- -->
+    <af:resource type="javascript">
+    function popUpAdvertisement(event)
+    {
+        alert('It is my regret to inform you that is not possible to send you '+
+        'an email with the information yet. We are currently working on this ' +
+        'issue. Meanwhile, your request will be sent to your sales representative '+
+        'and then it will be sent to your email. We apologize for the inconveniences '+
+        'caused by this procedure. Thanks for using our software.');
+    }
+    </af:resource>
+    <!-- -->
     <f:facet name="body">
       <af:panelHeader text="Confirm Data" id="ph1">
         <f:facet name="context"/>
@@ -21,7 +33,9 @@
                                   action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"/>
                 <af:commandButton id="next" text="Send email"
                                   action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                                  actionListener="#{backingBeanScope.backingBean_Components.sendEmail}"/>
+                                  actionListener="#{backingBeanScope.backingBean_Components.redirectToOracleCloudPage}">
+                    <af:clientListener method="popUpAdvertisement" type="action" />
+                </af:commandButton>
               </af:panelGroupLayout>
             </af:panelGroupLayout>
           </af:group>

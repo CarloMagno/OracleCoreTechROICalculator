@@ -61,7 +61,6 @@
                                 required="#{bindings.GbHp1.hints.mandatory}"
                                 columns="8"
                                 maximumLength="#{bindings.GbHp1.hints.precision}"
-                                shortDesc="Amount of high performance storage in Gigabytes. For storage devices like EMC (Symmetrix / DMX), SUN 9900, HP XP, Hitachi USP, etc"
                                 id="inputText1" autoSubmit="true"
                                 immediate="true"
                                 binding="#{TestBean.highPerformanceGB_amount}"
@@ -103,7 +102,6 @@
                                 required="#{bindings.GbMp1.hints.mandatory}"
                                 columns="8"
                                 maximumLength="#{bindings.GbMp1.hints.precision}"
-                                shortDesc="Amount of mid range storage in Gigabytes. For storage devices like SUN 6000, HP Eva, Hitachi AMS / AMS 2000, EMC CX, NTAP, etc."
                                 id="inputText4" autoSubmit="true"
                                 immediate="true"
                                 binding="#{TestBean.midRangeGB_amount}">
@@ -144,7 +142,6 @@
                                 required="#{bindings.GbRop1.hints.mandatory}"
                                 columns="8"
                                 maximumLength="#{bindings.GbRop1.hints.precision}"
-                                shortDesc="Amount of low cost storage in Gigabytes. For storage devices like EMC AX Clarion, HP MSA, Hitachi AMS / AMS 2000, etc."
                                 id="inputText7" autoSubmit="true"
                                 immediate="true"
                                 binding="#{TestBean.lowCostGB_amount}">
@@ -184,7 +181,6 @@
                                 required="#{bindings.Factor1.hints.mandatory}"
                                 columns="8"
                                 maximumLength="#{bindings.Factor1.hints.precision}"
-                                shortDesc="This number is the approximate number of times we reduced the size of our storage. Common values are between 2 and 4. Note that every datatype has different compression properties, but at the end the storage should be approximate reduced about that factor."
                                 id="inputText10">
                     <f:validator binding="#{bindings.Factor1.validator}"/>
                     <af:convertNumber groupingUsed="false"

@@ -64,23 +64,25 @@ public class Components {
     private RichSelectOneRadio radioBtn;
     private String radioBtnValue;
 
+    private static final String CLOUD_URL = "http://cloud.oracle.com";
+
     public Components() {
     }
 
     public void sendEmail(ActionEvent actionEvent) {
  
-        final String username = "bocabyte17@gmail.com";
-        final String password = "()Bicarbonato12";
+        final String username = "";
+        final String password = "";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        //props.put("mail.smtp.host", "stbeehive.oracle.com");
-        //props.put("mail.smtp.port", "993");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.host", "stbeehive.oracle.com");
+        props.put("mail.smtp.port", "993");
+        //props.put("mail.smtp.host", "smtp.gmail.com");
+        //props.put("mail.smtp.port", "465");
         
         Session session =
             Session.getInstance(props, new javax.mail.Authenticator() {
@@ -89,8 +91,8 @@ public class Components {
                 }
             });
         System.out.println("** Password done!");
+        
         try {
-
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("bocabyte17@gmail.com"));
             message.setRecipients(Message.RecipientType.TO,
@@ -104,7 +106,6 @@ public class Components {
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 /**
@@ -389,6 +390,9 @@ public class Components {
         BigDecimal ropAdvCompression =
             new BigDecimal(ot23.getValue().toString());
 
+        BigDecimal hpOnlyAdvComp = new BigDecimal(hpGbs.doubleValue());
+        hpOnlyAdvComp = hpOnlyAdvComp.divide(factorValue, 2, RoundingMode.HALF_UP);
+
         if (!factorValue.equals(new BigDecimal(0.0))) {
             hpAdvCompression =
                     hpAdvCompression.divide(factorValue, 2, RoundingMode.HALF_UP);
@@ -405,18 +409,22 @@ public class Components {
             new String[] { "High Performance Storage", "Mid Range Storage",
                            "Low Cost Storage" };
         String[] colLabels =
-            new String[] { "Only High Performance", "Partitioning",
+            new String[] { "Only High Performance", "Partitioning", "AdvCompression",
                            "Partitioning + AdvCompression" };
         BigDecimal[][] values = new BigDecimal[][] {
                 /* High Performance Storage Row */ { hpGbs,
                                                      hpPartitioningAmount,
+                                                     hpOnlyAdvComp,
                                                      hpAdvCompression },
                 /* Modular Storage Row */ { new BigDecimal(0.0),
                                             mPartitioningAmount,
+                                            new BigDecimal(0.0),
                                             mAdvCompression },
                 /* Read Only Storage Row */ { new BigDecimal(0.0),
                                               ropPartitioningAmount,
-                                              ropAdvCompression } };
+                                              new BigDecimal(0.0),
+                                              ropAdvCompression } 
+                                                   };
 
         for (int c = 0; c < colLabels.length; c++) {
             for (int r = 0; r < rowLabels.length; r++) {
@@ -603,5 +611,13 @@ public class Components {
 
     public RichOutputText getPriceRopGb() {
         return priceRopGb;
+    }
+
+    public void redirectToOracleCloudPage(ActionEvent actionEvent) {
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect(CLOUD_URL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

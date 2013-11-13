@@ -158,8 +158,8 @@ Insert into USERINFO (ID,GB_HP,PERCENTAGE_HP,PRICE_PER_GB_GP,GB_MP,PERCENTAGE_MP
 --------------------------------------------------------
   CREATE TABLE "INFO_TEXT" (FIELD VARCHAR2(40), TEXT VARCHAR2(1000));
 
-Insert into INFO_TEXT values('High_Performance_GB','This is the amount of high performance storage.');
-Insert into INFO_TEXT values('Mid_Range_GB','This is the amount of mid range storage.');
-Insert into INFO_TEXT values('Low_Cost_GB','This is the amount of low cost storage.');
-Insert into INFO_TEXT values('Advanced_Compression_Factor','This is the compression factor you want to apply to the system.');
-Insert into INFO_TEXT values('Total_Storage_Amount','This is the total amount of storage system.');
+Insert into INFO_TEXT values('High_Performance_GB','Amount of high performance storage in Gigabytes. For storage devices like EMC (Symmetrix / DMX), SUN 9900, HP XP, Hitachi USP, etc.');
+Insert into INFO_TEXT values('Mid_Range_GB','Amount of mid range storage in Gigabytes. For storage devices like SUN 6000, HP Eva, Hitachi AMS / AMS 2000, EMC CX, NTAP, etc.');
+Insert into INFO_TEXT values('Low_Cost_GB','Amount of low cost storage in Gigabytes. For storage devices like EMC AX Clarion, HP MSA, Hitachi AMS / AMS 2000, etc.');
+Insert into INFO_TEXT values('Advanced_Compression_Factor','This number is the approximate number of times we reduced the size of our storage. Common values are between 2 and 4. Note that every datatype has different compression properties, but at the end the storage should be approximate reduced about that factor.');
+Insert into INFO_TEXT values('Total_Storage_Amount','This is the total amount of storage of your system.');

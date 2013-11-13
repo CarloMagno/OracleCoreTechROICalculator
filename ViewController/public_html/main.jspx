@@ -25,6 +25,12 @@
             <!-- -->
             <af:resource type="javascript">
               function getInfoText(infoText) {
+                // NOTE THAT EVERY COMPONENT YOU WANT TO ADD HERE SHOULD BE NAMED
+                // "ot_infoTextTableBinding.Field" SO TAKE CARE PUTTING THE FIELD
+                // TEXT ON DATABASE WITH NO WHITESPACES. THE FOREACH IN THIS
+                // PAGE WILL BE THE ELEMENT THAT GENERATES THE CONCRETE 
+                // COMPONENT TO REFERENCE IN THIS JAVASCRIPT.
+                
                 var res = "";
                 
                 if (infoText == "inputText1") {
@@ -52,45 +58,17 @@
                 return res;
               }
             </af:resource>
-            <!-- -->
-                <af:panelBox text="Info Text" id="pb1">
-                  <f:facet name="toolbar"/>
-                  <af:outputText id="infoText" clientComponent="true"/>
-                </af:panelBox>
-                
-            <!-- -->
-            <!-- -->
-                               <!--
-                <af:outputText id="ot654"
-                               value="#{bindings.Text.inputValue}"
-                               rendered="true" clientComponent="true"/>
-                               -->
-                 
-                 <af:forEach var="item"
-                             items="#{bindings.InfoTextView11.rangeSet}">
-                    <af:outputText id="ot_${item.Field}" value="#{item.Text}" clientComponent="true" visible="false"/>
-                 </af:forEach>
-                 
-                <!-- -->
-                <!--
-                <af:table value="#{bindings.InfoTextView11.collectionModel}"
-                          var="row" rows="#{bindings.InfoTextView11.rangeSize}"
-                          emptyText="#{bindings.InfoTextView11.viewable ? 'No data to display.' : 'Access Denied.'}"
-                          fetchSize="#{bindings.InfoTextView11.rangeSize}"
-                          rowBandingInterval="0" id="t1">
-                  <af:column sortProperty="Field" sortable="false"
-                             headerText="#{bindings.InfoTextView11.hints.Field.label}"
-                             id="c1">
-                    <af:outputText value="#{row.Field}" id="ot1"/>
-                  </af:column>
-                  <af:column sortProperty="Text" sortable="false"
-                             headerText="#{bindings.InfoTextView11.hints.Text.label}"
-                             id="c2">
-                    <af:outputText value="#{row.Text}" id="ot2"/>
-                  </af:column>
-                </af:table>
-                -->
-              </af:showDetailItem>
+                    <af:spacer id="sp5" height="20" width="20"/>
+                    
+                    <af:panelBox text="Info Text" id="pb1">
+                       <f:facet name="toolbar"/>
+                       <af:outputText id="infoText" clientComponent="true"/>
+                    </af:panelBox>
+                    
+                    <af:forEach var="item" items="#{bindings.InfoTextView11.rangeSet}">
+                        <af:outputText id="ot_${item.Field}" value="#{item.Text}" clientComponent="true" visible="false"/>
+                    </af:forEach>
+                </af:showDetailItem>
             </af:panelAccordion>
           </f:facet>
           <f:facet name="center">
