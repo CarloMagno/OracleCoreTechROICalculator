@@ -12,6 +12,8 @@
               DataControl="AppModuleDataControl" id="UserinfoView1Iterator"/>
     <iterator Binds="ContactinfoView1" RangeSize="25"
               DataControl="AppModuleDataControl" id="ContactinfoView1Iterator"/>
+    <iterator id="CustomerReportView1Iterator" Binds="CustomerReportView1"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="ContactNameByCode1Iterator" id="Factor">
@@ -79,5 +81,7 @@
         <Item Value="Email"/>
       </AttrNames>
     </attributeValues>
+    <action id="Commit" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
   </bindings>
 </pageDefinition>

@@ -31,6 +31,9 @@
   <ViewUsage
     Name="InfoTextView1"
     ViewObjectName="oracleroicoretech.model.InfoTextView"/>
+  <ViewUsage
+    Name="CustomerReportView1"
+    ViewObjectName="oracleroicoretech.model.CustomerReportView"/>
   <ViewLinkUsage
     Name="ContactinfoCompanyinfoFk1Link1"
     ViewLinkObjectName="oracleroicoretech.model.ContactinfoCompanyinfoFk1Link"

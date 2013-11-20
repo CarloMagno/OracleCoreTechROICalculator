@@ -16,6 +16,8 @@
     </variableIterator>
     <iterator Binds="UserinfoView2" RangeSize="25"
               DataControl="AppModuleDataControl" id="UserinfoView2Iterator"/>
+    <iterator id="CustomerReportView1Iterator" Binds="CustomerReportView1"
+              DataControl="AppModuleDataControl" RangeSize="25"/>
   </executables>
   <bindings>
     <action IterBinding="ContactNameByCode1Iterator" id="CreateInsert"

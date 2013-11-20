@@ -142,7 +142,7 @@
     ColumnName="CREATION_DATE"
     SQLType="TIMESTAMPLTZ"
     Type="oracle.jbo.domain.Timestamp"
-    ColumnType="TIMESTAMP"
+    ColumnType="TIMESTAMP WITH LOCAL TIME ZONE"
     TableName="USERINFO"
     IsNotNull="true"
     PrimaryKey="true">
@@ -162,6 +162,17 @@
     PrimaryKey="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RowNumber"
+    ColumnName="ROW_NUMBER"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="USERINFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

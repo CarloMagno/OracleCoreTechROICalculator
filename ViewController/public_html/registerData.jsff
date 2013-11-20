@@ -33,7 +33,7 @@
                                   action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"/>
                 <af:commandButton id="next" text="Send email"
                                   action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                                  actionListener="#{backingBeanScope.backingBean_Components.redirectToOracleCloudPage}">
+                                  actionListener="#{backingBeanScope.backingBean_Components.finish}">
                     <af:clientListener method="popUpAdvertisement" type="action" />
                 </af:commandButton>
               </af:panelGroupLayout>
@@ -55,7 +55,8 @@
                               columns="#{bindings.Email.hints.displayWidth}"
                               maximumLength="#{bindings.Email.hints.precision}"
                               shortDesc="#{bindings.Email.hints.tooltip}"
-                              id="it1">
+                              id="it1"
+                              binding="#{backingBeanScope.backingBean_Components.email}">
                   <f:validator binding="#{bindings.Email.validator}"/>
                 </af:inputText>
               </af:panelFormLayout>

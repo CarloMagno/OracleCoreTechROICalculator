@@ -6,7 +6,16 @@
   Name="UserinfoView"
   Version="11.1.1.62.29"
   InheritPersonalization="true"
-  SelectList="Userinfo.GB_HP, 
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <SQLQuery>
+    <![CDATA[SELECT Userinfo.GB_HP, 
        Userinfo.PERCENTAGE_HP, 
        Userinfo.PRICE_PER_GB_GP, 
        Userinfo.GB_MP, 
@@ -17,15 +26,10 @@
        Userinfo.PRICE_PER_GB_ROP, 
        Userinfo.FACTOR, 
        Userinfo.CREATION_DATE, 
-       Userinfo.CONTACT_INFO_ID"
-  FromList="USERINFO Userinfo"
-  BindingStyle="OracleName"
-  CustomQuery="false"
-  PageIterMode="Full"
-  UseGlueCode="false">
-  <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
-  </DesignTime>
+       Userinfo.CONTACT_INFO_ID,
+       Userinfo.ROW_NUMBER
+FROM USERINFO Userinfo]]>
+  </SQLQuery>
   <EntityUsage
     Name="Userinfo"
     Entity="oracleroicoretech.model.Userinfo"/>
@@ -104,6 +108,20 @@
     EntityAttrName="ContactInfoId"
     EntityUsage="Userinfo"
     AliasName="CONTACT_INFO_ID"/>
+  <ViewAttribute
+    Name="RowNumber"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ROW_NUMBER"
+    Expression="ROW_NUMBER"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="CreationDate"/>
     <Item Value="ContactInfoId"/>

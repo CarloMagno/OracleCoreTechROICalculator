@@ -32,6 +32,7 @@ import oracle.adf.view.rich.render.ClientEvent;
 import oracle.binding.BindingContainer; 
 import oracle.binding.OperationBinding;
 
+import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
 import oracle.jbo.domain.Number;
 
@@ -155,6 +156,10 @@ public class TestBean {
         String res = "";
         System.out.println("checkCode:");
         if (isValidCode((String)code.getValue())){
+            boolean hasReport = checkReport((String)code.getValue());
+            if(hasReport){
+                showErrorMessage("You already ordered a report. If you finish the process the previous report will be erased in order to create a new one.");
+            }
             String expr = "#{bindings.CreateInsert2.execute}";  
             System.out.println("* Created *");
             invokeMethodExpression(expr, null, new Class[]{}, null);
@@ -175,15 +180,54 @@ public class TestBean {
         return null;
     }
 
-    private boolean isValidCode(String code) {
-        BindingContext bindingctx = BindingContext.getCurrent();
-        BindingContainer bindings = bindingctx.getCurrentBindingsEntry();
-        DCBindingContainer bindingsImpl = (DCBindingContainer)bindings;
-        DCIteratorBinding dciter = bindingsImpl.findIteratorBinding("ContactNameByCode1Iterator");
-        ViewObject vo = dciter.getViewObject();
-        vo.setNamedWhereClauseParam("P_CODE", code);
-        vo.executeQuery();        
-        return vo.getRowSet().first() != null;
+    private boolean isValidCode(String inputCode) {
+        boolean res = false;
+        
+        DCBindingContainer bindings =  
+        (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding it = (DCIteratorBinding)bindings.get("ContactinfoView1Iterator");
+        
+        // Retrieve the view object instance from the iterator binding, this would have the result set.
+        // Set the where clause with the attribute and view name
+        ViewObject viewObject = it.getViewObject();
+        viewObject.setWhereClause("CODE = '" + inputCode +"'");
+        
+        // Execute the query to retrieve the record
+        viewObject.executeQuery();     
+        
+        // Retrieve the Row from the row set retrieved
+        // viewObject.hasNext() can be used to iterate through the row set.
+        Row r = viewObject.first();
+        
+        if (r != null){
+            // Now obtain the value from the retrieved row.
+            Object dbCode = r.getAttribute("Code");
+            if (dbCode != null){
+                res = inputCode.equals(dbCode.toString());
+            }
+        }
+        return res;
+    }
+
+    private String getCustomerId(String customerCode) {
+        DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding it = (DCIteratorBinding)bindings.get("ContactinfoView1Iterator");
+        ViewObject viewObject = it.getViewObject();
+        
+        viewObject.setWhereClause("CODE='" + customerCode + "'");
+        viewObject.executeQuery();
+        Row r = viewObject.first();
+        return (String)r.getAttribute("Id");
+    }
+    
+    private boolean checkReport(String customerCode) {
+        DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding it = (DCIteratorBinding)bindings.get("CustomerReportView1Iterator");
+        ViewObject viewObject = it.getViewObject();
+        
+        viewObject.setWhereClause("CUSTOMER_ID='" + getCustomerId(customerCode) + "'");
+        viewObject.executeQuery();
+        return viewObject.first() != null;
     }
 
     public String backAndCreate() {

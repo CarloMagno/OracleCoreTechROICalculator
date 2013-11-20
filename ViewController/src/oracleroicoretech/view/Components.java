@@ -31,6 +31,8 @@ import oracle.adf.view.rich.component.rich.output.RichOutputText;
 
 import oracle.binding.BindingContainer;
 import oracle.jbo.domain.Number;
+import oracle.jbo.ApplicationModule;
+
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -45,7 +47,19 @@ import javax.el.ValueExpression;
 
 import javax.faces.application.Application;
 
+import oracle.adf.model.binding.DCBindingContainer;
+
+import oracle.adf.model.binding.DCIteratorBinding;
+
+import oracle.jbo.ApplicationModule;
+import oracle.jbo.AttributeList;
+import oracle.jbo.Row;
+import oracle.jbo.ViewObject;
+
+import oracle.jbo.server.AttributeListImpl;
+
 import oracleroicoretech.utils.ADFUtils;
+
 
 public class Components {
     private RichOutputText ot21; // HighPerformance total amount in partitioning.
@@ -375,67 +389,56 @@ public class Components {
         hpGbs = hpGbs.add(mGbs);
         hpGbs = hpGbs.multiply(hpEurPerGB);
 
-        BigDecimal hpPartitioningAmount =
-            new BigDecimal(ot21.getValue().toString());
-        BigDecimal mPartitioningAmount =
-            new BigDecimal(ot22.getValue().toString());
-        BigDecimal ropPartitioningAmount =
-            new BigDecimal(ot23.getValue().toString());
+        BigDecimal hpPartitioningAmount = new BigDecimal(ot21.getValue().toString());
+        BigDecimal mPartitioningAmount = new BigDecimal(ot22.getValue().toString());
+        BigDecimal ropPartitioningAmount = new BigDecimal(ot23.getValue().toString());
 
         BigDecimal factorValue = new BigDecimal(factor.getValue().toString());
 
-        BigDecimal hpAdvCompression =
-            new BigDecimal(ot21.getValue().toString());
+        BigDecimal hpAdvCompression = new BigDecimal(ot21.getValue().toString());
         BigDecimal mAdvCompression = new BigDecimal(ot22.getValue().toString());
-        BigDecimal ropAdvCompression =
-            new BigDecimal(ot23.getValue().toString());
+        BigDecimal ropAdvCompression = new BigDecimal(ot23.getValue().toString());
 
         BigDecimal hpOnlyAdvComp = new BigDecimal(hpGbs.doubleValue());
         hpOnlyAdvComp = hpOnlyAdvComp.divide(factorValue, 2, RoundingMode.HALF_UP);
 
         if (!factorValue.equals(new BigDecimal(0.0))) {
-            hpAdvCompression =
-                    hpAdvCompression.divide(factorValue, 2, RoundingMode.HALF_UP);
-            mAdvCompression =
-                    mAdvCompression.divide(factorValue, 2, RoundingMode.HALF_UP);
-            ropAdvCompression =
-                    ropAdvCompression.divide(factorValue, 2, RoundingMode.HALF_UP);
+            hpAdvCompression = hpAdvCompression.divide(factorValue, 2, RoundingMode.HALF_UP);
+            mAdvCompression = mAdvCompression.divide(factorValue, 2, RoundingMode.HALF_UP);
+            ropAdvCompression = ropAdvCompression.divide(factorValue, 2, RoundingMode.HALF_UP);
         }
 
         System.out.println("...Retrieved!");
         System.out.println("Creating data graph...");
         ArrayList list = new ArrayList();
-        String[] rowLabels =
-            new String[] { "High Performance Storage", "Mid Range Storage",
-                           "Low Cost Storage" };
-        String[] colLabels =
-            new String[] { "Only High Performance", "Partitioning", "AdvCompression",
-                           "Partitioning + AdvCompression" };
+        String[] rowLabels = 
+            new String[] { "High Performance Storage", "Mid Range Storage", "Low Cost Storage" };
+        String[] colLabels = 
+            new String[] { "Only High Performance", "Partitioning", "AdvCompression", "Partitioning + AdvCompression" };
         BigDecimal[][] values = new BigDecimal[][] {
-                /* High Performance Storage Row */ { hpGbs,
-                                                     hpPartitioningAmount,
-                                                     hpOnlyAdvComp,
-                                                     hpAdvCompression },
-                /* Modular Storage Row */ { new BigDecimal(0.0),
-                                            mPartitioningAmount,
-                                            new BigDecimal(0.0),
-                                            mAdvCompression },
-                /* Read Only Storage Row */ { new BigDecimal(0.0),
-                                              ropPartitioningAmount,
-                                              new BigDecimal(0.0),
-                                              ropAdvCompression } 
-                                                   };
+                     /* High Performance Storage Row */ { hpGbs,
+                                                          hpPartitioningAmount,
+                                                          hpOnlyAdvComp,
+                                                          hpAdvCompression },
+                     /* Modular Storage Row */ { new BigDecimal(0.0),
+                                                 mPartitioningAmount,
+                                                 new BigDecimal(0.0),
+                                                 mAdvCompression },
+                     /* Read Only Storage Row */ { new BigDecimal(0.0),
+                                                   ropPartitioningAmount,
+                                                   new BigDecimal(0.0),
+                                                   ropAdvCompression } 
+                                                        };
 
         for (int c = 0; c < colLabels.length; c++) {
             for (int r = 0; r < rowLabels.length; r++) {
-                list.add(new Object[] { colLabels[c], rowLabels[r],
-                                        new Double(values[r][c].doubleValue()) });
+                list.add(new Object[] { colLabels[c], rowLabels[r], new Double(values[r][c].doubleValue()) });
             }
         }
         System.out.println("...Created!");
         return list;
     }
-
+     
 ////////////////////////////////////////////////////////////////////////////////
     public Object invokeMethodExpression(String expr, Class returnType,
                                          Class[] argTypes, Object[] args) {
@@ -456,7 +459,6 @@ public class Components {
         Object priceMpGbValue = priceMpGb.getValue();
         Object priceRopGbValue = priceRopGb.getValue();
         Object factorValue = factor.getValue();
-        System.out.println("Factor: "+factorValue);
         
         String expr = "#{bindings.CreateInsert.execute}";  
         System.out.println("* Created *");
@@ -485,9 +487,8 @@ public class Components {
         ValueExpression vePriceGbRop = elFactory.createValueExpression(elContext, "#{bindings.PricePerGbRop1.inputValue}", Object.class); 
         vePriceGbRop.setValue(elContext, priceRopGbValue);
         
-        ValueExpression veFactor = elFactory.createValueExpression(elContext, "#{bindings.Factor1.inputValue}", Object.class); 
+        ValueExpression veFactor = elFactory.createValueExpression(elContext, "#{bindings.Factor2.inputValue}", Object.class); 
         veFactor.setValue(elContext, factorValue);
-        System.out.println("Factor: "+veFactor.getValue(elContext));
         
         return (String)ADFUtils.invokeEL("#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}");
     }
@@ -613,11 +614,87 @@ public class Components {
         return priceRopGb;
     }
 
-    public void redirectToOracleCloudPage(ActionEvent actionEvent) {
+    public void finish(ActionEvent actionEvent) {
+        //deletePreviousReport();
+        insertRowReport();
+        commit();
+        //redirectToOracleCloudPage();
+    }
+    
+    public void deletePreviousReport() {
+            DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();   
+            DCIteratorBinding it = (DCIteratorBinding)bindings.get("CustomerReportView1Iterator");   
+            ViewObject viewObject = it.getViewObject();
+            OperationBinding operationBinding = (OperationBinding)bindings.getOperationBinding("Commit");
+            
+            String customerId = getCustomerId((String)email.getValue());
+            
+            viewObject.setWhereClause("CUSTOMER_ID="+customerId);
+            viewObject.executeQuery();
+            while (viewObject.hasNext()) {
+                System.out.println("Delete: got row...");
+                viewObject.next();
+                viewObject.removeCurrentRow();
+                System.out.println("Delete: ...deleted row!");
+            }
+        }
+    
+    public void insertRowReport() {
+        DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();   
+        DCIteratorBinding it = (DCIteratorBinding)bindings.get("CustomerReportView1Iterator");   
+        ViewObject viewObject = it.getViewObject();
+        Row newRow = viewObject.createRow();
+        
+        String customerId = getCustomerId((String)email.getValue());
+        
+        newRow.setAttribute("CustomerId", customerId);
+        newRow.setAttribute("DataInfoId", getDataInfoId(customerId));
+        newRow.setAttribute("TimestampCommit", new Date());
+        viewObject.insertRow(newRow);
+        
+        System.out.println("Inserted: row inserted! : "+newRow.getAttribute("CustomerId")+","+newRow.getAttribute("DataInfoId"));
+    }
+    
+    private Number getDataInfoId(String customerId) {
+        DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding it = (DCIteratorBinding)bindings.get("UserinfoView1Iterator");
+        ViewObject viewObject = it.getViewObject();
+    
+        viewObject.setOrderByClause("ROW_NUMBER");
+        viewObject.setWhereClause("CONTACT_INFO_ID='" + customerId +"'");
+        viewObject.executeQuery();     
+        Row r = viewObject.last();
+        return (Number)r.getAttribute("RowNumber");
+    }
+
+    private String getCustomerId(String email) {
+        DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding it = (DCIteratorBinding)bindings.get("ContactinfoView1Iterator");
+        ViewObject viewObject = it.getViewObject();
+    
+        viewObject.setWhereClause("EMAIL='" + email + "'");
+        viewObject.executeQuery();
+        Row r = viewObject.first();
+
+        System.out.println("getCustomerId("+email+")="+(String)r.getAttribute("Id"));
+
+        return (String)r.getAttribute("Id");
+    }
+    
+    private void commit(){
+        DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();   
+        DCIteratorBinding it = (DCIteratorBinding)bindings.get("CustomerReportView1Iterator");   
+        ViewObject viewObject = it.getViewObject();
+        OperationBinding commitBinding = (OperationBinding)bindings.getOperationBinding("Commit");
+        commitBinding.execute();
+    }
+    
+    public void redirectToOracleCloudPage() {
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(CLOUD_URL);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

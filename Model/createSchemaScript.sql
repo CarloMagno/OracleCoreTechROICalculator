@@ -1,4 +1,4 @@
-﻿--------------------------------------------------------
+--------------------------------------------------------
 --  COMPANYINFO
 --------------------------------------------------------
 
@@ -63,7 +63,9 @@ CREATE TABLE "CONTACTINFO"
 
 Insert into CONTACTINFO (ID,NAME,FIRST_NAME,CODE,EMAIL,ADDRESS1,PHONE,ZIPCODE,CITY,COUNTRY,COMPANY_ID) values ('0','Juan Carlos','Ruiz','000000','juan.carlos.ruiz.rico@oracle.com','C/ Severo Ochoa 55','722708963','29590','Malaga','Spain','1');
 Insert into CONTACTINFO (ID,NAME,FIRST_NAME,CODE,EMAIL,ADDRESS1,PHONE,ZIPCODE,CITY,COUNTRY,COMPANY_ID) values ('1','Laurent','Gonzalez','123456','laurent.gonzalez@oracle.com','C/ Severo Ochoa 55','698471341','29590','Malaga','Spain','1');
-Insert into CONTACTINFO (ID,NAME,FIRST_NAME,CODE,EMAIL,ADDRESS1,PHONE,ZIPCODE,CITY,COUNTRY,COMPANY_ID) values ('2','Joaquin','Carballo','654321','joaquin.carballo@oracle.com','C/ Jos�chegaray 6B Las Rozas','664341541','29830','Madrid','Spain','1');
+Insert into CONTACTINFO (ID,NAME,FIRST_NAME,CODE,EMAIL,ADDRESS1,PHONE,ZIPCODE,CITY,COUNTRY,COMPANY_ID) values ('2','Joaquin','Carballo','654321','joaquin.carballo@oracle.com','C/ Jos?chegaray 6B Las Rozas','664341541','29830','Madrid','Spain','1');
+Insert into CONTACTINFO (ID,NAME,FIRST_NAME,CODE,EMAIL,ADDRESS1,PHONE,ZIPCODE,CITY,COUNTRY,COMPANY_ID) values ('3','Oliver','Guenther','753159','oliver.guenther@oracle.com','C/ Severo Ochoa 55','610708952','29590','Malaga','Spain','1');
+
 --------------------------------------------------------
 --  DDL for Index CONTACTOINFO_PK
 --------------------------------------------------------
@@ -128,10 +130,31 @@ CREATE TABLE "USERINFO"
     "FACTOR" NUMBER, 
     "CREATION_DATE" TIMESTAMP (6) WITH LOCAL TIME ZONE DEFAULT CURRENT_TIMESTAMP, 
     "CONTACT_INFO_ID" VARCHAR2(20 BYTE)
-   );
+    "ROW_NUMBER" NUMBER
+    );
+   
+--------------------------------------------------------
+-- SEQUENCE
+--------------------------------------------------------
+CREATE SEQUENCE REPORT_ROW_NUMBER_SEQUENCE INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
+
+--------------------------------------------------------
+-- TRIGGER
+--------------------------------------------------------
+CREATE OR REPLACE TRIGGER INSERT_ROW_NUMBER_TRIGGER BEFORE INSERT ON USERINFO FOR EACH ROW
+BEGIN
+    if ( :new.ROW_NUMBER IS NULL ) THEN
+        SELECT REPORT_ROW_NUMBER_SEQUENCE.nextval INTO :new.ROW_NUMBER FROM dual;
+    END IF;
+END;   
+
+--------------------------------------------------------
+-- INSERT DATA
+--------------------------------------------------------   
 Insert into USERINFO (ID,GB_HP,PERCENTAGE_HP,PRICE_PER_GB_GP,GB_MP,PERCENTAGE_MP,PRICE_PER_GB_MP,GB_ROP,PERCENTAGE_ROP,PRICE_PER_GB_ROP,FACTOR,CREATION_DATE,CONTACT_INFO_ID) values ('0',100,5,72,3500,35,14,6000,60,7,2,to_timestamp('07-OCT-13 03.40.26.756000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'0');
 Insert into USERINFO (ID,GB_HP,PERCENTAGE_HP,PRICE_PER_GB_GP,GB_MP,PERCENTAGE_MP,PRICE_PER_GB_MP,GB_ROP,PERCENTAGE_ROP,PRICE_PER_GB_ROP,FACTOR,CREATION_DATE,CONTACT_INFO_ID) values ('0',50,5,72,1750,35,14,3000,60,7,3,to_timestamp('09-OCT-13 12.40.17.969000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'1');
 Insert into USERINFO (ID,GB_HP,PERCENTAGE_HP,PRICE_PER_GB_GP,GB_MP,PERCENTAGE_MP,PRICE_PER_GB_MP,GB_ROP,PERCENTAGE_ROP,PRICE_PER_GB_ROP,FACTOR,CREATION_DATE,CONTACT_INFO_ID) values ('0',25,5,72,875,35,14,1500,60,7,4,to_timestamp('09-OCT-13 12.40.18.000000000 PM','DD-MON-RR HH.MI.SSXFF AM'),'2');
+
 --------------------------------------------------------
 --  DDL for Index USERINFO_PK
 --------------------------------------------------------
@@ -163,3 +186,14 @@ Insert into INFO_TEXT values('Mid_Range_GB','Amount of mid range storage in Giga
 Insert into INFO_TEXT values('Low_Cost_GB','Amount of low cost storage in Gigabytes. For storage devices like EMC AX Clarion, HP MSA, Hitachi AMS / AMS 2000, etc.');
 Insert into INFO_TEXT values('Advanced_Compression_Factor','This number is the approximate number of times we reduced the size of our storage. Common values are between 2 and 4. Note that every datatype has different compression properties, but at the end the storage should be approximate reduced about that factor.');
 Insert into INFO_TEXT values('Total_Storage_Amount','This is the total amount of storage of your system.');
+
+-------------------------------------------------------
+-- CUSTOMER_REPORT
+-------------------------------------------------------
+CREATE TABLE CUSTOMER_REPORT 
+(
+  CUSTOMER_ID VARCHAR2(20 BYTE),
+  DATA_INFO_ID VARCHAR2(20 BYTE),
+  TIMESTAMP_COMMIT DATE DEFAULT CURRENT_TIMESTAMP 
+) 
+

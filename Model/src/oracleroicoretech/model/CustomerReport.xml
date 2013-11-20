@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="CustomerReport"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="CUSTOMER_REPORT"
+  AliasName="CustomerReport"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="oracleroicoretech.model.CustomerReportImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="CustomerId"
+    Precision="20"
+    ColumnName="CUSTOMER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_REPORT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DataInfoId"
+    Precision="20"
+    ColumnName="DATA_INFO_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CUSTOMER_REPORT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TimestampCommit"
+    ColumnName="TIMESTAMP_COMMIT"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="CUSTOMER_REPORT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RowID"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="ROWID"
+    Type="oracle.jbo.domain.RowID"
+    ColumnType="ROWID"
+    PrimaryKey="true"/>
+</Entity>

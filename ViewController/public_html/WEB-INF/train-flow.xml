@@ -33,26 +33,20 @@
       </train-stop>
     </view>
     <view id="registerData">
-      <display-name id="__6">Confirmation</display-name>
       <page>/registerData.jsff</page>
       <train-stop id="__4">
         <sequential>#{true}</sequential>
         <skip>#{false}</skip>
       </train-stop>
     </view>
-    <task-flow-return id="taskFlowReturn1">
-      <outcome id="__9">
-        <name>taskFlowReturn1</name>
-      </outcome>
-    </task-flow-return>
+    <view id="end">
+      <page>/end.jsff</page>
+      <train-stop id="__7">
+        <sequential>#{true}</sequential>
+        <skip>#{false}</skip>
+      </train-stop>
+    </view>
     <train/>
-    <control-flow-rule id="__10">
-      <from-activity-id id="__11">registerData</from-activity-id>
-      <control-flow-case id="__13">
-        <from-outcome id="__18">commit</from-outcome>
-        <to-activity-id id="__17">taskFlowReturn1</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>
