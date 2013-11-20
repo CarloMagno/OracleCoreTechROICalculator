@@ -91,7 +91,7 @@ public class TestBean {
         Application app = facesCtx.getApplication();
         ExpressionFactory elFactory = app.getExpressionFactory();
         ELContext elContext = facesCtx.getELContext();
-
+        
         try{
             ValueExpression veGbhp =
             elFactory.createValueExpression(elContext, "#{bindings.GbHp1.inputValue}", Object.class); 

@@ -16,18 +16,6 @@
     <AttrArray Name="_publishEvents"/>
   </DesignTime>
   <Attribute
-    Name="Id"
-    Precision="20"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="20"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="GbHp"
     ColumnName="GB_HP"
     SQLType="NUMERIC"
