@@ -39,13 +39,6 @@
         <skip>#{false}</skip>
       </train-stop>
     </view>
-    <view id="end">
-      <page>/end.jsff</page>
-      <train-stop id="__7">
-        <sequential>#{true}</sequential>
-        <skip>#{false}</skip>
-      </train-stop>
-    </view>
     <train/>
     <use-page-fragments/>
   </task-flow-definition>

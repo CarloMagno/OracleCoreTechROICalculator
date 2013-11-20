@@ -615,17 +615,16 @@ public class Components {
     }
 
     public void finish(ActionEvent actionEvent) {
-        //deletePreviousReport();
+        deletePreviousReport();
         insertRowReport();
         commit();
-        //redirectToOracleCloudPage();
+        redirectToOracleCloudPage();
     }
     
     public void deletePreviousReport() {
             DCBindingContainer bindings = (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();   
             DCIteratorBinding it = (DCIteratorBinding)bindings.get("CustomerReportView1Iterator");   
             ViewObject viewObject = it.getViewObject();
-            OperationBinding operationBinding = (OperationBinding)bindings.getOperationBinding("Commit");
             
             String customerId = getCustomerId((String)email.getValue());
             
