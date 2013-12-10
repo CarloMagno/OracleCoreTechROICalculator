@@ -7,16 +7,21 @@
     <af:resource type="javascript">
     function popUpAdvertisement(event)
     {
+        /*
         alert('It is my regret to inform you that is not possible to send you '+
         'an email with the information yet. We are currently working on this ' +
         'issue. Meanwhile, your request will be sent to your sales representative '+
         'and then it will be sent to your email. We apologize for the inconveniences '+
         'caused by this procedure. Thanks for using our software.');
+        */
+        alert('At this moment we are manually producing the reports to tailor the report to your data.\n' +
+        'We will send the report shortly and hope you appreciate the added attention that such tailoring' +
+        ' requires.\n'+ 'Regards, The ODSC Team.');
     }
     </af:resource>
     <!-- -->
     <f:facet name="body">
-      <af:panelHeader text="Confirm Data" id="ph1">
+      <af:panelHeader text="Request PDF Report" id="ph1">
         <f:facet name="context"/>
         <f:facet name="menuBar">
           <af:group id="g2">
@@ -29,9 +34,9 @@
               </af:panelFormLayout>
               <af:spacer width="10" height="10" id="s10"/>
               <af:panelGroupLayout id="pgl0">
-                <af:commandButton id="back" text="Back"
+                <af:commandButton id="back3" text="Back"
                                   action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"/>
-                <af:commandButton id="next" text="Send email"
+                <af:commandButton id="next4" text="Request PDF Report"
                                   action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
                                   actionListener="#{backingBeanScope.backingBean_Components.finish}">
                     <af:clientListener method="popUpAdvertisement" type="action" />

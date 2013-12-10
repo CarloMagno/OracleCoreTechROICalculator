@@ -19,9 +19,9 @@
                 </af:panelFormLayout>
                 <af:spacer width="10" height="10" id="s10"/>
                 <af:panelGroupLayout id="pgl0">
-                  <af:commandButton id="back" text="Back"
+                  <af:commandButton id="back2" text="Back"
                                     action="#{backingBeanScope.backingBean_Components.backAndCreate}"/>
-                  <af:commandButton id="next" text="Next"
+                  <af:commandButton id="next3" text="Next"
                                     action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"/>
                 </af:panelGroupLayout>
               </af:panelGroupLayout>
@@ -306,6 +306,23 @@ bindings.Factor2.inputValue.value)}" id="ot28">
               </af:panelGroupLayout>
             </af:panelBox>
           </af:panelGroupLayout>
+          
+          <p>
+            <af:outputText value="This pages show how the use to 2 specific Oracle Database Enterprise Edition Technologies can be use d to maximise the use of and lower the usage cost of the storage system." id="ot32"
+                           inlineStyle="font-size:x-small;"/>
+          </p>
+          <p>
+            <af:outputText value="The partitioning section summarises the total cost of each tier as a total of the GB per tier.  The costs here are shown for making full use of the storage capability for your data needs." id="ot30"
+                           inlineStyle="font-size:x-small;"/>
+          </p>
+          <p>
+            <af:outputText value="The Advanced compression section summarises the storage needed after the compression factor is applied.  The cost here are shown for the size of data on storage as a result of the compression" id="ot31"
+                           inlineStyle="font-size:x-small;"/>
+          </p>
+          <p>
+            <af:outputText value="The graph compares the cost of having all your data on the high performance tier VS the partitioned over more storage tiers VS having only compressed only VS using both tiered storage and compressed data." id="ot1"
+                           inlineStyle="font-size:x-small;"/>
+          </p>
         </af:panelHeader>
       </af:group>
     </f:facet>

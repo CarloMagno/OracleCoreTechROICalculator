@@ -5,19 +5,22 @@
   <af:pageTemplate viewId="/trainTemplate.jspx" id="pt1">
     <f:facet name="body">
       <af:panelHeader text="Start" id="ph1">
+
         <f:facet name="context"/>
         <f:facet name="menuBar">
           <!--  <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
                              id="tbb1"/>
         -->
           <af:panelGroupLayout id="pgl0">
+
             <af:commandButton id="back" text="Back"
                               action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"
                               rendered="false">
             </af:commandButton>
-            <af:commandButton id="next" text="Log in"
+            <af:commandButton id="next1" text="Log in"
                               action="#{TestBean.checkCode}"
                               actionListener="#{bindings.ExecuteWithParams1.execute}">
+                <af:clientListener type="focus" method="setInfoText"/>
             </af:commandButton>
           </af:panelGroupLayout>
         </f:facet>
@@ -28,9 +31,10 @@
         </f:facet>
         <f:facet name="legend"/>
         <f:facet name="info"/>
-        <af:panelGroupLayout id="pgl1" halign="center" layout="vertical">
+        <af:panelGroupLayout id="pgl1" halign="center" layout="vertical"
+                             inlineStyle="width:860px;">
           <p>
-            <af:outputText value="Welcome to Oracle's Core Tech ROI Calculator."
+            <af:outputText value="Welcome to the ODSC Core Tech ROI Calculator"
                            id="ot1" inlineStyle="font-size:medium;"/>
           </p>
           <p>
@@ -39,36 +43,57 @@
           <p>
              
           </p>
-          <af:panelBox text="Login" id="pb1" inlineStyle="width:436px;">
-            <f:facet name="toolbar">
-              <f:verbatim>
-                Please enter your code to access the application.
-              </f:verbatim>
-            </f:facet>
-            <af:commandButton actionListener="#{bindings.CreateInsert2.execute}"
-                              text="CreateInsert2"
-                              disabled="#{!bindings.CreateInsert2.enabled}"
-                              id="cb1" rendered="false"/>
-            <af:commandButton actionListener="#{bindings.ExecuteWithParams1.execute}"
-                              text="ExecuteWithParams1"
-                              disabled="#{!bindings.ExecuteWithParams1.enabled}"
-                              id="cb2" rendered="false"/>
-            <af:panelFormLayout id="pfl3">
-              <af:inputText value="#{bindings.P_CODE.inputValue}"
-                            label="Code"
-                            required="#{bindings.P_CODE.hints.mandatory}"
-                            columns="#{bindings.P_CODE.hints.displayWidth}"
-                            maximumLength="#{bindings.P_CODE.hints.precision}"
-                            shortDesc="#{bindings.P_CODE.hints.tooltip}"
-                            id="it2" binding="#{TestBean.code}"
-                            >
-                <f:validator binding="#{bindings.P_CODE.validator}"/>
-              </af:inputText>
+          <af:panelGroupLayout id="pgl3" layout="horizontal">
+            <af:panelGroupLayout id="pgl2">
+              <p align="left">
+                <af:outputText value="Together with our Account Manager teams we have developed this site to help you gain insight in how Oracle DB technologies may help you define a useful business strategy."
+                               id="ot2"
+                               inlineStyle="font-size:small; text-align:justify;"/>
+              </p>
+              <p align="left">
+                <af:outputText value="Interested in how Oracle Cloud can help you deliver – ask your account manager or indicated that you want more information at the of the calculator."
+                               id="ot4"
+                               inlineStyle="font-size:small; text-align:justify;"/>
+              </p>
+              <p align="left">
+                <af:outputText value="Regards - ODSC and Account Management Teams -"
+                               id="ot5"
+                               inlineStyle="font-size:small; text-align:justify;"/>
+              </p>
+            </af:panelGroupLayout>
+            <af:panelBox text="Login" id="pb1" inlineStyle="width:436px;">
+              <f:facet name="toolbar">
+                <f:verbatim>
+                  Please enter your code to access the application.
+                </f:verbatim>
+              </f:facet>
+              <af:commandButton actionListener="#{bindings.CreateInsert2.execute}"
+                                text="CreateInsert2"
+                                disabled="#{!bindings.CreateInsert2.enabled}"
+                                id="cb1" rendered="false"/>
               <af:commandButton actionListener="#{bindings.ExecuteWithParams1.execute}"
                                 text="ExecuteWithParams1"
-                                id="cb3" rendered="false"/>
-            </af:panelFormLayout>
-          </af:panelBox>
+                                disabled="#{!bindings.ExecuteWithParams1.enabled}"
+                                id="cb2" rendered="false"/>
+              <af:panelGroupLayout id="pgl4" layout="horizontal"
+                                   halign="center">
+                <af:panelFormLayout id="pfl3">
+                  <af:inputText value="#{bindings.P_CODE.inputValue}"
+                                label="Code"
+                                required="#{bindings.P_CODE.hints.mandatory}"
+                                columns="#{bindings.P_CODE.hints.displayWidth}"
+                                maximumLength="#{bindings.P_CODE.hints.precision}"
+                                shortDesc="#{bindings.P_CODE.hints.tooltip}"
+                                id="it2" binding="#{TestBean.code}">
+                    <f:validator binding="#{bindings.P_CODE.validator}"/>
+                  </af:inputText>
+                  <af:commandButton actionListener="#{bindings.ExecuteWithParams1.execute}"
+                                    text="ExecuteWithParams1" id="cb3"
+                                    rendered="false"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:panelBox>
+          </af:panelGroupLayout>
         </af:panelGroupLayout>
       </af:panelHeader>
     </f:facet>

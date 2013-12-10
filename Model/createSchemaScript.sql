@@ -115,23 +115,6 @@ Insert into CONTACTINFO (ID,NAME,FIRST_NAME,CODE,EMAIL,ADDRESS1,PHONE,ZIPCODE,CI
 --------------------------------------------------------
 --  USERINFO
 --------------------------------------------------------
-
---CREATE TABLE  USERINFO  
---   ( GB_HP  NUMBER, 
---     PERCENTAGE_HP  NUMBER, 
---     PRICE_PER_GB_GP  NUMBER, 
---     GB_MP  NUMBER, 
---     PERCENTAGE_MP  NUMBER, 
---     PRICE_PER_GB_MP  NUMBER, 
---     GB_ROP  NUMBER, 
---     PERCENTAGE_ROP  NUMBER, 
---     PRICE_PER_GB_ROP  NUMBER, 
---     FACTOR  NUMBER, 
---     CREATION_DATE  TIMESTAMP (6) WITH LOCAL TIME ZONE DEFAULT CURRENT_TIMESTAMP, 
---     CONTACT_INFO_ID  VARCHAR2(20 BYTE),
---     ROW_NUMBER  NUMBER
---    );
-  
 CREATE TABLE USERINFO 
 (
   GB_HP NUMBER 
@@ -176,45 +159,14 @@ ENABLE;
 CREATE SEQUENCE REPORT_ROW_NUMBER_SEQUENCE INCREMENT BY 1 MAXVALUE 9999999999999999999999999999 MINVALUE 1 CACHE 20;
 
 --------------------------------------------------------
--- TRIGGER
---------------------------------------------------------
-CREATE OR REPLACE TRIGGER INSERT_ROW_NUMBER_TRIGGER BEFORE INSERT ON USERINFO FOR EACH ROW
-BEGIN
-    if ( :new.ROW_NUMBER IS NULL ) THEN
-        SELECT REPORT_ROW_NUMBER_SEQUENCE.nextval INTO :new.ROW_NUMBER FROM dual;
-    END IF;
-END;   
-
---------------------------------------------------------
---  DDL for Index USERINFO_PK
---------------------------------------------------------
-
-  CREATE UNIQUE INDEX  USERINFO_PK  ON  USERINFO  ( ID ,  CONTACT_INFO_ID );
---------------------------------------------------------
---  Constraints for Table USERINFO
---------------------------------------------------------
-
-  ALTER TABLE  USERINFO  MODIFY ( ID  NOT NULL ENABLE);
- 
-  ALTER TABLE  USERINFO  MODIFY ( CONTACT_INFO_ID  NOT NULL ENABLE);
- 
-  ALTER TABLE  USERINFO  ADD CONSTRAINT  USERINFO_PK  PRIMARY KEY ( ID ,  CONTACT_INFO_ID );
---------------------------------------------------------
---  Ref Constraints for Table USERINFO
---------------------------------------------------------
-
-  ALTER TABLE  USERINFO  ADD CONSTRAINT  USERINFO_CONTACTINFO_FK1  FOREIGN KEY ( CONTACT_INFO_ID )
-      REFERENCES  CONTACTINFO  ( ID ) ENABLE;
-
---------------------------------------------------------
 -- INFO_TEXT
 --------------------------------------------------------
-  CREATE TABLE  INFO_TEXT  (FIELD VARCHAR2(40), TEXT VARCHAR2(1000));
+CREATE TABLE  INFO_TEXT  (FIELD VARCHAR2(40), TEXT VARCHAR2(2000));
 
-Insert into INFO_TEXT values('High_Performance_GB','Amount of high performance storage in Gigabytes. For storage devices like EMC (Symmetrix / DMX), SUN 9900, HP XP, Hitachi USP, etc.');
-Insert into INFO_TEXT values('Mid_Range_GB','Amount of mid range storage in Gigabytes. For storage devices like SUN 6000, HP Eva, Hitachi AMS / AMS 2000, EMC CX, NTAP, etc.');
-Insert into INFO_TEXT values('Low_Cost_GB','Amount of low cost storage in Gigabytes. For storage devices like EMC AX Clarion, HP MSA, Hitachi AMS / AMS 2000, etc.');
-Insert into INFO_TEXT values('Advanced_Compression_Factor','This number is the approximate number of times we reduced the size of our storage. Common values are between 2 and 4. Note that every datatype has different compression properties, but at the end the storage should be approximate reduced about that factor.');
+Insert into INFO_TEXT values('High_Performance_GB','Tier 1 or High Performance storage usually refers to SSD nowadays but in essence is your fastest or most expensive/gb storage.');
+Insert into INFO_TEXT values('Mid_Range_GB','Tier 2 or Mid-Range usually applies to HDD based storage that would normally be sufficient for all use.');
+Insert into INFO_TEXT values('Low_Cost_GB','Tier 3 or Low Cost applies to the remaining storage for example old disks or even integrated tape (by integration we mean storage solution that is seen as equivalent to all other storage by the application/host using it).');
+Insert into INFO_TEXT values('Advanced_Compression_Factor','The compression factor is determined by the type of data being stored. Some data such as compressed images cannot be further compress and hence their compression factor would be 1 (a compression factor less than 1 would indicate expansion). Other data such as text like this description have a very high compression factor. This text, as an example, would have a compression factor of about 6. To determine the correct amount use the following guide lines for the different compression ratios: 1.0: We only store compressed data such as images and de-duplicate these through our application. 1.5: We store mainly compressed data 2: We store compressed and other data, most of this is unique (such as time based data like financial prices of call stats) 3: we store a mix of unique and recurring data (data such as product codes, order numbers, adresses, names etc) and a bit of compressed data 4: we store mainly recurring data 5: we store some recurring data but a lot of textual data examples: Compressed Image Store: 1 Financial trading platform without customer order tracking: 1.5 Financial trading platform with customer data: 2 Online store: 3 Back office order processing or ERP/CRM:4 School Reports System: 5');
 Insert into INFO_TEXT values('Total_Storage_Amount','This is the total amount of storage of your system.');
 
 -------------------------------------------------------
@@ -225,5 +177,5 @@ CREATE TABLE CUSTOMER_REPORT
   CUSTOMER_ID VARCHAR2(20 BYTE),
   DATA_INFO_ID VARCHAR2(20 BYTE),
   TIMESTAMP_COMMIT DATE DEFAULT CURRENT_TIMESTAMP 
-) 
+) ;
 

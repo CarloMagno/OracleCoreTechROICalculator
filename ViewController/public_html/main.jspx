@@ -41,20 +41,26 @@
                 } else if (infoText == "inputText4") {
                     comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Mid_Range_GB");
                     res = comp.getValue();
-                } else if (infoText == "inputText6") {
-                    res = "This is the price per mid range gigabyte."
                 } else if (infoText == "inputText7") {
                     comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Low_Cost_GB");
                     res = comp.getValue();
-                } else if (infoText == "inputText9") {
-                    res = "This is the price per low cost gigabyte.";
                 } else if (infoText == "inputText10") {
                     comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Advanced_Compression_Factor");
                     res = comp.getValue();
                 } else if (infoText == "inputText22") {
                     comp = AdfPage.PAGE.findComponentByAbsoluteId("ot_Total_Storage_Amount");
                     res = comp.getValue();
-                } 
+                } else if ((infoText == "next1")||(infoText == "back2")){
+                    res = "We need to understand how much storage you have and how this storage is distributed over various different cost platforms.  By using the right Oracle technologies better use of these storage tiers can be had without affecting the Database Schema configuration.";
+                } else if ((infoText == "next2")||(infoText == "back3")){
+                    res = "This pages show how the use to 2 specific Oracle Database Enterprise Edition Technologies can be used to maximise the use of and lower the usage cost of the storage system.";
+                } else if (infoText == "next3"){
+                    res = "Here you can request the report from the previous page be emailed to you.  Your account manager will also receive a copy.";
+                } else if (infoText == "back1"){
+                    res = "As the logo above shows, this site is created on Oracle Cloud and demonstrates how a small department can harness the power of Oracle Cloud to deliver dedicated or specialised solution using the full value for the Oracle Stack without the need for upfront investment.";
+                } else {
+                    res = "";
+                }
                 return res;
               }
             </af:resource>
@@ -62,7 +68,7 @@
                     
                     <af:panelBox text="Info Text" id="pb1">
                        <f:facet name="toolbar"/>
-                       <af:outputText id="infoText" clientComponent="true"/>
+                       <af:outputText id="infoText" clientComponent="true" value="As the logo above shows, this site is created on Oracle Cloud and demonstrates how a small department can harness the power of Oracle Cloud to deliver dedicated or specialised solution using the full value for the Oracle Stack without the need for upfront investment."/>
                     </af:panelBox>
                     
                     <af:forEach var="item" items="#{bindings.InfoTextView11.rangeSet}">

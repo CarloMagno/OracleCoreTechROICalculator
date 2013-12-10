@@ -18,11 +18,15 @@
               </af:panelFormLayout>
               <af:spacer width="10" height="10" id="s1"/>
               <af:panelGroupLayout id="pgl0">
-                <af:commandButton id="back" text="Log out"
-                                  action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}"/>
-                <af:commandButton id="next" text="Next"
+                <af:commandButton id="back1" text="Log out"
+                                  action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getPrevious}">
+                    <af:clientListener type="focus" method="setInfoText"/>
+                </af:commandButton>
+                <af:commandButton id="next2" text="Next"
                                   action="#{controllerContext.currentViewPort.taskFlowContext.trainModel.getNext}"
-                                  actionListener="#{TestBean.createInsertAndCommit}"/>
+                                  actionListener="#{TestBean.createInsertAndCommit}">
+                    <af:clientListener type="focus" method="setInfoText"/>
+                </af:commandButton>
                 <af:commandButton actionListener="#{bindings.Commit.execute}"
                                   text="Commit"
                                   disabled="#{!bindings.Commit.enabled}"
